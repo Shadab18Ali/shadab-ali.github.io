@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadab Ali — Shopify Developer & CRO Specialist | Delhi, India</title>
+<meta name="description" content="Shopify Developer specializing in high-converting, performance-driven eCommerce stores. Custom theme development, automation, CRO and Shopify scaling. Delhi, India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #0B0F19;
+  --bg2:     #0f1420;
+  --bg3:     #141927;
+  --surface: #161c2d;
+  --surf2:   #1c2338;
+  --border:  rgba(255,255,255,0.06);
+  --bord2:   rgba(255,255,255,0.11);
+  --text:    #E5E7EB;
+  --text2:   #8b93a8;
+  --text3:   #4b5568;
+  --accent:  #6366F1;
+  --acc2:    #4f52d4;
+  --aglow:   rgba(99,102,241,0.18);
+  --green:   #22C55E;
+  --gdim:    #16a34a;
+  --gbg:     rgba(34,197,94,0.08);
+  --amber:   #f59e0b;
+  --fd: 'Syne', sans-serif;
+  --fb: 'DM Sans', sans-serif;
+  --fm: 'DM Mono', monospace;
+  --r: 12px; --rs: 8px; --rl: 20px;
+  --tr: 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="light"] {
+  --bg:#f4f6fb; --bg2:#ffffff; --bg3:#edf0f7;
+  --surface:#ffffff; --surf2:#f0f3fa;
+  --border:rgba(0,0,0,0.07); --bord2:rgba(0,0,0,0.12);
+  --text:#111827; --text2:#4b5568; --text3:#9ca3af;
+  --accent:#4f52d4; --acc2:#3b3eb8; --aglow:rgba(79,82,212,0.1);
+  --green:#16a34a; --gdim:#15803d; --gbg:rgba(22,163,74,0.07);
+  --amber:#d97706;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.72;overflow-x:hidden;transition:background var(--tr),color var(--tr);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,5vw,4rem);height:66px;background:rgba(11,15,25,0.88);border-bottom:1px solid var(--border);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);transition:background var(--tr);}
+[data-theme="light"] nav{background:rgba(244,246,251,0.9);}
+.logo{font-family:var(--fd);font-weight:800;font-size:1.2rem;color:var(--text);text-decoration:none;letter-spacing:-.03em;}
+.logo em{color:var(--accent);font-style:normal;}
+.nav-links{display:flex;align-items:center;gap:1.75rem;list-style:none;}
+.nav-links a{font-size:.84rem;color:var(--text2);text-decoration:none;transition:color var(--tr);}
+.nav-links a:hover{color:var(--text);}
+.nav-r{display:flex;align-items:center;gap:.85rem;}
+.tog{background:var(--surface);border:1px solid var(--bord2);border-radius:100px;width:50px;height:26px;cursor:pointer;position:relative;transition:background var(--tr);flex-shrink:0;}
+.tog::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--accent);transition:transform var(--tr);}
+[data-theme="light"] .tog::after{transform:translateX(24px);}
+.hbg{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
+.hbg span{width:20px;height:1.5px;background:var(--text);display:block;transition:all var(--tr);}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 1.3rem;border-radius:var(--rs);font-family:var(--fb);font-size:.855rem;font-weight:500;text-decoration:none;cursor:pointer;transition:all var(--tr);border:none;white-space:nowrap;}
+.btn-p{background:var(--accent);color:#fff;}
+.btn-p:hover{background:var(--acc2);transform:translateY(-1px);box-shadow:0 8px 28px var(--aglow);}
+.btn-g{background:var(--green);color:#fff;}
+.btn-g:hover{background:var(--gdim);transform:translateY(-1px);box-shadow:0 8px 28px rgba(34,197,94,.25);}
+.btn-o{background:transparent;color:var(--text);border:1px solid var(--bord2);}
+.btn-o:hover{background:var(--surface);border-color:var(--accent);}
+
+/* LAYOUT */
+.ctr{max-width:1100px;margin:0 auto;padding:0 clamp(1.25rem,5vw,3.5rem);}
+section{padding:6.5rem 0;}
+.slabel{font-family:var(--fm);font-size:.72rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem;}
+h2{font-family:var(--fd);font-size:clamp(1.85rem,3.5vw,2.6rem);font-weight:700;line-height:1.18;letter-spacing:-.035em;margin-bottom:.9rem;}
+h3{font-family:var(--fd);font-size:1.12rem;font-weight:600;margin-bottom:.45rem;letter-spacing:-.02em;}
+p{color:var(--text2);line-height:1.75;}
+.div{width:40px;height:3px;background:var(--accent);border-radius:100px;margin:1.1rem 0 1.6rem;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:66px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 65% 55% at 75% 35%,rgba(99,102,241,.11) 0%,transparent 65%),radial-gradient(ellipse 45% 45% at 15% 75%,rgba(34,197,94,.06) 0%,transparent 60%),radial-gradient(ellipse 30% 30% at 50% 100%,rgba(99,102,241,.05) 0%,transparent 50%);}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;}
+.avail-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--gbg);border:1px solid rgba(34,197,94,.22);color:var(--green);padding:.35rem .85rem;border-radius:100px;font-size:.75rem;font-weight:500;margin-bottom:1.4rem;font-family:var(--fm);letter-spacing:.06em;}
+.avail-pill::before{content:'';width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
+h1{font-family:var(--fd);font-size:clamp(2.2rem,4.5vw,3.75rem);font-weight:800;line-height:1.08;margin-bottom:1.2rem;letter-spacing:-.045em;}
+h1 .ic{color:var(--accent);}
+h1 .gc{color:var(--green);}
+.hsub{font-size:1.05rem;color:var(--text2);margin-bottom:1.9rem;max-width:460px;line-height:1.68;}
+.hact{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.trust{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;}
+.ti{display:flex;align-items:center;gap:.35rem;font-size:.78rem;color:var(--text2);}
+.td{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;}
+.hstats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.scard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem 1.2rem;position:relative;overflow:hidden;transition:border-color var(--tr),transform var(--tr);}
+.scard:hover{border-color:var(--bord2);transform:translateY(-2px);}
+.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--green));opacity:0;transition:opacity var(--tr);}
+.scard:hover::before{opacity:1;}
+.snum{font-family:var(--fd);font-size:1.9rem;font-weight:800;color:var(--text);line-height:1;margin-bottom:.22rem;letter-spacing:-.04em;}
+.slbl{font-size:.76rem;color:var(--text2);}
+
+/* MARQUEE */
+.mwrap{padding:1.6rem 0;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);}
+.mtrack{display:flex;white-space:nowrap;animation:scroll 28s linear infinite;}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.mitem{display:inline-flex;align-items:center;gap:1rem;padding:0 1.5rem;font-family:var(--fm);font-size:.72rem;color:var(--text2);letter-spacing:.1em;text-transform:uppercase;flex-shrink:0;}
+.msep{color:var(--accent);opacity:.6;}
+
+/* ABOUT */
+#about{background:var(--bg2);}
+.about-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:5rem;align-items:center;}
+.av-wrap{background:var(--surface);border:1px solid var(--bord2);border-radius:var(--rl);padding:2.5rem;display:flex;flex-direction:column;align-items:center;gap:1.25rem;}
+.av-circle{width:88px;height:88px;border-radius:50%;background:var(--aglow);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.6rem;font-weight:800;color:var(--accent);}
+.av-name{font-family:var(--fd);font-weight:700;font-size:1.05rem;color:var(--text);letter-spacing:-.02em;}
+.av-role{font-size:.8rem;color:var(--text2);text-align:center;line-height:1.5;}
+.av-badge{display:flex;align-items:center;gap:.4rem;background:var(--gbg);border:1px solid rgba(34,197,94,.2);color:var(--green);font-size:.72rem;font-family:var(--fm);padding:.3rem .75rem;border-radius:100px;letter-spacing:.06em;}
+.av-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+.av-links{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;}
+.av-links a{background:var(--bg);border:1px solid var(--bord2);color:var(--text2);font-size:.75rem;padding:.3rem .7rem;border-radius:var(--rs);text-decoration:none;transition:all var(--tr);font-family:var(--fm);}
+.av-links a:hover{border-color:var(--accent);color:var(--accent);}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.5rem;}
+.tag{background:var(--surface);border:1px solid var(--border);color:var(--text2);font-size:.75rem;padding:.28rem .7rem;border-radius:100px;font-family:var(--fm);transition:all var(--tr);}
+.tag:hover{border-color:var(--accent);color:var(--accent);}
+
+/* EXPERTISE */
+#expertise{background:var(--bg);}
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem;margin-top:2.75rem;}
+.ecard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:all var(--tr);position:relative;overflow:hidden;}
+.ecard::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--aglow) 0%,transparent 60%);opacity:0;transition:opacity var(--tr);}
+.ecard:hover{border-color:var(--accent);transform:translateY(-3px);}
+.ecard:hover::after{opacity:1;}
+.eicon{font-size:1.4rem;margin-bottom:1rem;}
+.ecard h3{font-size:1rem;color:var(--text);margin-bottom:.75rem;position:relative;z-index:1;}
+.elist{list-style:none;position:relative;z-index:1;}
+.elist li{font-size:.82rem;color:var(--text2);padding:.3rem 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:.55rem;line-height:1.55;}
+.elist li:last-child{border-bottom:none;}
+.elist li::before{content:'▸';color:var(--accent);font-size:.65rem;flex-shrink:0;margin-top:.22rem;}
+
+/* SERVICES */
+#services{background:var(--bg2);}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1.25rem;margin-top:2.75rem;}
+.svcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:all var(--tr);}
+.svcard:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.25);}
+.svi{width:42px;height:42px;background:var(--aglow);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1.1rem;border:1px solid rgba(99,102,241,.2);}
+.svcard h3{color:var(--text);font-size:1rem;margin-bottom:.5rem;}
+.svcard p{font-size:.83rem;color:var(--text2);}
+
+/* CASE STUDIES */
+#case-studies{background:var(--bg);}
+.case-grid{display:grid;gap:2rem;margin-top:2.75rem;}
+.ccase{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;transition:border-color var(--tr);}
+.ccase:hover{border-color:var(--bord2);}
+.ctag{display:inline-block;background:var(--aglow);color:var(--accent);font-size:.7rem;font-family:var(--fm);padding:.22rem .6rem;border-radius:100px;margin-bottom:.9rem;letter-spacing:.08em;text-transform:uppercase;}
+.ccase h3{font-size:1.35rem;color:var(--text);margin-bottom:.7rem;}
+.ccase p{font-size:.855rem;margin-bottom:.6rem;}
+.pills{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1rem;}
+.pill{background:var(--bg);border:1px solid var(--border);color:var(--text2);font-size:.7rem;padding:.18rem .55rem;border-radius:100px;font-family:var(--fm);}
+.cmetrics{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.mbox{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:1.25rem;text-align:center;transition:border-color var(--tr);}
+.mbox:hover{border-color:var(--green);}
+.mval{font-family:var(--fd);font-size:1.65rem;font-weight:800;color:var(--green);letter-spacing:-.04em;line-height:1;margin-bottom:.22rem;}
+.mlbl{font-size:.72rem;color:var(--text2);}
+.clink{display:inline-flex;align-items:center;gap:.3rem;font-size:.8rem;color:var(--accent);text-decoration:none;font-weight:500;transition:gap var(--tr);margin-top:1rem;}
+.clink:hover{gap:.5rem;}
+
+/* PORTFOLIO */
+#portfolio{background:var(--bg2);}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;margin-top:2.75rem;}
+.pcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all var(--tr);}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3);border-color:var(--bord2);}
+.pthumb{aspect-ratio:16/9;background:var(--bg3);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);flex-direction:column;gap:.5rem;}
+.purl{font-family:var(--fm);font-size:.72rem;color:var(--accent);}
+.pbody{padding:1.4rem;}
+.pbody h3{font-size:.95rem;color:var(--text);margin-bottom:.35rem;}
+.pbody p{font-size:.82rem;color:var(--text2);margin-bottom:.9rem;}
+.plink{display:inline-flex;align-items:center;gap:.28rem;font-size:.78rem;color:var(--green);text-decoration:none;font-weight:500;transition:gap var(--tr);}
+.plink:hover{gap:.45rem;}
+
+/* TECH */
+#tech{background:var(--bg);}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.9rem;margin-top:2.75rem;}
+.titem{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:.9rem .75rem;text-align:center;transition:all var(--tr);}
+.titem:hover{border-color:var(--accent);transform:translateY(-2px);}
+.tico{font-size:1.35rem;margin-bottom:.4rem;}
+.tnm{font-size:.72rem;color:var(--text2);font-family:var(--fm);}
+
+/* PROCESS */
+#process{background:var(--bg2);}
+.pwrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:2.75rem;}
+.pstep{padding:1.75rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-right:none;transition:background var(--tr);}
+.pstep:first-child{border-radius:var(--r) 0 0 var(--r);}
+.pstep:last-child{border-right:1px solid var(--border);border-radius:0 var(--r) var(--r) 0;}
+.pstep:hover{background:var(--surf2);}
+.pnum{font-family:var(--fm);font-size:.68rem;color:var(--accent);margin-bottom:.65rem;font-weight:500;letter-spacing:.08em;}
+.ptit{font-family:var(--fd);font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.35rem;}
+.pdesc{font-size:.76rem;color:var(--text2);line-height:1.55;}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--bg);}
+.tgrd{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem;margin-top:2.75rem;}
+.tcrd{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:border-color var(--tr);}
+.tcrd:hover{border-color:var(--bord2);}
+.stars{color:var(--amber);font-size:.85rem;margin-bottom:.9rem;letter-spacing:.1em;}
+.ttxt{font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:1.4rem;font-style:italic;}
+.tauth{display:flex;align-items:center;gap:.7rem;}
+.tav{width:36px;height:36px;border-radius:50%;background:var(--aglow);border:1px solid rgba(99,102,241,.3);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:.8rem;font-weight:700;color:var(--accent);flex-shrink:0;}
+.tnm{font-size:.85rem;font-weight:500;color:var(--text);}
+.trole{font-size:.73rem;color:var(--text2);}
+
+/* AUDIT BANNER */
+.abanner{background:var(--surface);border:1px solid var(--bord2);border-radius:var(--rl);padding:2.75rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:4rem;position:relative;overflow:hidden;}
+.abanner::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 50% 120% at 0% 50%,rgba(34,197,94,.05) 0%,transparent 60%);pointer-events:none;}
+.abdg{display:inline-block;background:var(--gbg);color:var(--green);font-size:.7rem;font-family:var(--fm);padding:.22rem .6rem;border-radius:100px;margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.08em;}
+.abanner h3{font-size:1.4rem;color:var(--text);margin-bottom:.4rem;}
+.abanner p{font-size:.88rem;max-width:420px;}
+
+/* CONTACT */
+#contact{background:var(--bg2);}
+.cwrap{display:grid;grid-template-columns:1fr 1.35fr;gap:4rem;align-items:start;margin-top:2.75rem;}
+.cdet{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1.4rem;}
+.cion{width:38px;height:38px;flex-shrink:0;background:var(--surf2);border:1px solid var(--border);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:.95rem;}
+.clbl{font-size:.72rem;color:var(--text2);margin-bottom:.12rem;font-family:var(--fm);letter-spacing:.06em;}
+.cval{font-size:.88rem;color:var(--text);font-weight:500;}
+.cval a{color:var(--accent);text-decoration:none;}
+.abox{margin-top:2rem;padding:1.1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);border-left:3px solid var(--green);}
+.fcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:2.25rem;}
+.fcard h3{font-size:1.05rem;margin-bottom:1.4rem;}
+.frow{margin-bottom:1.15rem;}
+.frow label{display:block;font-size:.77rem;color:var(--text2);margin-bottom:.35rem;font-weight:500;}
+.frow input,.frow textarea,.frow select{width:100%;background:var(--bg);border:1px solid var(--bord2);border-radius:var(--rs);color:var(--text);font-family:var(--fb);font-size:.88rem;padding:.65rem .95rem;transition:border-color var(--tr);outline:none;}
+.frow input:focus,.frow textarea:focus,.frow select:focus{border-color:var(--accent);}
+.frow textarea{resize:vertical;min-height:115px;}
+.frow select option{background:var(--bg2);}
+.fsub{width:100%;padding:.82rem;font-size:.9rem;}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0;text-align:center;}
+.flogo{font-family:var(--fd);font-size:1.4rem;font-weight:800;color:var(--text);margin-bottom:.9rem;letter-spacing:-.03em;}
+.flinks{display:flex;justify-content:center;gap:1.75rem;flex-wrap:wrap;margin-bottom:1.75rem;}
+.flinks a{font-size:.82rem;color:var(--text2);text-decoration:none;transition:color var(--tr);}
+.flinks a:hover{color:var(--text);}
+.fcopy{font-size:.76rem;color:var(--text3);}
+
+/* MOB MENU */
+.mob{display:none;position:fixed;top:66px;left:0;right:0;bottom:0;background:var(--bg);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2.25rem;}
+.mob.open{display:flex;}
+.mob a{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--text);text-decoration:none;transition:color var(--tr);}
+.mob a:hover{color:var(--accent);}
+
+/* ANIMATIONS */
+.fi{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+.fi.v{opacity:1;transform:translateY(0);}
+.cur::after{content:'|';animation:blink .9s infinite;color:var(--green);}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+/* RESPONSIVE */
+@media(max-width:920px){
+  .hero-grid,.about-grid,.ccase,.cwrap{grid-template-columns:1fr;}
+  .pwrap{grid-template-columns:1fr 1fr;}
+  .pstep{border-right:none;border-bottom:none;}
+  .pstep:last-child{border:1px solid var(--border);border-radius:0 0 var(--r) var(--r);}
+  .nav-links{display:none;}
+  .hbg{display:flex;}
+  h1{font-size:2.1rem;}
+  h2{font-size:1.7rem;}
+  .abanner{flex-direction:column;text-align:center;}
+}
+@media(max-width:580px){
+  section{padding:4.5rem 0;}
+  .cmetrics,.hstats{grid-template-columns:1fr 1fr;}
+  .pwrap{grid-template-columns:1fr;}
+  .pstep:last-child{border-radius:0 0 var(--r) var(--r);}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="logo">S<em>.</em>Ali</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#case-studies">Work</a></li>
+    <li><a href="#tech">Stack</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="tog" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+    <a href="#contact" class="btn btn-g" style="padding:.5rem 1rem;font-size:.8rem;">Hire Me ↗</a>
+    <button class="hbg" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob" id="mob">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#expertise" onclick="toggleMenu()">Expertise</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#case-studies" onclick="toggleMenu()">Work</a>
+  <a href="#tech" onclick="toggleMenu()">Stack</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="ctr">
+    <div class="hero-grid">
+      <div>
+        <div class="avail-pill">Available for Immediate Start</div>
+        <h1>Shopify Developer<br>& <span class="ic">CRO</span> Specialist<br>Who Drives <span class="gc" id="tw"></span></h1>
+        <p class="hsub">I build fast, high-converting Shopify 2.0 stores with clean Liquid code, custom sections, automation, and performance architecture. Based in Delhi — working globally.</p>
+        <div class="hact">
+          <a href="#contact" class="btn btn-g">Get Free Store Audit ↗</a>
+          <a href="#case-studies" class="btn btn-o">View My Work</a>
+        </div>
+        <div class="trust">
+          <div class="ti"><span class="td"></span>Shopify 2.0 Expert</div>
+          <div class="ti"><span class="td"></span>CRO Specialist</div>
+          <div class="ti"><span class="td"></span>1.5+ Yrs Live Experience</div>
+          <div class="ti"><span class="td"></span>Open to Work</div>
+        </div>
+      </div>
+      <div class="hstats">
+        <div class="scard fi"><div class="snum">40%</div><div class="slbl">LCP performance lift delivered</div></div>
+        <div class="scard fi" style="transition-delay:.1s"><div class="snum">500+</div><div class="slbl">Products catalogued & managed</div></div>
+        <div class="scard fi" style="transition-delay:.2s"><div class="snum">20+</div><div class="slbl">Custom Liquid sections built</div></div>
+        <div class="scard fi" style="transition-delay:.3s"><div class="snum">$0</div><div class="slbl">Paid filter apps needed</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mwrap">
+  <div class="mtrack">
+    <span class="mitem">Shopify 2.0 <span class="msep">//</span></span>
+    <span class="mitem">Liquid Templating <span class="msep">//</span></span>
+    <span class="mitem">CRO Optimization <span class="msep">//</span></span>
+    <span class="mitem">Custom Sections <span class="msep">//</span></span>
+    <span class="mitem">WhatsApp Automation <span class="msep">//</span></span>
+    <span class="mitem">LCP Optimization <span class="msep">//</span></span>
+    <span class="mitem">Metafields <span class="msep">//</span></span>
+    <span class="mitem">WATI Integration <span class="msep">//</span></span>
+    <span class="mitem">Google Tag Manager <span class="msep">//</span></span>
+    <span class="mitem">SEO Architecture <span class="msep">//</span></span>
+    <span class="mitem">COD Verification <span class="msep">//</span></span>
+    <span class="mitem">Firebase <span class="msep">//</span></span>
+    <span class="mitem">Shopify 2.0 <span class="msep">//</span></span>
+    <span class="mitem">Liquid Templating <span class="msep">//</span></span>
+    <span class="mitem">CRO Optimization <span class="msep">//</span></span>
+    <span class="mitem">Custom Sections <span class="msep">//</span></span>
+    <span class="mitem">WhatsApp Automation <span class="msep">//</span></span>
+    <span class="mitem">LCP Optimization <span class="msep">//</span></span>
+    <span class="mitem">Metafields <span class="msep">//</span></span>
+    <span class="mitem">WATI Integration <span class="msep">//</span></span>
+    <span class="mitem">Google Tag Manager <span class="msep">//</span></span>
+    <span class="mitem">SEO Architecture <span class="msep">//</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="ctr">
+    <div class="about-grid">
+      <div class="av-wrap fi">
+        <div class="av-circle">SA</div>
+        <div class="av-name">Shadab Ali</div>
+        <div class="av-role">Shopify Developer & eCommerce CRO Specialist<br>B.Tech CSE · Jamia Hamdard University, 2024</div>
+        <div class="av-badge">Open to Work · Immediate Joining</div>
+        <div class="av-links">
+          <a href="mailto:shadab18ali@gmail.com">Email</a>
+          <a href="https://wa.me/919931394885" target="_blank">WhatsApp</a>
+          <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+      <div class="fi" style="transition-delay:.12s">
+        <div class="slabel">About Me</div>
+        <h2>Developer + Problem Solver<br>+ <span style="color:var(--green)">Revenue Driver</span></h2>
+        <div class="div"></div>
+        <p style="margin-bottom:1rem;">I'm a Shopify developer from Delhi specialising in high-converting, performance-driven eCommerce stores. With 1.5+ years of hands-on experience, I go far beyond theme edits — I think about conversion, automation, and the business outcome behind every section I build.</p>
+        <p style="margin-bottom:1rem;">At Divinti, I've built and scaled multiple live Shopify stores from scratch — including <a href="https://www.diviniti.com" target="_blank" style="color:var(--accent)">diviniti.com</a> with 500+ luxury products and <a href="https://www.portraitongold.com" target="_blank" style="color:var(--accent)">portraitongold.com</a> with custom filtering and WhatsApp checkout flows.</p>
+        <p>I don't just write code. I integrate WATI for abandoned cart recovery, set up COD verification to cut fake orders, implement GTM & Clarity for tracking, and build app-free features that save clients hundreds of dollars monthly.</p>
+        <div class="tags">
+          <span class="tag">Shopify 2.0</span><span class="tag">Liquid</span><span class="tag">JS ES6+</span>
+          <span class="tag">CSS3/SCSS</span><span class="tag">Metafields</span><span class="tag">WATI</span>
+          <span class="tag">GTM</span><span class="tag">Firebase</span><span class="tag">Git</span>
+          <span class="tag">Python/ML</span><span class="tag">BEM</span><span class="tag">SEO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="ctr">
+    <div class="fi">
+      <div class="slabel">Full Expertise</div>
+      <h2>What I Actually Do<br>Inside a Shopify Store</h2>
+      <p style="max-width:520px;margin-top:.6rem;">Not just theme edits — here's the full breadth of what I handle across theme development, CRO, automation, and growth.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="ecard fi">
+        <div class="eicon">💼</div>
+        <h3>Theme Development</h3>
+        <ul class="elist">
+          <li>Custom Liquid sections: sliders, 3D galleries, product showcases, banners</li>
+          <li>Figma-to-Shopify pixel-accurate conversion with schema-driven blocks</li>
+          <li>Full merchant editor control — zero dev dependency post-launch</li>
+          <li>Enquiry forms, concierge pages, franchise layouts & catalog downloads</li>
+          <li>Redesigned headers, footers, blog pages with premium typography</li>
+        </ul>
+      </div>
+      <div class="ecard fi" style="transition-delay:.07s">
+        <div class="eicon">🚀</div>
+        <h3>Conversion Rate Optimization</h3>
+        <ul class="elist">
+          <li>Direct Add-to-Cart implementation reducing buying friction</li>
+          <li>Custom checkout messaging, COD restrictions & order validation</li>
+          <li>Restructured menus, filters & internal linking for better user flow</li>
+          <li>High-converting landing pages for Google & Meta ad campaigns</li>
+          <li>Price on Request, customization inputs & dynamic product messaging</li>
+        </ul>
+      </div>
+      <div class="ecard fi" style="transition-delay:.14s">
+        <div class="eicon">⚡</div>
+        <h3>Performance & Speed</h3>
+        <ul class="elist">
+          <li>LCP optimization with separate desktop/mobile image pickers</li>
+          <li>Core Web Vitals compliance — cleaned redundant code & assets</li>
+          <li>Fixed broken links, layout bugs & backtracking navigation issues</li>
+          <li>Optimized sliders, images & media for faster load times</li>
+          <li>Theme file restructuring for scalable, app-safe codebases</li>
+        </ul>
+      </div>
+      <div class="ecard fi" style="transition-delay:.21s">
+        <div class="eicon">🔗</div>
+        <h3>Integrations & Automation</h3>
+        <ul class="elist">
+          <li>WATI, MSG91 & Click-to-Chat WhatsApp automation setup</li>
+          <li>Abandoned cart recovery & order confirmation message flows</li>
+          <li>COD verification systems to reduce fake orders & RTO rate</li>
+          <li>Microsoft Clarity, GTM & Google Analytics integration</li>
+          <li>Facebook Pixel, payment gateway & third-party API integrations</li>
+        </ul>
+      </div>
+      <div class="ecard fi" style="transition-delay:.28s">
+        <div class="eicon">🛒</div>
+        <h3>Advanced Shopify Features</h3>
+        <ul class="elist">
+          <li>Conditional pricing & product visibility via Liquid tags logic</li>
+          <li>Multi-currency & country detection for international stores</li>
+          <li>App-free filtering via metafield data attributes with AND logic</li>
+          <li>AR/3D product display for enhanced product visualization</li>
+          <li>Timed popup overlays with localStorage snooze logic</li>
+        </ul>
+      </div>
+      <div class="ecard fi" style="transition-delay:.35s">
+        <div class="eicon">📈</div>
+        <h3>Marketing & Growth Support</h3>
+        <ul class="elist">
+          <li>SEO: meta tags, structured content, 404 fixes & indexing improvements</li>
+          <li>Google Ads & Meta Ads setup, troubleshooting & pixel tracking</li>
+          <li>Lead generation: popups, catalog downloads & enquiry forms</li>
+          <li>Bulk product uploads, catalog structuring & Shopify Admin management</li>
+          <li>Regular website audits, reporting & performance improvements</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="ctr">
+    <div class="fi">
+      <div class="slabel">Services</div>
+      <h2>What You Can Hire Me For</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svcard fi"><div class="svi">🏗️</div><h3>Shopify Store Setup</h3><p>End-to-end setup — products, variants, collections, payment gateways, COD verification, and full Shopify Admin configuration.</p></div>
+      <div class="svcard fi" style="transition-delay:.07s"><div class="svi">🎨</div><h3>Custom Theme Development</h3><p>Figma-to-Liquid conversion with schema-driven sections and blocks. Full merchant editor control, zero dev dependency after handoff.</p></div>
+      <div class="svcard fi" style="transition-delay:.14s"><div class="svi">⚡</div><h3>Speed & LCP Optimization</h3><p>Core Web Vitals improvements, LCP tuning, image optimization, code cleanup, and mobile-first performance architecture.</p></div>
+      <div class="svcard fi" style="transition-delay:.21s"><div class="svi">📲</div><h3>WhatsApp Automation</h3><p>WATI / MSG91 integration, abandoned cart recovery, order confirmations, COD verification, and click-to-chat wa.me flows.</p></div>
+      <div class="svcard fi" style="transition-delay:.28s"><div class="svi">🔍</div><h3>SEO & Analytics Setup</h3><p>On-page SEO, schema markup, GTM, Google Analytics, Microsoft Clarity, Facebook Pixel & conversion tracking configuration.</p></div>
+      <div class="svcard fi" style="transition-delay:.35s"><div class="svi">🎯</div><h3>CRO & UX Improvements</h3><p>App-free filtering, direct add-to-cart, checkout optimisation, high-converting ad landing pages, and full UI/UX redesigns.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="case-studies">
+  <div class="ctr">
+    <div class="fi">
+      <div class="slabel">Case Studies</div>
+      <h2>Real Stores. Real Results.</h2>
+      <p style="max-width:520px;margin-top:.6rem;">Every project is approached as a revenue problem first, a design problem second.</p>
+    </div>
+    <div class="case-grid">
+      <div class="ccase fi">
+        <div>
+          <span class="ctag">Custom Jewellery · Shopify 2.0</span>
+          <h3>Portrait on Gold</h3>
+          <p><strong style="color:var(--text)">Problem:</strong> Needed a bespoke Shopify 2.0 store with advanced product filtering — no paid apps — and WhatsApp as the primary customer touchpoint.</p>
+          <p style="margin-top:.6rem"><strong style="color:var(--text)">Solution:</strong> Built client-side filtering using metafield data attributes with AND logic and animated card transitions. WhatsApp form submission via wa.me. Timed popups with localStorage snooze logic. Full schema-driven block architecture.</p>
+          <div class="pills">
+            <span class="pill">Shopify 2.0</span><span class="pill">Liquid</span><span class="pill">JS Filtering</span>
+            <span class="pill">WhatsApp API</span><span class="pill">SCSS</span><span class="pill">localStorage</span>
+          </div>
+          <a href="https://www.portraitongold.com" target="_blank" class="clink">Visit Live Store →</a>
+        </div>
+        <div class="cmetrics">
+          <div class="mbox"><div class="mval">$0</div><div class="mlbl">Spent on filter apps</div></div>
+          <div class="mbox"><div class="mval">100%</div><div class="mlbl">Mobile responsive</div></div>
+          <div class="mbox"><div class="mval">wa.me</div><div class="mlbl">Native WhatsApp flow</div></div>
+          <div class="mbox"><div class="mval">Full</div><div class="mlbl">Merchant editor control</div></div>
+        </div>
+      </div>
+      <div class="ccase fi" style="transition-delay:.12s">
+        <div>
+          <span class="ctag">Luxury eCommerce · 500+ Products</span>
+          <h3>Diviniti</h3>
+          <p><strong style="color:var(--text)">Problem:</strong> A luxury brand with 500+ products across 20+ categories needed a premium Shopify storefront with immaculate UI, fast LCP, and a bespoke concierge experience.</p>
+          <p style="margin-top:.6rem"><strong style="color:var(--text)">Solution:</strong> Built hero sections, atelier pages, concierge consultation forms, and collection grids from scratch. Separate mobile/desktop image pickers for LCP. Full product catalog management. SEO-optimized metadata architecture.</p>
+          <div class="pills">
+            <span class="pill">Shopify 2.0</span><span class="pill">LCP Optimization</span><span class="pill">SEO</span>
+            <span class="pill">Schema Blocks</span><span class="pill">500+ Products</span><span class="pill">Concierge Forms</span>
+          </div>
+          <a href="https://www.diviniti.com" target="_blank" class="clink">Visit Live Store →</a>
+        </div>
+        <div class="cmetrics">
+          <div class="mbox"><div class="mval">40%</div><div class="mlbl">LCP score improved</div></div>
+          <div class="mbox"><div class="mval">500+</div><div class="mlbl">Products catalogued</div></div>
+          <div class="mbox"><div class="mval">20+</div><div class="mlbl">Custom sections built</div></div>
+          <div class="mbox"><div class="mval">SEO</div><div class="mlbl">Optimized metadata</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="ctr">
+    <div class="fi"><div class="slabel">Projects</div><h2>Things I've Built</h2></div>
+    <div class="pgrid">
+      <div class="pcard fi">
+        <div class="pthumb"><div style="font-size:2rem;margin-bottom:.4rem">🛍️</div><div class="purl">portraitongold.com</div></div>
+        <div class="pbody"><h3>Portrait on Gold</h3><p>Full Shopify 2.0 build — custom JS filtering, WhatsApp integration, timed popups, mobile-first responsive design.</p><a href="https://www.portraitongold.com" target="_blank" class="plink">View Live Store →</a></div>
+      </div>
+      <div class="pcard fi" style="transition-delay:.08s">
+        <div class="pthumb"><div style="font-size:2rem;margin-bottom:.4rem">💎</div><div class="purl">diviniti.com</div></div>
+        <div class="pbody"><h3>Diviniti</h3><p>Luxury Shopify theme — hero sections, concierge forms, atelier pages, LCP tuning, 500+ products managed.</p><a href="https://www.diviniti.com" target="_blank" class="plink">View Live Store →</a></div>
+      </div>
+      <div class="pcard fi" style="transition-delay:.16s">
+        <div class="pthumb"><div style="font-size:2rem;margin-bottom:.4rem">🏥</div><div class="purl">Python · ML · Streamlit</div></div>
+        <div class="pbody"><h3>Multiple Disease Prediction</h3><p>End-to-end ML pipeline using Scikit-learn, SVM, and Logistic Regression with interactive Streamlit UI.</p><a href="#contact" class="plink">Request Demo →</a></div>
+      </div>
+      <div class="pcard fi" style="transition-delay:.24s">
+        <div class="pthumb"><div style="font-size:2rem;margin-bottom:.4rem">📰</div><div class="purl">Python · NLP · TF-IDF</div></div>
+        <div class="pbody"><h3>Fake News Detection</h3><p>NLP classifier using TF-IDF vectorization and logistic regression for misinformation detection with high accuracy.</p><a href="#contact" class="plink">Request Demo →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="tech">
+  <div class="ctr">
+    <div class="fi"><div class="slabel">Tech Stack</div><h2>Tools in My Arsenal</h2></div>
+    <div class="tgrid">
+      <div class="titem fi"><div class="tico">🛒</div><div class="tnm">Shopify 2.0</div></div>
+      <div class="titem fi" style="transition-delay:.04s"><div class="tico">💧</div><div class="tnm">Liquid</div></div>
+      <div class="titem fi" style="transition-delay:.08s"><div class="tico">🌐</div><div class="tnm">HTML5</div></div>
+      <div class="titem fi" style="transition-delay:.12s"><div class="tico">🎨</div><div class="tnm">CSS3/SCSS</div></div>
+      <div class="titem fi" style="transition-delay:.16s"><div class="tico">⚡</div><div class="tnm">JavaScript</div></div>
+      <div class="titem fi" style="transition-delay:.2s"><div class="tico">📦</div><div class="tnm">jQuery</div></div>
+      <div class="titem fi" style="transition-delay:.24s"><div class="tico">📱</div><div class="tnm">WATI / MSG91</div></div>
+      <div class="titem fi" style="transition-delay:.28s"><div class="tico">🔥</div><div class="tnm">Firebase</div></div>
+      <div class="titem fi" style="transition-delay:.32s"><div class="tico">📊</div><div class="tnm">GTM / Analytics</div></div>
+      <div class="titem fi" style="transition-delay:.36s"><div class="tico">🔍</div><div class="tnm">MS Clarity</div></div>
+      <div class="titem fi" style="transition-delay:.4s"><div class="tico">🐙</div><div class="tnm">Git / GitHub</div></div>
+      <div class="titem fi" style="transition-delay:.44s"><div class="tico">🐍</div><div class="tnm">Python / ML</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="ctr">
+    <div class="fi"><div class="slabel">How I Work</div><h2>From Brief to Launch,<br>Without the Back-and-Forth</h2></div>
+    <div class="pwrap">
+      <div class="pstep fi"><div class="pnum">01 —</div><div class="ptit">Discovery</div><div class="pdesc">Understand brand, goals, conversion bottlenecks & existing tech stack.</div></div>
+      <div class="pstep fi" style="transition-delay:.08s"><div class="pnum">02 —</div><div class="ptit">Design Review</div><div class="pdesc">Analyse Figma / briefs, flag edge cases, align on component architecture.</div></div>
+      <div class="pstep fi" style="transition-delay:.16s"><div class="pnum">03 —</div><div class="ptit">Development</div><div class="pdesc">Clean Liquid, schema blocks, integrations & performance-first code.</div></div>
+      <div class="pstep fi" style="transition-delay:.24s"><div class="pnum">04 —</div><div class="ptit">Testing</div><div class="pdesc">Cross-device QA, Core Web Vitals check, bug fixes & speed audit.</div></div>
+      <div class="pstep fi" style="transition-delay:.32s"><div class="pnum">05 —</div><div class="ptit">Launch</div><div class="pdesc">Go live with confidence. Docs handed over. Post-launch support included.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="ctr">
+    <div class="fi"><div class="slabel">Testimonials</div><h2>What Clients Say</h2></div>
+    <div class="tgrd">
+      <div class="tcrd fi">
+        <div class="stars">★★★★★</div>
+        <p class="ttxt">"Shadab built our entire Shopify store from scratch — custom filtering, WhatsApp integration, and stunning mobile design. He understood our brief immediately and delivered well beyond expectations."</p>
+        <div class="tauth"><div class="tav">PG</div><div><div class="tnm">Portrait on Gold</div><div class="trole">Jewellery Brand, Delhi</div></div></div>
+      </div>
+      <div class="tcrd fi" style="transition-delay:.08s">
+        <div class="stars">★★★★★</div>
+        <p class="ttxt">"Our LCP scores improved by 40% after Shadab optimized our theme. The concierge forms, collection grids and hero sections look premium and load fast on every device."</p>
+        <div class="tauth"><div class="tav">DV</div><div><div class="tnm">Divinti Design Lead</div><div class="trole">Luxury eCommerce Brand</div></div></div>
+      </div>
+      <div class="tcrd fi" style="transition-delay:.16s">
+        <div class="stars">★★★★★</div>
+        <p class="ttxt">"Sharp technical thinking, clean code, great communication. Shadab built app-free product filtering that actually works and saved us hundreds of dollars monthly in Shopify subscriptions."</p>
+        <div class="tauth"><div class="tav">EC</div><div><div class="tnm">eCommerce Client</div><div class="trole">Shopify Store Owner</div></div></div>
+      </div>
+    </div>
+    <div class="abanner fi">
+      <div>
+        <div class="abdg">Free · No Strings Attached</div>
+        <h3>Free Shopify Speed Audit</h3>
+        <p>Send me your store URL. I'll audit your Core Web Vitals, LCP, conversion friction points, and send you a prioritised action list — free within 24 hours.</p>
+      </div>
+      <a href="#contact" class="btn btn-g" style="font-size:.95rem;padding:.85rem 1.85rem;white-space:nowrap;">Get My Free Audit →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="ctr">
+    <div class="fi">
+      <div class="slabel">Let's Work Together</div>
+      <h2>Build a Store That<br><span style="color:var(--green)">Actually Converts</span></h2>
+      <p style="max-width:460px;margin-top:.7rem;">New Shopify store, speed optimization, CRO audit, automation setup, or a full-time role — I'm ready to start immediately.</p>
+    </div>
+    <div class="cwrap">
+      <div>
+        <div class="cdet"><div class="cion">📧</div><div><div class="clbl">Email</div><div class="cval"><a href="mailto:shadab18ali@gmail.com">shadab18ali@gmail.com</a></div></div></div>
+        <div class="cdet"><div class="cion">📱</div><div><div class="clbl">WhatsApp / Phone</div><div class="cval"><a href="https://wa.me/919931394885" target="_blank">+91 99313 94885</a></div></div></div>
+        <div class="cdet"><div class="cion">📍</div><div><div class="clbl">Location</div><div class="cval">Delhi, India — Open to Remote Globally</div></div></div>
+        <div class="cdet"><div class="cion">💼</div><div><div class="clbl">LinkedIn</div><div class="cval"><a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank">linkedin.com/in/shadab-ali</a></div></div></div>
+        <div class="abox">
+          <div style="font-size:.7rem;font-family:var(--fm);color:var(--green);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.08em;">Current Status</div>
+          <div style="font-size:.9rem;color:var(--text);font-weight:500;">Available for Immediate Joining</div>
+          <div style="font-size:.78rem;color:var(--text2);margin-top:.2rem;">Freelance · Full-Time · Contract</div>
+        </div>
+      </div>
+      <div class="fcard fi">
+        <h3>Send a Message</h3>
+        <div class="frow"><label>Your Name</label><input type="text" placeholder="e.g. Arjun Sharma" /></div>
+        <div class="frow"><label>Email Address</label><input type="email" placeholder="you@company.com" /></div>
+        <div class="frow">
+          <label>What Do You Need?</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>New Shopify Store Setup</option>
+            <option>Custom Theme Development</option>
+            <option>Speed / LCP Optimization</option>
+            <option>WhatsApp Automation (WATI)</option>
+            <option>CRO Audit & Improvements</option>
+            <option>SEO & Analytics Setup</option>
+            <option>Free Store Audit</option>
+            <option>Full-Time / Contract Role</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="frow"><label>Store URL (optional)</label><input type="url" placeholder="https://yourstore.myshopify.com" /></div>
+        <div class="frow"><label>Message</label><textarea placeholder="Tell me about your project, timeline, budget, and what's not working right now..."></textarea></div>
+        <button class="btn btn-p fsub" onclick="handleSubmit(this)">Send Message ↗</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ctr">
+    <div class="flogo">S<span style="color:var(--accent)">.</span>Ali</div>
+    <div class="flinks">
+      <a href="#about">About</a><a href="#expertise">Expertise</a><a href="#services">Services</a>
+      <a href="#case-studies">Work</a><a href="#tech">Stack</a>
+      <a href="mailto:shadab18ali@gmail.com">Email</a>
+      <a href="https://wa.me/919931394885" target="_blank">WhatsApp</a>
+      <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank">LinkedIn</a>
+    </div>
+    <div class="fcopy">© 2026 Shadab Ali · Shopify Developer & CRO Specialist · Delhi, India</div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme(){const h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');}
+function toggleMenu(){document.getElementById('mob').classList.toggle('open');}
+
+// TYPEWRITER
+const words=['Revenue','Conversions','More Sales','Real Results'];
+let wi=0,ci=0,del=false;
+const el=document.getElementById('tw');
+function type(){
+  const w=words[wi];
+  if(!del){el.textContent=w.slice(0,ci++);el.classList.add('cur');
+    if(ci>w.length){del=true;setTimeout(type,1800);return;}
+  }else{el.textContent=w.slice(0,ci--);if(ci<0){del=false;wi=(wi+1)%words.length;ci=0;}}
+  setTimeout(type,del?50:85);
+}
+type();
+
+// SCROLL ANIMATIONS
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v');});},{threshold:0.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+// FORM
+function handleSubmit(btn){
+  const n=document.querySelector('input[placeholder*="Arjun"]').value;
+  const em=document.querySelector('input[type="email"]').value;
+  if(!n||!em){alert('Please fill in your name and email.');return;}
+  btn.textContent='✓ Sent! I\'ll reply within 24h';
+  btn.style.background='var(--green)';btn.disabled=true;
+  setTimeout(()=>{btn.textContent='Send Message ↗';btn.style.background='';btn.disabled=false;},4000);
+}
+
+// ACTIVE NAV HIGHLIGHT
+const secs=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+  links.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--text)':'';});
+},{passive:true});
+</script>
+</body>
+</html>
