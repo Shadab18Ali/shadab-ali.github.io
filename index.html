@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
 :root {
   --bg:      #0B0F19;
@@ -94,13 +95,52 @@ h1 .gc{color:var(--green);}
 .trust{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;}
 .ti{display:flex;align-items:center;gap:.35rem;font-size:.78rem;color:var(--text2);}
 .td{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;}
-.hstats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.scard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem 1.2rem;position:relative;overflow:hidden;transition:border-color var(--tr),transform var(--tr);}
+
+/* 3D CANVAS CONTAINER */
+.hero-3d-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#hero-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 24px;
+  cursor: grab;
+}
+#hero-canvas:active { cursor: grabbing; }
+.canvas-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--fm);
+  font-size: .65rem;
+  color: var(--text3);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeInHint 1s ease 2.5s forwards;
+}
+@keyframes fadeInHint { to { opacity: 1; } }
+.stat-row {
+  display: flex;
+  gap: .75rem;
+  margin-top: 1.4rem;
+  flex-wrap: wrap;
+}
+.scard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.2rem;flex:1;min-width:120px;position:relative;overflow:hidden;transition:border-color var(--tr),transform var(--tr);}
 .scard:hover{border-color:var(--bord2);transform:translateY(-2px);}
 .scard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--green));opacity:0;transition:opacity var(--tr);}
 .scard:hover::before{opacity:1;}
-.snum{font-family:var(--fd);font-size:1.9rem;font-weight:800;color:var(--text);line-height:1;margin-bottom:.22rem;letter-spacing:-.04em;}
-.slbl{font-size:.76rem;color:var(--text2);}
+.snum{font-family:var(--fd);font-size:1.5rem;font-weight:800;color:var(--text);line-height:1;margin-bottom:.22rem;letter-spacing:-.04em;}
+.slbl{font-size:.72rem;color:var(--text2);}
 
 /* MARQUEE */
 .mwrap{padding:1.6rem 0;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);}
@@ -267,12 +307,16 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
   h1{font-size:2.1rem;}
   h2{font-size:1.7rem;}
   .abanner{flex-direction:column;text-align:center;}
+  .hero-3d-wrap{max-width:360px;}
 }
 @media(max-width:580px){
   section{padding:4.5rem 0;}
   .cmetrics,.hstats{grid-template-columns:1fr 1fr;}
   .pwrap{grid-template-columns:1fr;}
   .pstep:last-child{border-radius:0 0 var(--r) var(--r);}
+  .stat-row{gap:.5rem;}
+  .scard{padding:.8rem;}
+  .snum{font-size:1.2rem;}
 }
 </style>
 </head>
@@ -324,12 +368,21 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
           <div class="ti"><span class="td"></span>Open to Work</div>
         </div>
       </div>
-      <div class="hstats">
-        <div class="scard fi"><div class="snum">40%</div><div class="slbl">LCP performance lift delivered</div></div>
-        <div class="scard fi" style="transition-delay:.1s"><div class="snum">500+</div><div class="slbl">Products catalogued & managed</div></div>
-        <div class="scard fi" style="transition-delay:.2s"><div class="snum">20+</div><div class="slbl">Custom Liquid sections built</div></div>
-        <div class="scard fi" style="transition-delay:.3s"><div class="snum">$0</div><div class="slbl">Paid filter apps needed</div></div>
+
+      <!-- 3D MODEL SECTION -->
+      <div>
+        <div class="hero-3d-wrap fi" style="transition-delay:.2s">
+          <canvas id="hero-canvas"></canvas>
+          <div class="canvas-hint">drag to rotate · scroll to zoom</div>
+        </div>
+        <div class="stat-row">
+          <div class="scard fi" style="transition-delay:.35s"><div class="snum">40%</div><div class="slbl">LCP lift</div></div>
+          <div class="scard fi" style="transition-delay:.42s"><div class="snum">500+</div><div class="slbl">Products</div></div>
+          <div class="scard fi" style="transition-delay:.49s"><div class="snum">20+</div><div class="slbl">Sections built</div></div>
+          <div class="scard fi" style="transition-delay:.56s"><div class="snum">$0</div><div class="slbl">Filter apps</div></div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -697,10 +750,17 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
 </footer>
 
 <script>
-function toggleTheme(){const h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');}
+/* ─── THEME TOGGLE ─────────────────────────────── */
+function toggleTheme(){
+  const h=document.documentElement;
+  const isDark = h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  // Update 3D scene colors
+  if(window._3dScene) update3DTheme(!isDark);
+}
 function toggleMenu(){document.getElementById('mob').classList.toggle('open');}
 
-// TYPEWRITER
+/* ─── TYPEWRITER ────────────────────────────────── */
 const words=['Revenue','Conversions','More Sales','Real Results'];
 let wi=0,ci=0,del=false;
 const el=document.getElementById('tw');
@@ -713,11 +773,11 @@ function type(){
 }
 type();
 
-// SCROLL ANIMATIONS
+/* ─── SCROLL ANIMATIONS ─────────────────────────── */
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v');});},{threshold:0.08});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 
-// FORM
+/* ─── FORM ──────────────────────────────────────── */
 function handleSubmit(btn){
   const n=document.querySelector('input[placeholder*="Arjun"]').value;
   const em=document.querySelector('input[type="email"]').value;
@@ -727,7 +787,7 @@ function handleSubmit(btn){
   setTimeout(()=>{btn.textContent='Send Message ↗';btn.style.background='';btn.disabled=false;},4000);
 }
 
-// ACTIVE NAV HIGHLIGHT
+/* ─── ACTIVE NAV ────────────────────────────────── */
 const secs=document.querySelectorAll('section[id]');
 const links=document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll',()=>{
@@ -735,6 +795,391 @@ window.addEventListener('scroll',()=>{
   secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
   links.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--text)':'';});
 },{passive:true});
+
+/* ─── 3D SHOPIFY STORE MODEL ────────────────────── */
+(function init3D(){
+  const canvas = document.getElementById('hero-canvas');
+  if(!canvas || typeof THREE === 'undefined') return;
+
+  const wrap = canvas.parentElement;
+  const W = wrap.clientWidth || 460;
+  const H = wrap.clientHeight || 460;
+
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(W, H);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(42, W/H, 0.1, 100);
+  camera.position.set(0, 0.5, 5.5);
+
+  // Colors
+  const ACCENT = 0x6366F1;
+  const GREEN  = 0x22C55E;
+  const DARK   = 0x161c2d;
+  const SURF   = 0x1c2338;
+
+  // ── LAPTOP BASE ──
+  const group = new THREE.Group();
+  scene.add(group);
+
+  // Base / bottom
+  const baseMat = new THREE.MeshStandardMaterial({color:0x1a1f35, roughness:.35, metalness:.75});
+  const baseGeo = new THREE.BoxGeometry(3.2, 0.12, 2.1);
+  const base = new THREE.Mesh(baseGeo, baseMat);
+  base.position.y = -0.06;
+  base.castShadow = true;
+  base.receiveShadow = true;
+  group.add(base);
+
+  // Base edge highlight
+  const edgeMat = new THREE.MeshStandardMaterial({color:ACCENT, roughness:.2, metalness:.9, emissive:ACCENT, emissiveIntensity:.15});
+  const edgeGeo = new THREE.BoxGeometry(3.22, 0.025, 2.12);
+  const edgeStrip = new THREE.Mesh(edgeGeo, edgeMat);
+  edgeStrip.position.y = -0.12;
+  group.add(edgeStrip);
+
+  // Trackpad
+  const padMat = new THREE.MeshStandardMaterial({color:0x242a42, roughness:.2, metalness:.6});
+  const padGeo = new THREE.BoxGeometry(.85, .02, .55);
+  const pad = new THREE.Mesh(padGeo, padMat);
+  pad.position.set(0, 0.01, .5);
+  group.add(pad);
+
+  // Keyboard (grid of keycaps)
+  const keyMat = new THREE.MeshStandardMaterial({color:0x252c45, roughness:.3, metalness:.5});
+  const keyGlow = new THREE.MeshStandardMaterial({color:ACCENT, emissive:ACCENT, emissiveIntensity:.4, roughness:.3});
+  const keyW = 0.16, keyH = 0.025, keyD = 0.14;
+  const rows = 4, cols = 12;
+  for(let r=0; r<rows; r++){
+    for(let c=0; c<cols; c++){
+      const isGlow = Math.random() < 0.08;
+      const k = new THREE.Mesh(
+        new THREE.BoxGeometry(keyW-.018, keyH, keyD-.018),
+        isGlow ? keyGlow : keyMat
+      );
+      k.position.set(
+        -((cols-1)/2)*(keyW+.018) + c*(keyW+.018),
+        0.02,
+        -((rows-1)/2)*(keyD+.018) + r*(keyD+.018) - .22
+      );
+      group.add(k);
+    }
+  }
+
+  // ── SCREEN HINGE ──
+  const screenGroup = new THREE.Group();
+  screenGroup.position.set(0, 0, -1.05);
+  group.add(screenGroup);
+
+  // Screen backing
+  const screenBackMat = new THREE.MeshStandardMaterial({color:0x141927, roughness:.3, metalness:.8});
+  const screenBackGeo = new THREE.BoxGeometry(3.2, 2.1, 0.08);
+  const screenBack = new THREE.Mesh(screenBackGeo, screenBackMat);
+  screenBack.position.set(0, 1.05, -0.02);
+  screenBack.castShadow = true;
+  screenGroup.add(screenBack);
+
+  // Screen bezel
+  const bezelMat = new THREE.MeshStandardMaterial({color:0x0d1020, roughness:.4, metalness:.5});
+  const bezelGeo = new THREE.BoxGeometry(3.0, 1.92, 0.01);
+  const bezel = new THREE.Mesh(bezelGeo, bezelMat);
+  bezel.position.set(0, 1.05, 0.025);
+  screenGroup.add(bezel);
+
+  // Screen display (canvas texture)
+  const texCanvas = document.createElement('canvas');
+  texCanvas.width = 512; texCanvas.height = 320;
+  const ctx = texCanvas.getContext('2d');
+  drawShopifyUI(ctx);
+  const screenTex = new THREE.CanvasTexture(texCanvas);
+
+  const screenMat = new THREE.MeshStandardMaterial({
+    map: screenTex,
+    roughness: .05,
+    metalness: .05,
+    emissiveMap: screenTex,
+    emissive: new THREE.Color(1,1,1),
+    emissiveIntensity: .55
+  });
+  const screenGeo = new THREE.PlaneGeometry(2.78, 1.78);
+  const screen = new THREE.Mesh(screenGeo, screenMat);
+  screen.position.set(0, 1.05, 0.032);
+  screenGroup.add(screen);
+
+  // Logo on back
+  const logoMat = new THREE.MeshStandardMaterial({color:ACCENT, emissive:ACCENT, emissiveIntensity:.3, roughness:.2, metalness:.8});
+  const logoGeo = new THREE.CircleGeometry(.18, 32);
+  const logoBack = new THREE.Mesh(logoGeo, logoMat);
+  logoBack.position.set(0, 1.05, -0.065);
+  logoBack.rotation.y = Math.PI;
+  screenGroup.add(logoBack);
+
+  // Screen glow plane
+  const glowMat = new THREE.MeshBasicMaterial({color:ACCENT, transparent:true, opacity:.06, side:THREE.DoubleSide});
+  const glowGeo = new THREE.PlaneGeometry(3.4, 2.4);
+  const glow = new THREE.Mesh(glowGeo, glowMat);
+  glow.position.set(0, 1.05, 0.08);
+  screenGroup.add(glow);
+
+  // Screen open angle
+  screenGroup.rotation.x = -Math.PI * 0.08;
+
+  // ── FLOATING BADGES ──
+  const badges = [];
+  const badgeData = [
+    {label:'CRO', color:0x22C55E, x:2.2, y:1.8, z:.5},
+    {label:'LCP', color:0x6366F1, x:-2.3, y:2.1, z:.3},
+    {label:'2.0', color:0xf59e0b, x:2.4, y:.2, z:.2},
+  ];
+
+  badgeData.forEach(bd => {
+    const bg = new THREE.Group();
+    const pill = new THREE.Mesh(
+      new THREE.CylinderGeometry(.22, .22, .08, 32),
+      new THREE.MeshStandardMaterial({color:bd.color, emissive:bd.color, emissiveIntensity:.35, roughness:.2})
+    );
+    pill.rotation.x = Math.PI/2;
+    bg.add(pill);
+    bg.position.set(bd.x, bd.y, bd.z);
+    scene.add(bg);
+    badges.push({mesh:bg, oy:bd.y, speed:.5 + Math.random()*.5, phase:Math.random()*Math.PI*2});
+  });
+
+  // ── PARTICLE FIELD ──
+  const particleCount = 120;
+  const positions = new Float32Array(particleCount * 3);
+  for(let i=0; i<particleCount; i++){
+    positions[i*3]   = (Math.random()-.5)*14;
+    positions[i*3+1] = (Math.random()-.5)*10;
+    positions[i*3+2] = (Math.random()-.5)*8 - 2;
+  }
+  const partGeo = new THREE.BufferGeometry();
+  partGeo.setAttribute('position', new THREE.BufferAttribute(positions,3));
+  const partMat = new THREE.PointsMaterial({color:ACCENT, size:.045, transparent:true, opacity:.55});
+  const particles = new THREE.Points(partGeo, partMat);
+  scene.add(particles);
+
+  // ── LIGHTS ──
+  const ambient = new THREE.AmbientLight(0xffffff, .4);
+  scene.add(ambient);
+
+  const keyLight = new THREE.DirectionalLight(0x8899ff, 1.8);
+  keyLight.position.set(4, 6, 5);
+  keyLight.castShadow = true;
+  scene.add(keyLight);
+
+  const fillLight = new THREE.DirectionalLight(0x22C55E, .6);
+  fillLight.position.set(-5, 2, 3);
+  scene.add(fillLight);
+
+  const rimLight = new THREE.DirectionalLight(0x6366F1, 1.0);
+  rimLight.position.set(0, -3, -4);
+  scene.add(rimLight);
+
+  const screenLight = new THREE.PointLight(0x6477ff, 1.5, 5);
+  screenLight.position.set(0, 1.5, 1.5);
+  scene.add(screenLight);
+
+  window._3dScene = {ambient, keyLight};
+
+  function update3DTheme(isLight){
+    ambient.intensity = isLight ? .7 : .4;
+    keyLight.intensity = isLight ? 2.2 : 1.8;
+    partMat.opacity = isLight ? .25 : .55;
+  }
+
+  // ── MOUSE / TOUCH DRAG ──
+  let isDragging=false, prevX=0, prevY=0, rotX=0.12, rotY=0.25, velX=0, velY=0;
+
+  canvas.addEventListener('mousedown', e=>{isDragging=true;prevX=e.clientX;prevY=e.clientY;});
+  window.addEventListener('mouseup',   ()=>{isDragging=false;});
+  window.addEventListener('mousemove', e=>{
+    if(!isDragging) return;
+    const dx=(e.clientX-prevX)*.008, dy=(e.clientY-prevY)*.008;
+    velX=dx; velY=dy;
+    rotY+=dx; rotX+=dy;
+    rotX=Math.max(-0.55, Math.min(0.55, rotX));
+    prevX=e.clientX; prevY=e.clientY;
+  });
+
+  canvas.addEventListener('touchstart', e=>{isDragging=true;prevX=e.touches[0].clientX;prevY=e.touches[0].clientY;},{passive:true});
+  window.addEventListener('touchend',   ()=>{isDragging=false;});
+  window.addEventListener('touchmove',  e=>{
+    if(!isDragging) return;
+    const dx=(e.touches[0].clientX-prevX)*.008, dy=(e.touches[0].clientY-prevY)*.008;
+    velX=dx; velY=dy;
+    rotY+=dx; rotX+=dy;
+    rotX=Math.max(-0.55, Math.min(0.55, rotX));
+    prevX=e.touches[0].clientX; prevY=e.touches[0].clientY;
+  },{passive:true});
+
+  canvas.addEventListener('wheel', e=>{
+    camera.position.z = Math.max(3.5, Math.min(8, camera.position.z + e.deltaY*.008));
+  },{passive:true});
+
+  // ── RESIZE ──
+  const ro = new ResizeObserver(()=>{
+    const w2=wrap.clientWidth, h2=wrap.clientHeight;
+    renderer.setSize(w2,h2);
+    camera.aspect=w2/h2;
+    camera.updateProjectionMatrix();
+  });
+  ro.observe(wrap);
+
+  // ── ANIMATE ──
+  let t=0;
+  function animate(){
+    requestAnimationFrame(animate);
+    t += .012;
+
+    if(!isDragging){
+      // gentle auto-rotation
+      rotY += .004;
+      velX *= .92;
+      velY *= .92;
+    } else {
+      rotY += velX * .1;
+      rotX += velY * .1;
+    }
+
+    group.rotation.y = rotY;
+    group.rotation.x = rotX * .5;
+
+    // Screen flicker subtle
+    screenMat.emissiveIntensity = .5 + Math.sin(t*1.8)*.05;
+    screenLight.intensity = 1.3 + Math.sin(t*2.2)*.2;
+
+    // Floating badges
+    badges.forEach(b=>{
+      b.mesh.position.y = b.oy + Math.sin(t*b.speed + b.phase)*.12;
+      b.mesh.rotation.y = t*.4;
+    });
+
+    // Particles drift
+    particles.rotation.y = t * .015;
+    particles.rotation.x = t * .006;
+
+    // Glowing edge pulse
+    edgeMat.emissiveIntensity = .12 + Math.sin(t*1.5)*.08;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // ── DRAW SHOPIFY UI ON CANVAS TEXTURE ──
+  function drawShopifyUI(ctx){
+    const W=512, H=320;
+    // Background
+    ctx.fillStyle='#0B0F19';
+    ctx.fillRect(0,0,W,H);
+
+    // Top bar
+    ctx.fillStyle='#141927';
+    ctx.fillRect(0,0,W,36);
+    ctx.fillStyle='#6366F1';
+    ctx.fillRect(0,33,W,3);
+
+    // Nav dots
+    ['#ff5f57','#ffbd2e','#28c941'].forEach((c,i)=>{
+      ctx.beginPath(); ctx.arc(16+i*20,18,5,0,Math.PI*2);
+      ctx.fillStyle=c; ctx.fill();
+    });
+
+    // URL bar
+    ctx.fillStyle='#1c2338';
+    ctx.beginPath(); roundRect(ctx,80,8,200,20,4);
+    ctx.fill();
+    ctx.fillStyle='#22C55E';
+    ctx.font='bold 9px monospace';
+    ctx.fillText('diviniti.com',90,22);
+
+    // Hero section bg
+    const grad=ctx.createLinearGradient(0,36,W,200);
+    grad.addColorStop(0,'#0f1420');
+    grad.addColorStop(1,'#141927');
+    ctx.fillStyle=grad;
+    ctx.fillRect(0,36,W,140);
+
+    // Hero accent glow
+    const grd2=ctx.createRadialGradient(400,80,10,400,80,120);
+    grd2.addColorStop(0,'rgba(99,102,241,0.18)');
+    grd2.addColorStop(1,'transparent');
+    ctx.fillStyle=grd2;
+    ctx.fillRect(0,36,W,140);
+
+    // Big headline text
+    ctx.fillStyle='#E5E7EB';
+    ctx.font='bold 18px sans-serif';
+    ctx.fillText('Premium Jewellery',24,72);
+    ctx.fillStyle='#6366F1';
+    ctx.fillText('Crafted for You',24,95);
+
+    // Sub text
+    ctx.fillStyle='#8b93a8';
+    ctx.font='9px sans-serif';
+    ctx.fillText('Discover our curated collection of luxury pieces',24,115);
+
+    // CTA button
+    ctx.fillStyle='#22C55E';
+    ctx.beginPath(); roundRect(ctx,24,128,110,26,6); ctx.fill();
+    ctx.fillStyle='#fff';
+    ctx.font='bold 10px sans-serif';
+    ctx.fillText('Shop Now →',44,145);
+
+    // Product cards row
+    const cards=[
+      {x:0,  color:'#1c2338', label:'Gold Ring',   price:'₹12,999'},
+      {x:128,color:'#161c2d', label:'Necklace',    price:'₹24,500'},
+      {x:256,color:'#1a1f35', label:'Bracelet',    price:'₹8,999'},
+      {x:384,color:'#1c2338', label:'Earrings',    price:'₹5,499'},
+    ];
+    cards.forEach(c=>{
+      ctx.fillStyle=c.color;
+      ctx.beginPath(); roundRect(ctx,c.x+4,186,120,100,8); ctx.fill();
+      // product image placeholder
+      ctx.fillStyle='#242a42';
+      ctx.beginPath(); roundRect(ctx,c.x+10,192,108,54,4); ctx.fill();
+      // little icon
+      ctx.fillStyle='#6366F1';
+      ctx.font='22px sans-serif';
+      ctx.fillText('💍', c.x+44, 230);
+      // label
+      ctx.fillStyle='#E5E7EB';
+      ctx.font='bold 9px sans-serif';
+      ctx.fillText(c.label, c.x+10, 260);
+      // price
+      ctx.fillStyle='#22C55E';
+      ctx.font='9px monospace';
+      ctx.fillText(c.price, c.x+10, 274);
+      // add to cart
+      ctx.fillStyle='#6366F1';
+      ctx.beginPath(); roundRect(ctx,c.x+10,278,108,12,3); ctx.fill();
+      ctx.fillStyle='#fff';
+      ctx.font='7px sans-serif';
+      ctx.fillText('Add to Cart', c.x+36, 287);
+    });
+
+    // Footer bar
+    ctx.fillStyle='#0d1020';
+    ctx.fillRect(0,290,W,30);
+    ctx.fillStyle='#6366F1';
+    ctx.font='8px monospace';
+    ctx.fillText('Powered by Shadab Ali · Shopify 2.0', 130, 308);
+  }
+
+  function roundRect(ctx,x,y,w,h,r){
+    ctx.moveTo(x+r,y);
+    ctx.lineTo(x+w-r,y); ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+    ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+    ctx.lineTo(x+r,y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+    ctx.lineTo(x,y+r); ctx.quadraticCurveTo(x,y,x+r,y);
+    ctx.closePath();
+  }
+
+})();
 </script>
 </body>
 </html>
