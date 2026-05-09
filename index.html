@@ -70,6 +70,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .btn-g:hover{background:var(--gdim);transform:translateY(-1px);box-shadow:0 8px 28px rgba(34,197,94,.25);}
 .btn-o{background:transparent;color:var(--text);border:1px solid var(--bord2);}
 .btn-o:hover{background:var(--surface);border-color:var(--accent);}
+.btn-li{background:transparent;color:var(--text2);border:1px solid var(--bord2);font-size:.8rem;padding:.5rem 1rem;}
+.btn-li:hover{background:var(--surface);border-color:var(--accent);color:var(--accent);}
 
 /* LAYOUT */
 .ctr{max-width:1100px;margin:0 auto;padding:0 clamp(1.25rem,5vw,3.5rem);}
@@ -87,54 +89,45 @@ p{color:var(--text2);line-height:1.75;}
 .avail-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--gbg);border:1px solid rgba(34,197,94,.22);color:var(--green);padding:.35rem .85rem;border-radius:100px;font-size:.75rem;font-weight:500;margin-bottom:1.4rem;font-family:var(--fm);letter-spacing:.06em;}
 .avail-pill::before{content:'';width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
+
 h1{font-family:var(--fd);font-size:clamp(2.2rem,4.5vw,3.75rem);font-weight:800;line-height:1.08;margin-bottom:1.2rem;letter-spacing:-.045em;}
 h1 .ic{color:var(--accent);}
 h1 .gc{color:var(--green);}
+
+/* ── STATIC TAGLINE BOX ── */
+/* Fixed-height container so nothing shifts. Text fades in once, stays. */
+.hero-tagline-box {
+  display: inline-block;
+  min-width: 260px;
+  height: 1.1em;          /* exactly one line tall */
+  vertical-align: bottom;
+  overflow: hidden;
+  position: relative;
+}
+.hero-tagline-box .tw-word {
+  display: block;
+  color: var(--green);
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeWord 0.5s ease forwards;
+}
+@keyframes fadeWord {
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .hsub{font-size:1.05rem;color:var(--text2);margin-bottom:1.9rem;max-width:460px;line-height:1.68;}
 .hact{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2.5rem;}
 .trust{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;}
 .ti{display:flex;align-items:center;gap:.35rem;font-size:.78rem;color:var(--text2);}
 .td{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;}
 
-/* 3D CANVAS CONTAINER */
-.hero-3d-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1/1;
-  max-width: 520px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#hero-canvas {
-  width: 100% !important;
-  height: 100% !important;
-  border-radius: 24px;
-  cursor: grab;
-}
-#hero-canvas:active { cursor: grabbing; }
-.canvas-hint {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--fm);
-  font-size: .65rem;
-  color: var(--text3);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  pointer-events: none;
-  opacity: 0;
-  animation: fadeInHint 1s ease 2.5s forwards;
-}
-@keyframes fadeInHint { to { opacity: 1; } }
-.stat-row {
-  display: flex;
-  gap: .75rem;
-  margin-top: 1.4rem;
-  flex-wrap: wrap;
-}
+/* 3D CANVAS */
+.hero-3d-wrap{position:relative;width:100%;aspect-ratio:1/1;max-width:520px;margin:0 auto;display:flex;align-items:center;justify-content:center;}
+#hero-canvas{width:100% !important;height:100% !important;border-radius:24px;cursor:grab;}
+#hero-canvas:active{cursor:grabbing;}
+.canvas-hint{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-family:var(--fm);font-size:.65rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;pointer-events:none;opacity:0;animation:fadeInHint 1s ease 2.5s forwards;}
+@keyframes fadeInHint{to{opacity:1;}}
+.stat-row{display:flex;gap:.75rem;margin-top:1.4rem;flex-wrap:wrap;}
 .scard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.2rem;flex:1;min-width:120px;position:relative;overflow:hidden;transition:border-color var(--tr),transform var(--tr);}
 .scard:hover{border-color:var(--bord2);transform:translateY(-2px);}
 .scard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--green));opacity:0;transition:opacity var(--tr);}
@@ -165,31 +158,8 @@ h1 .gc{color:var(--green);}
 .tag{background:var(--surface);border:1px solid var(--border);color:var(--text2);font-size:.75rem;padding:.28rem .7rem;border-radius:100px;font-family:var(--fm);transition:all var(--tr);}
 .tag:hover{border-color:var(--accent);color:var(--accent);}
 
-/* EXPERTISE */
-#expertise{background:var(--bg);}
-.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem;margin-top:2.75rem;}
-.ecard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:all var(--tr);position:relative;overflow:hidden;}
-.ecard::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--aglow) 0%,transparent 60%);opacity:0;transition:opacity var(--tr);}
-.ecard:hover{border-color:var(--accent);transform:translateY(-3px);}
-.ecard:hover::after{opacity:1;}
-.eicon{font-size:1.4rem;margin-bottom:1rem;}
-.ecard h3{font-size:1rem;color:var(--text);margin-bottom:.75rem;position:relative;z-index:1;}
-.elist{list-style:none;position:relative;z-index:1;}
-.elist li{font-size:.82rem;color:var(--text2);padding:.3rem 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:.55rem;line-height:1.55;}
-.elist li:last-child{border-bottom:none;}
-.elist li::before{content:'▸';color:var(--accent);font-size:.65rem;flex-shrink:0;margin-top:.22rem;}
-
-/* SERVICES */
-#services{background:var(--bg2);}
-.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1.25rem;margin-top:2.75rem;}
-.svcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:all var(--tr);}
-.svcard:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.25);}
-.svi{width:42px;height:42px;background:var(--aglow);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1.1rem;border:1px solid rgba(99,102,241,.2);}
-.svcard h3{color:var(--text);font-size:1rem;margin-bottom:.5rem;}
-.svcard p{font-size:.83rem;color:var(--text2);}
-
-/* CASE STUDIES */
-#case-studies{background:var(--bg);}
+/* LIVE PROJECTS (was case studies, now below about) */
+#live-projects{background:var(--bg);}
 .case-grid{display:grid;gap:2rem;margin-top:2.75rem;}
 .ccase{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;transition:border-color var(--tr);}
 .ccase:hover{border-color:var(--bord2);}
@@ -205,6 +175,29 @@ h1 .gc{color:var(--green);}
 .mlbl{font-size:.72rem;color:var(--text2);}
 .clink{display:inline-flex;align-items:center;gap:.3rem;font-size:.8rem;color:var(--accent);text-decoration:none;font-weight:500;transition:gap var(--tr);margin-top:1rem;}
 .clink:hover{gap:.5rem;}
+
+/* EXPERTISE */
+#expertise{background:var(--bg2);}
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem;margin-top:2.75rem;}
+.ecard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:all var(--tr);position:relative;overflow:hidden;}
+.ecard::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--aglow) 0%,transparent 60%);opacity:0;transition:opacity var(--tr);}
+.ecard:hover{border-color:var(--accent);transform:translateY(-3px);}
+.ecard:hover::after{opacity:1;}
+.eicon{font-size:1.4rem;margin-bottom:1rem;}
+.ecard h3{font-size:1rem;color:var(--text);margin-bottom:.75rem;position:relative;z-index:1;}
+.elist{list-style:none;position:relative;z-index:1;}
+.elist li{font-size:.82rem;color:var(--text2);padding:.3rem 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:.55rem;line-height:1.55;}
+.elist li:last-child{border-bottom:none;}
+.elist li::before{content:'▸';color:var(--accent);font-size:.65rem;flex-shrink:0;margin-top:.22rem;}
+
+/* SERVICES */
+#services{background:var(--bg3);}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1.25rem;margin-top:2.75rem;}
+.svcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:all var(--tr);}
+.svcard:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.25);}
+.svi{width:42px;height:42px;background:var(--aglow);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1.1rem;border:1px solid rgba(99,102,241,.2);}
+.svcard h3{color:var(--text);font-size:1rem;margin-bottom:.5rem;}
+.svcard p{font-size:.83rem;color:var(--text2);}
 
 /* PORTFOLIO */
 #portfolio{background:var(--bg2);}
@@ -237,18 +230,6 @@ h1 .gc{color:var(--green);}
 .pnum{font-family:var(--fm);font-size:.68rem;color:var(--accent);margin-bottom:.65rem;font-weight:500;letter-spacing:.08em;}
 .ptit{font-family:var(--fd);font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.35rem;}
 .pdesc{font-size:.76rem;color:var(--text2);line-height:1.55;}
-
-/* TESTIMONIALS */
-#testimonials{background:var(--bg);}
-.tgrd{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem;margin-top:2.75rem;}
-.tcrd{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:border-color var(--tr);}
-.tcrd:hover{border-color:var(--bord2);}
-.stars{color:var(--amber);font-size:.85rem;margin-bottom:.9rem;letter-spacing:.1em;}
-.ttxt{font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:1.4rem;font-style:italic;}
-.tauth{display:flex;align-items:center;gap:.7rem;}
-.tav{width:36px;height:36px;border-radius:50%;background:var(--aglow);border:1px solid rgba(99,102,241,.3);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:.8rem;font-weight:700;color:var(--accent);flex-shrink:0;}
-.tnm{font-size:.85rem;font-weight:500;color:var(--text);}
-.trole{font-size:.73rem;color:var(--text2);}
 
 /* AUDIT BANNER */
 .abanner{background:var(--surface);border:1px solid var(--bord2);border-radius:var(--rl);padding:2.75rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:4rem;position:relative;overflow:hidden;}
@@ -293,8 +274,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
 /* ANIMATIONS */
 .fi{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
 .fi.v{opacity:1;transform:translateY(0);}
-.cur::after{content:'|';animation:blink .9s infinite;color:var(--green);}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
 
 /* RESPONSIVE */
 @media(max-width:920px){
@@ -328,12 +307,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
     <li><a href="#about">About</a></li>
     <li><a href="#expertise">Expertise</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#case-studies">Work</a></li>
+    <li><a href="#live-projects">Work</a></li>
     <li><a href="#tech">Stack</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-r">
     <button class="tog" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+    <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" class="btn btn-li">LinkedIn ↗</a>
     <a href="#contact" class="btn btn-g" style="padding:.5rem 1rem;font-size:.8rem;">Hire Me ↗</a>
     <button class="hbg" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -343,7 +323,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
   <a href="#about" onclick="toggleMenu()">About</a>
   <a href="#expertise" onclick="toggleMenu()">Expertise</a>
   <a href="#services" onclick="toggleMenu()">Services</a>
-  <a href="#case-studies" onclick="toggleMenu()">Work</a>
+  <a href="#live-projects" onclick="toggleMenu()">Work</a>
   <a href="#tech" onclick="toggleMenu()">Stack</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
@@ -355,21 +335,25 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
     <div class="hero-grid">
       <div>
         <div class="avail-pill">Available for Immediate Start</div>
-        <h1>Shopify Developer<br>& <span class="ic">CRO</span> Specialist<br>Who Drives <span class="gc" id="tw"></span></h1>
+        <h1>
+          Shopify Developer<br>
+          &amp; <span class="ic">CRO</span> Specialist<br>
+          Who Drives <span class="hero-tagline-box"><span class="tw-word" id="tw">Real Results</span></span>
+        </h1>
         <p class="hsub">I build fast, high-converting Shopify 2.0 stores with clean Liquid code, custom sections, automation, and performance architecture. Based in Delhi — working globally.</p>
         <div class="hact">
           <a href="#contact" class="btn btn-g">Get Free Store Audit ↗</a>
-          <a href="#case-studies" class="btn btn-o">View My Work</a>
+          <a href="#live-projects" class="btn btn-o">View My Work</a>
+          <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" class="btn btn-li">LinkedIn ↗</a>
         </div>
         <div class="trust">
-          <div class="ti"><span class="td"></span>Shopify 2.0 Expert</div>
+          <div class="ti"><span class="td"></span>Shopify 2.0</div>
           <div class="ti"><span class="td"></span>CRO Specialist</div>
-          <div class="ti"><span class="td"></span>1.5+ Yrs Live Experience</div>
           <div class="ti"><span class="td"></span>Open to Work</div>
         </div>
       </div>
 
-      <!-- 3D MODEL SECTION -->
+      <!-- 3D MODEL -->
       <div>
         <div class="hero-3d-wrap fi" style="transition-delay:.2s">
           <canvas id="hero-canvas"></canvas>
@@ -382,7 +366,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
           <div class="scard fi" style="transition-delay:.56s"><div class="snum">$0</div><div class="slbl">Filter apps</div></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -434,14 +417,65 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
         <div class="slabel">About Me</div>
         <h2>Developer + Problem Solver<br>+ <span style="color:var(--green)">Revenue Driver</span></h2>
         <div class="div"></div>
-        <p style="margin-bottom:1rem;">I'm a Shopify developer from Delhi specialising in high-converting, performance-driven eCommerce stores. With 1.5+ years of hands-on experience, I go far beyond theme edits — I think about conversion, automation, and the business outcome behind every section I build.</p>
-        <p style="margin-bottom:1rem;">At Divinti, I've built and scaled multiple live Shopify stores from scratch — including <a href="https://www.diviniti.com" target="_blank" style="color:var(--accent)">diviniti.com</a> with 500+ luxury products and <a href="https://www.portraitongold.com" target="_blank" style="color:var(--accent)">portraitongold.com</a> with custom filtering and WhatsApp checkout flows.</p>
-        <p>I don't just write code. I integrate WATI for abandoned cart recovery, set up COD verification to cut fake orders, implement GTM & Clarity for tracking, and build app-free features that save clients hundreds of dollars monthly.</p>
+        <p style="margin-bottom:1rem;">I'm a Shopify developer from Delhi focused on building fast, high-converting eCommerce stores. I've spent the past year and a half working hands-on across the full Shopify stack — from Liquid templating and custom sections to automation and performance optimization.</p>
+        <p style="margin-bottom:1rem;">At Divinti, I built and scaled multiple live stores from scratch — including <a href="https://www.diviniti.com" target="_blank" style="color:var(--accent)">diviniti.com</a> with 500+ luxury products and <a href="https://www.portraitongold.com" target="_blank" style="color:var(--accent)">portraitongold.com</a> with custom filtering and WhatsApp checkout flows.</p>
+        <p>I go beyond theme edits — integrating WATI for abandoned cart recovery, COD verification to cut fake orders, GTM and Clarity for tracking, and building app-free features that save clients recurring costs each month.</p>
         <div class="tags">
           <span class="tag">Shopify 2.0</span><span class="tag">Liquid</span><span class="tag">JS ES6+</span>
           <span class="tag">CSS3/SCSS</span><span class="tag">Metafields</span><span class="tag">WATI</span>
           <span class="tag">GTM</span><span class="tag">Firebase</span><span class="tag">Git</span>
           <span class="tag">Python/ML</span><span class="tag">BEM</span><span class="tag">SEO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE PROJECTS (moved below About) -->
+<section id="live-projects">
+  <div class="ctr">
+    <div class="fi">
+      <div class="slabel">Live Projects</div>
+      <h2>Stores I've Built &amp; Shipped</h2>
+      <p style="max-width:520px;margin-top:.6rem;">Both stores are live, built from scratch, and currently running in production.</p>
+    </div>
+    <div class="case-grid">
+      <div class="ccase fi">
+        <div>
+          <span class="ctag">Custom Jewellery · Shopify 2.0</span>
+          <h3>Portrait on Gold</h3>
+          <p><strong style="color:var(--text)">Problem:</strong> Needed a bespoke Shopify 2.0 store with advanced product filtering — no paid apps — and WhatsApp as the primary customer touchpoint.</p>
+          <p style="margin-top:.6rem"><strong style="color:var(--text)">What I built:</strong> Client-side filtering using metafield data attributes with AND logic and animated card transitions. WhatsApp form submission via wa.me. Timed popups with localStorage snooze logic. Full schema-driven block architecture for merchant editor control.</p>
+          <div class="pills">
+            <span class="pill">Shopify 2.0</span><span class="pill">Liquid</span><span class="pill">JS Filtering</span>
+            <span class="pill">WhatsApp API</span><span class="pill">SCSS</span><span class="pill">localStorage</span>
+          </div>
+          <a href="https://www.portraitongold.com" target="_blank" class="clink">Visit Live Store →</a>
+        </div>
+        <div class="cmetrics">
+          <div class="mbox"><div class="mval">$0</div><div class="mlbl">Spent on filter apps</div></div>
+          <div class="mbox"><div class="mval">100%</div><div class="mlbl">Mobile responsive</div></div>
+          <div class="mbox"><div class="mval">wa.me</div><div class="mlbl">Native WhatsApp flow</div></div>
+          <div class="mbox"><div class="mval">Full</div><div class="mlbl">Merchant editor control</div></div>
+        </div>
+      </div>
+      <div class="ccase fi" style="transition-delay:.12s">
+        <div>
+          <span class="ctag">Luxury eCommerce · 500+ Products</span>
+          <h3>Diviniti</h3>
+          <p><strong style="color:var(--text)">Problem:</strong> A luxury brand with 500+ products across 20+ categories needed a premium Shopify storefront with a clean UI, fast LCP, and a concierge experience.</p>
+          <p style="margin-top:.6rem"><strong style="color:var(--text)">What I built:</strong> Hero sections, atelier pages, concierge consultation forms, and collection grids from scratch. Separate mobile/desktop image pickers for LCP improvement. Full product catalog management and SEO-optimized metadata architecture.</p>
+          <div class="pills">
+            <span class="pill">Shopify 2.0</span><span class="pill">LCP Optimization</span><span class="pill">SEO</span>
+            <span class="pill">Schema Blocks</span><span class="pill">500+ Products</span><span class="pill">Concierge Forms</span>
+          </div>
+          <a href="https://www.diviniti.com" target="_blank" class="clink">Visit Live Store →</a>
+        </div>
+        <div class="cmetrics">
+          <div class="mbox"><div class="mval">40%</div><div class="mlbl">LCP score improved</div></div>
+          <div class="mbox"><div class="mval">500+</div><div class="mlbl">Products catalogued</div></div>
+          <div class="mbox"><div class="mval">20+</div><div class="mlbl">Custom sections built</div></div>
+          <div class="mbox"><div class="mval">SEO</div><div class="mlbl">Optimized metadata</div></div>
         </div>
       </div>
     </div>
@@ -545,61 +579,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
   </div>
 </section>
 
-<!-- CASE STUDIES -->
-<section id="case-studies">
-  <div class="ctr">
-    <div class="fi">
-      <div class="slabel">Case Studies</div>
-      <h2>Real Stores. Real Results.</h2>
-      <p style="max-width:520px;margin-top:.6rem;">Every project is approached as a revenue problem first, a design problem second.</p>
-    </div>
-    <div class="case-grid">
-      <div class="ccase fi">
-        <div>
-          <span class="ctag">Custom Jewellery · Shopify 2.0</span>
-          <h3>Portrait on Gold</h3>
-          <p><strong style="color:var(--text)">Problem:</strong> Needed a bespoke Shopify 2.0 store with advanced product filtering — no paid apps — and WhatsApp as the primary customer touchpoint.</p>
-          <p style="margin-top:.6rem"><strong style="color:var(--text)">Solution:</strong> Built client-side filtering using metafield data attributes with AND logic and animated card transitions. WhatsApp form submission via wa.me. Timed popups with localStorage snooze logic. Full schema-driven block architecture.</p>
-          <div class="pills">
-            <span class="pill">Shopify 2.0</span><span class="pill">Liquid</span><span class="pill">JS Filtering</span>
-            <span class="pill">WhatsApp API</span><span class="pill">SCSS</span><span class="pill">localStorage</span>
-          </div>
-          <a href="https://www.portraitongold.com" target="_blank" class="clink">Visit Live Store →</a>
-        </div>
-        <div class="cmetrics">
-          <div class="mbox"><div class="mval">$0</div><div class="mlbl">Spent on filter apps</div></div>
-          <div class="mbox"><div class="mval">100%</div><div class="mlbl">Mobile responsive</div></div>
-          <div class="mbox"><div class="mval">wa.me</div><div class="mlbl">Native WhatsApp flow</div></div>
-          <div class="mbox"><div class="mval">Full</div><div class="mlbl">Merchant editor control</div></div>
-        </div>
-      </div>
-      <div class="ccase fi" style="transition-delay:.12s">
-        <div>
-          <span class="ctag">Luxury eCommerce · 500+ Products</span>
-          <h3>Diviniti</h3>
-          <p><strong style="color:var(--text)">Problem:</strong> A luxury brand with 500+ products across 20+ categories needed a premium Shopify storefront with immaculate UI, fast LCP, and a bespoke concierge experience.</p>
-          <p style="margin-top:.6rem"><strong style="color:var(--text)">Solution:</strong> Built hero sections, atelier pages, concierge consultation forms, and collection grids from scratch. Separate mobile/desktop image pickers for LCP. Full product catalog management. SEO-optimized metadata architecture.</p>
-          <div class="pills">
-            <span class="pill">Shopify 2.0</span><span class="pill">LCP Optimization</span><span class="pill">SEO</span>
-            <span class="pill">Schema Blocks</span><span class="pill">500+ Products</span><span class="pill">Concierge Forms</span>
-          </div>
-          <a href="https://www.diviniti.com" target="_blank" class="clink">Visit Live Store →</a>
-        </div>
-        <div class="cmetrics">
-          <div class="mbox"><div class="mval">40%</div><div class="mlbl">LCP score improved</div></div>
-          <div class="mbox"><div class="mval">500+</div><div class="mlbl">Products catalogued</div></div>
-          <div class="mbox"><div class="mval">20+</div><div class="mlbl">Custom sections built</div></div>
-          <div class="mbox"><div class="mval">SEO</div><div class="mlbl">Optimized metadata</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
+<!-- PORTFOLIO (other projects) -->
 <section id="portfolio">
   <div class="ctr">
-    <div class="fi"><div class="slabel">Projects</div><h2>Things I've Built</h2></div>
+    <div class="fi"><div class="slabel">Projects</div><h2>Other Things I've Built</h2></div>
     <div class="pgrid">
       <div class="pcard fi">
         <div class="pthumb"><div style="font-size:2rem;margin-bottom:.4rem">🛍️</div><div class="purl">portraitongold.com</div></div>
@@ -653,30 +636,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
       <div class="pstep fi" style="transition-delay:.24s"><div class="pnum">04 —</div><div class="ptit">Testing</div><div class="pdesc">Cross-device QA, Core Web Vitals check, bug fixes & speed audit.</div></div>
       <div class="pstep fi" style="transition-delay:.32s"><div class="pnum">05 —</div><div class="ptit">Launch</div><div class="pdesc">Go live with confidence. Docs handed over. Post-launch support included.</div></div>
     </div>
-  </div>
-</section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="ctr">
-    <div class="fi"><div class="slabel">Testimonials</div><h2>What Clients Say</h2></div>
-    <div class="tgrd">
-      <div class="tcrd fi">
-        <div class="stars">★★★★★</div>
-        <p class="ttxt">"Shadab built our entire Shopify store from scratch — custom filtering, WhatsApp integration, and stunning mobile design. He understood our brief immediately and delivered well beyond expectations."</p>
-        <div class="tauth"><div class="tav">PG</div><div><div class="tnm">Portrait on Gold</div><div class="trole">Jewellery Brand, Delhi</div></div></div>
-      </div>
-      <div class="tcrd fi" style="transition-delay:.08s">
-        <div class="stars">★★★★★</div>
-        <p class="ttxt">"Our LCP scores improved by 40% after Shadab optimized our theme. The concierge forms, collection grids and hero sections look premium and load fast on every device."</p>
-        <div class="tauth"><div class="tav">DV</div><div><div class="tnm">Divinti Design Lead</div><div class="trole">Luxury eCommerce Brand</div></div></div>
-      </div>
-      <div class="tcrd fi" style="transition-delay:.16s">
-        <div class="stars">★★★★★</div>
-        <p class="ttxt">"Sharp technical thinking, clean code, great communication. Shadab built app-free product filtering that actually works and saved us hundreds of dollars monthly in Shopify subscriptions."</p>
-        <div class="tauth"><div class="tav">EC</div><div><div class="tnm">eCommerce Client</div><div class="trole">Shopify Store Owner</div></div></div>
-      </div>
-    </div>
+    <!-- AUDIT BANNER inside process section -->
     <div class="abanner fi">
       <div>
         <div class="abdg">Free · No Strings Attached</div>
@@ -740,7 +701,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
     <div class="flogo">S<span style="color:var(--accent)">.</span>Ali</div>
     <div class="flinks">
       <a href="#about">About</a><a href="#expertise">Expertise</a><a href="#services">Services</a>
-      <a href="#case-studies">Work</a><a href="#tech">Stack</a>
+      <a href="#live-projects">Work</a><a href="#tech">Stack</a>
       <a href="mailto:shadab18ali@gmail.com">Email</a>
       <a href="https://wa.me/919931394885" target="_blank">WhatsApp</a>
       <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank">LinkedIn</a>
@@ -750,34 +711,30 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.75rem 0
 </footer>
 
 <script>
-/* ─── THEME TOGGLE ─────────────────────────────── */
+/* ─── THEME TOGGLE ─── */
 function toggleTheme(){
   const h=document.documentElement;
-  const isDark = h.getAttribute('data-theme')==='dark';
-  h.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  // Update 3D scene colors
+  const isDark=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme',isDark?'light':'dark');
   if(window._3dScene) update3DTheme(!isDark);
 }
 function toggleMenu(){document.getElementById('mob').classList.toggle('open');}
 
-/* ─── TYPEWRITER ────────────────────────────────── */
-const words=['Revenue','Conversions','More Sales','Real Results'];
-let wi=0,ci=0,del=false;
-const el=document.getElementById('tw');
-function type(){
-  const w=words[wi];
-  if(!del){el.textContent=w.slice(0,ci++);el.classList.add('cur');
-    if(ci>w.length){del=true;setTimeout(type,1800);return;}
-  }else{el.textContent=w.slice(0,ci--);if(ci<0){del=false;wi=(wi+1)%words.length;ci=0;}}
-  setTimeout(type,del?50:85);
-}
-type();
+/* ─── STATIC TAGLINE — fades in once, no layout shift ─── */
+/* The .hero-tagline-box has a fixed height; text fades in via CSS animation */
+/* No JS typewriter needed — just set the word and let CSS do the fade */
+(function(){
+  const el = document.getElementById('tw');
+  if(!el) return;
+  // Already set to "Real Results" in HTML, animation plays on load
+  // No looping — clean and stable
+})();
 
-/* ─── SCROLL ANIMATIONS ─────────────────────────── */
+/* ─── SCROLL ANIMATIONS ─── */
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v');});},{threshold:0.08});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 
-/* ─── FORM ──────────────────────────────────────── */
+/* ─── FORM ─── */
 function handleSubmit(btn){
   const n=document.querySelector('input[placeholder*="Arjun"]').value;
   const em=document.querySelector('input[type="email"]').value;
@@ -787,7 +744,7 @@ function handleSubmit(btn){
   setTimeout(()=>{btn.textContent='Send Message ↗';btn.style.background='';btn.disabled=false;},4000);
 }
 
-/* ─── ACTIVE NAV ────────────────────────────────── */
+/* ─── ACTIVE NAV ─── */
 const secs=document.querySelectorAll('section[id]');
 const links=document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll',()=>{
@@ -796,389 +753,161 @@ window.addEventListener('scroll',()=>{
   links.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--text)':'';});
 },{passive:true});
 
-/* ─── 3D SHOPIFY STORE MODEL ────────────────────── */
+/* ─── 3D SHOPIFY STORE MODEL ─── */
 (function init3D(){
-  const canvas = document.getElementById('hero-canvas');
-  if(!canvas || typeof THREE === 'undefined') return;
-
-  const wrap = canvas.parentElement;
-  const W = wrap.clientWidth || 460;
-  const H = wrap.clientHeight || 460;
-
-  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+  const canvas=document.getElementById('hero-canvas');
+  if(!canvas||typeof THREE==='undefined') return;
+  const wrap=canvas.parentElement;
+  const W=wrap.clientWidth||460,H=wrap.clientHeight||460;
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-  renderer.setSize(W, H);
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(42, W/H, 0.1, 100);
-  camera.position.set(0, 0.5, 5.5);
-
-  // Colors
-  const ACCENT = 0x6366F1;
-  const GREEN  = 0x22C55E;
-  const DARK   = 0x161c2d;
-  const SURF   = 0x1c2338;
-
-  // ── LAPTOP BASE ──
-  const group = new THREE.Group();
+  renderer.setSize(W,H);
+  renderer.shadowMap.enabled=true;
+  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(42,W/H,0.1,100);
+  camera.position.set(0,0.5,5.5);
+  const ACCENT=0x6366F1,GREEN=0x22C55E;
+  const group=new THREE.Group();
   scene.add(group);
-
-  // Base / bottom
-  const baseMat = new THREE.MeshStandardMaterial({color:0x1a1f35, roughness:.35, metalness:.75});
-  const baseGeo = new THREE.BoxGeometry(3.2, 0.12, 2.1);
-  const base = new THREE.Mesh(baseGeo, baseMat);
-  base.position.y = -0.06;
-  base.castShadow = true;
-  base.receiveShadow = true;
+  const baseMat=new THREE.MeshStandardMaterial({color:0x1a1f35,roughness:.35,metalness:.75});
+  const base=new THREE.Mesh(new THREE.BoxGeometry(3.2,0.12,2.1),baseMat);
+  base.position.y=-0.06; base.castShadow=true; base.receiveShadow=true;
   group.add(base);
-
-  // Base edge highlight
-  const edgeMat = new THREE.MeshStandardMaterial({color:ACCENT, roughness:.2, metalness:.9, emissive:ACCENT, emissiveIntensity:.15});
-  const edgeGeo = new THREE.BoxGeometry(3.22, 0.025, 2.12);
-  const edgeStrip = new THREE.Mesh(edgeGeo, edgeMat);
-  edgeStrip.position.y = -0.12;
-  group.add(edgeStrip);
-
-  // Trackpad
-  const padMat = new THREE.MeshStandardMaterial({color:0x242a42, roughness:.2, metalness:.6});
-  const padGeo = new THREE.BoxGeometry(.85, .02, .55);
-  const pad = new THREE.Mesh(padGeo, padMat);
-  pad.position.set(0, 0.01, .5);
-  group.add(pad);
-
-  // Keyboard (grid of keycaps)
-  const keyMat = new THREE.MeshStandardMaterial({color:0x252c45, roughness:.3, metalness:.5});
-  const keyGlow = new THREE.MeshStandardMaterial({color:ACCENT, emissive:ACCENT, emissiveIntensity:.4, roughness:.3});
-  const keyW = 0.16, keyH = 0.025, keyD = 0.14;
-  const rows = 4, cols = 12;
-  for(let r=0; r<rows; r++){
-    for(let c=0; c<cols; c++){
-      const isGlow = Math.random() < 0.08;
-      const k = new THREE.Mesh(
-        new THREE.BoxGeometry(keyW-.018, keyH, keyD-.018),
-        isGlow ? keyGlow : keyMat
-      );
-      k.position.set(
-        -((cols-1)/2)*(keyW+.018) + c*(keyW+.018),
-        0.02,
-        -((rows-1)/2)*(keyD+.018) + r*(keyD+.018) - .22
-      );
-      group.add(k);
-    }
-  }
-
-  // ── SCREEN HINGE ──
-  const screenGroup = new THREE.Group();
-  screenGroup.position.set(0, 0, -1.05);
+  const edgeMat=new THREE.MeshStandardMaterial({color:ACCENT,roughness:.2,metalness:.9,emissive:ACCENT,emissiveIntensity:.15});
+  const edgeStrip=new THREE.Mesh(new THREE.BoxGeometry(3.22,0.025,2.12),edgeMat);
+  edgeStrip.position.y=-0.12; group.add(edgeStrip);
+  const padMat=new THREE.MeshStandardMaterial({color:0x242a42,roughness:.2,metalness:.6});
+  const pad=new THREE.Mesh(new THREE.BoxGeometry(.85,.02,.55),padMat);
+  pad.position.set(0,0.01,.5); group.add(pad);
+  const keyMat=new THREE.MeshStandardMaterial({color:0x252c45,roughness:.3,metalness:.5});
+  const keyGlow=new THREE.MeshStandardMaterial({color:ACCENT,emissive:ACCENT,emissiveIntensity:.4,roughness:.3});
+  const keyW=0.16,keyH=0.025,keyD=0.14,rows=4,cols=12;
+  for(let r=0;r<rows;r++){for(let c=0;c<cols;c++){
+    const isGlow=Math.random()<0.08;
+    const k=new THREE.Mesh(new THREE.BoxGeometry(keyW-.018,keyH,keyD-.018),isGlow?keyGlow:keyMat);
+    k.position.set(-((cols-1)/2)*(keyW+.018)+c*(keyW+.018),0.02,-((rows-1)/2)*(keyD+.018)+r*(keyD+.018)-.22);
+    group.add(k);
+  }}
+  const screenGroup=new THREE.Group();
+  screenGroup.position.set(0,0,-1.05);
   group.add(screenGroup);
-
-  // Screen backing
-  const screenBackMat = new THREE.MeshStandardMaterial({color:0x141927, roughness:.3, metalness:.8});
-  const screenBackGeo = new THREE.BoxGeometry(3.2, 2.1, 0.08);
-  const screenBack = new THREE.Mesh(screenBackGeo, screenBackMat);
-  screenBack.position.set(0, 1.05, -0.02);
-  screenBack.castShadow = true;
+  const screenBackMat=new THREE.MeshStandardMaterial({color:0x141927,roughness:.3,metalness:.8});
+  const screenBack=new THREE.Mesh(new THREE.BoxGeometry(3.2,2.1,0.08),screenBackMat);
+  screenBack.position.set(0,1.05,-0.02); screenBack.castShadow=true;
   screenGroup.add(screenBack);
-
-  // Screen bezel
-  const bezelMat = new THREE.MeshStandardMaterial({color:0x0d1020, roughness:.4, metalness:.5});
-  const bezelGeo = new THREE.BoxGeometry(3.0, 1.92, 0.01);
-  const bezel = new THREE.Mesh(bezelGeo, bezelMat);
-  bezel.position.set(0, 1.05, 0.025);
-  screenGroup.add(bezel);
-
-  // Screen display (canvas texture)
-  const texCanvas = document.createElement('canvas');
-  texCanvas.width = 512; texCanvas.height = 320;
-  const ctx = texCanvas.getContext('2d');
+  const bezel=new THREE.Mesh(new THREE.BoxGeometry(3.0,1.92,0.01),new THREE.MeshStandardMaterial({color:0x0d1020,roughness:.4,metalness:.5}));
+  bezel.position.set(0,1.05,0.025); screenGroup.add(bezel);
+  const texCanvas=document.createElement('canvas');
+  texCanvas.width=512; texCanvas.height=320;
+  const ctx=texCanvas.getContext('2d');
   drawShopifyUI(ctx);
-  const screenTex = new THREE.CanvasTexture(texCanvas);
-
-  const screenMat = new THREE.MeshStandardMaterial({
-    map: screenTex,
-    roughness: .05,
-    metalness: .05,
-    emissiveMap: screenTex,
-    emissive: new THREE.Color(1,1,1),
-    emissiveIntensity: .55
-  });
-  const screenGeo = new THREE.PlaneGeometry(2.78, 1.78);
-  const screen = new THREE.Mesh(screenGeo, screenMat);
-  screen.position.set(0, 1.05, 0.032);
-  screenGroup.add(screen);
-
-  // Logo on back
-  const logoMat = new THREE.MeshStandardMaterial({color:ACCENT, emissive:ACCENT, emissiveIntensity:.3, roughness:.2, metalness:.8});
-  const logoGeo = new THREE.CircleGeometry(.18, 32);
-  const logoBack = new THREE.Mesh(logoGeo, logoMat);
-  logoBack.position.set(0, 1.05, -0.065);
-  logoBack.rotation.y = Math.PI;
+  const screenTex=new THREE.CanvasTexture(texCanvas);
+  const screenMat=new THREE.MeshStandardMaterial({map:screenTex,roughness:.05,metalness:.05,emissiveMap:screenTex,emissive:new THREE.Color(1,1,1),emissiveIntensity:.55});
+  const screen=new THREE.Mesh(new THREE.PlaneGeometry(2.78,1.78),screenMat);
+  screen.position.set(0,1.05,0.032); screenGroup.add(screen);
+  const logoMat=new THREE.MeshStandardMaterial({color:ACCENT,emissive:ACCENT,emissiveIntensity:.3,roughness:.2,metalness:.8});
+  const logoBack=new THREE.Mesh(new THREE.CircleGeometry(.18,32),logoMat);
+  logoBack.position.set(0,1.05,-0.065); logoBack.rotation.y=Math.PI;
   screenGroup.add(logoBack);
-
-  // Screen glow plane
-  const glowMat = new THREE.MeshBasicMaterial({color:ACCENT, transparent:true, opacity:.06, side:THREE.DoubleSide});
-  const glowGeo = new THREE.PlaneGeometry(3.4, 2.4);
-  const glow = new THREE.Mesh(glowGeo, glowMat);
-  glow.position.set(0, 1.05, 0.08);
-  screenGroup.add(glow);
-
-  // Screen open angle
-  screenGroup.rotation.x = -Math.PI * 0.08;
-
-  // ── FLOATING BADGES ──
-  const badges = [];
-  const badgeData = [
-    {label:'CRO', color:0x22C55E, x:2.2, y:1.8, z:.5},
-    {label:'LCP', color:0x6366F1, x:-2.3, y:2.1, z:.3},
-    {label:'2.0', color:0xf59e0b, x:2.4, y:.2, z:.2},
-  ];
-
-  badgeData.forEach(bd => {
-    const bg = new THREE.Group();
-    const pill = new THREE.Mesh(
-      new THREE.CylinderGeometry(.22, .22, .08, 32),
-      new THREE.MeshStandardMaterial({color:bd.color, emissive:bd.color, emissiveIntensity:.35, roughness:.2})
-    );
-    pill.rotation.x = Math.PI/2;
-    bg.add(pill);
-    bg.position.set(bd.x, bd.y, bd.z);
-    scene.add(bg);
-    badges.push({mesh:bg, oy:bd.y, speed:.5 + Math.random()*.5, phase:Math.random()*Math.PI*2});
+  const glowMat=new THREE.MeshBasicMaterial({color:ACCENT,transparent:true,opacity:.06,side:THREE.DoubleSide});
+  const glow=new THREE.Mesh(new THREE.PlaneGeometry(3.4,2.4),glowMat);
+  glow.position.set(0,1.05,0.08); screenGroup.add(glow);
+  screenGroup.rotation.x=-Math.PI*0.08;
+  const badges=[];
+  [{label:'CRO',color:0x22C55E,x:2.2,y:1.8,z:.5},{label:'LCP',color:0x6366F1,x:-2.3,y:2.1,z:.3},{label:'2.0',color:0xf59e0b,x:2.4,y:.2,z:.2}].forEach(bd=>{
+    const bg=new THREE.Group();
+    const pill=new THREE.Mesh(new THREE.CylinderGeometry(.22,.22,.08,32),new THREE.MeshStandardMaterial({color:bd.color,emissive:bd.color,emissiveIntensity:.35,roughness:.2}));
+    pill.rotation.x=Math.PI/2; bg.add(pill);
+    bg.position.set(bd.x,bd.y,bd.z); scene.add(bg);
+    badges.push({mesh:bg,oy:bd.y,speed:.5+Math.random()*.5,phase:Math.random()*Math.PI*2});
   });
-
-  // ── PARTICLE FIELD ──
-  const particleCount = 120;
-  const positions = new Float32Array(particleCount * 3);
-  for(let i=0; i<particleCount; i++){
-    positions[i*3]   = (Math.random()-.5)*14;
-    positions[i*3+1] = (Math.random()-.5)*10;
-    positions[i*3+2] = (Math.random()-.5)*8 - 2;
-  }
-  const partGeo = new THREE.BufferGeometry();
-  partGeo.setAttribute('position', new THREE.BufferAttribute(positions,3));
-  const partMat = new THREE.PointsMaterial({color:ACCENT, size:.045, transparent:true, opacity:.55});
-  const particles = new THREE.Points(partGeo, partMat);
+  const particleCount=120,positions=new Float32Array(particleCount*3);
+  for(let i=0;i<particleCount;i++){positions[i*3]=(Math.random()-.5)*14;positions[i*3+1]=(Math.random()-.5)*10;positions[i*3+2]=(Math.random()-.5)*8-2;}
+  const partGeo=new THREE.BufferGeometry();
+  partGeo.setAttribute('position',new THREE.BufferAttribute(positions,3));
+  const partMat=new THREE.PointsMaterial({color:ACCENT,size:.045,transparent:true,opacity:.55});
+  const particles=new THREE.Points(partGeo,partMat);
   scene.add(particles);
-
-  // ── LIGHTS ──
-  const ambient = new THREE.AmbientLight(0xffffff, .4);
-  scene.add(ambient);
-
-  const keyLight = new THREE.DirectionalLight(0x8899ff, 1.8);
-  keyLight.position.set(4, 6, 5);
-  keyLight.castShadow = true;
-  scene.add(keyLight);
-
-  const fillLight = new THREE.DirectionalLight(0x22C55E, .6);
-  fillLight.position.set(-5, 2, 3);
-  scene.add(fillLight);
-
-  const rimLight = new THREE.DirectionalLight(0x6366F1, 1.0);
-  rimLight.position.set(0, -3, -4);
-  scene.add(rimLight);
-
-  const screenLight = new THREE.PointLight(0x6477ff, 1.5, 5);
-  screenLight.position.set(0, 1.5, 1.5);
-  scene.add(screenLight);
-
-  window._3dScene = {ambient, keyLight};
-
-  function update3DTheme(isLight){
-    ambient.intensity = isLight ? .7 : .4;
-    keyLight.intensity = isLight ? 2.2 : 1.8;
-    partMat.opacity = isLight ? .25 : .55;
-  }
-
-  // ── MOUSE / TOUCH DRAG ──
-  let isDragging=false, prevX=0, prevY=0, rotX=0.12, rotY=0.25, velX=0, velY=0;
-
-  canvas.addEventListener('mousedown', e=>{isDragging=true;prevX=e.clientX;prevY=e.clientY;});
-  window.addEventListener('mouseup',   ()=>{isDragging=false;});
-  window.addEventListener('mousemove', e=>{
+  const ambient=new THREE.AmbientLight(0xffffff,.4); scene.add(ambient);
+  const keyLight=new THREE.DirectionalLight(0x8899ff,1.8); keyLight.position.set(4,6,5); keyLight.castShadow=true; scene.add(keyLight);
+  const fillLight=new THREE.DirectionalLight(0x22C55E,.6); fillLight.position.set(-5,2,3); scene.add(fillLight);
+  const rimLight=new THREE.DirectionalLight(0x6366F1,1.0); rimLight.position.set(0,-3,-4); scene.add(rimLight);
+  const screenLight=new THREE.PointLight(0x6477ff,1.5,5); screenLight.position.set(0,1.5,1.5); scene.add(screenLight);
+  window._3dScene={ambient,keyLight};
+  function update3DTheme(isLight){ambient.intensity=isLight?.7:.4;keyLight.intensity=isLight?2.2:1.8;partMat.opacity=isLight?.25:.55;}
+  let isDragging=false,prevX=0,prevY=0,rotX=0.12,rotY=0.25,velX=0,velY=0;
+  canvas.addEventListener('mousedown',e=>{isDragging=true;prevX=e.clientX;prevY=e.clientY;});
+  window.addEventListener('mouseup',()=>{isDragging=false;});
+  window.addEventListener('mousemove',e=>{
     if(!isDragging) return;
-    const dx=(e.clientX-prevX)*.008, dy=(e.clientY-prevY)*.008;
-    velX=dx; velY=dy;
-    rotY+=dx; rotX+=dy;
-    rotX=Math.max(-0.55, Math.min(0.55, rotX));
-    prevX=e.clientX; prevY=e.clientY;
+    const dx=(e.clientX-prevX)*.008,dy=(e.clientY-prevY)*.008;
+    velX=dx;velY=dy;rotY+=dx;rotX+=dy;
+    rotX=Math.max(-0.55,Math.min(0.55,rotX));
+    prevX=e.clientX;prevY=e.clientY;
   });
-
-  canvas.addEventListener('touchstart', e=>{isDragging=true;prevX=e.touches[0].clientX;prevY=e.touches[0].clientY;},{passive:true});
-  window.addEventListener('touchend',   ()=>{isDragging=false;});
-  window.addEventListener('touchmove',  e=>{
+  canvas.addEventListener('touchstart',e=>{isDragging=true;prevX=e.touches[0].clientX;prevY=e.touches[0].clientY;},{passive:true});
+  window.addEventListener('touchend',()=>{isDragging=false;});
+  window.addEventListener('touchmove',e=>{
     if(!isDragging) return;
-    const dx=(e.touches[0].clientX-prevX)*.008, dy=(e.touches[0].clientY-prevY)*.008;
-    velX=dx; velY=dy;
-    rotY+=dx; rotX+=dy;
-    rotX=Math.max(-0.55, Math.min(0.55, rotX));
-    prevX=e.touches[0].clientX; prevY=e.touches[0].clientY;
+    const dx=(e.touches[0].clientX-prevX)*.008,dy=(e.touches[0].clientY-prevY)*.008;
+    velX=dx;velY=dy;rotY+=dx;rotX+=dy;
+    rotX=Math.max(-0.55,Math.min(0.55,rotX));
+    prevX=e.touches[0].clientX;prevY=e.touches[0].clientY;
   },{passive:true});
-
-  canvas.addEventListener('wheel', e=>{
-    camera.position.z = Math.max(3.5, Math.min(8, camera.position.z + e.deltaY*.008));
-  },{passive:true});
-
-  // ── RESIZE ──
-  const ro = new ResizeObserver(()=>{
-    const w2=wrap.clientWidth, h2=wrap.clientHeight;
-    renderer.setSize(w2,h2);
-    camera.aspect=w2/h2;
-    camera.updateProjectionMatrix();
-  });
+  canvas.addEventListener('wheel',e=>{camera.position.z=Math.max(3.5,Math.min(8,camera.position.z+e.deltaY*.008));},{passive:true});
+  const ro=new ResizeObserver(()=>{const w2=wrap.clientWidth,h2=wrap.clientHeight;renderer.setSize(w2,h2);camera.aspect=w2/h2;camera.updateProjectionMatrix();});
   ro.observe(wrap);
-
-  // ── ANIMATE ──
   let t=0;
   function animate(){
-    requestAnimationFrame(animate);
-    t += .012;
-
-    if(!isDragging){
-      // gentle auto-rotation
-      rotY += .004;
-      velX *= .92;
-      velY *= .92;
-    } else {
-      rotY += velX * .1;
-      rotX += velY * .1;
-    }
-
-    group.rotation.y = rotY;
-    group.rotation.x = rotX * .5;
-
-    // Screen flicker subtle
-    screenMat.emissiveIntensity = .5 + Math.sin(t*1.8)*.05;
-    screenLight.intensity = 1.3 + Math.sin(t*2.2)*.2;
-
-    // Floating badges
-    badges.forEach(b=>{
-      b.mesh.position.y = b.oy + Math.sin(t*b.speed + b.phase)*.12;
-      b.mesh.rotation.y = t*.4;
-    });
-
-    // Particles drift
-    particles.rotation.y = t * .015;
-    particles.rotation.x = t * .006;
-
-    // Glowing edge pulse
-    edgeMat.emissiveIntensity = .12 + Math.sin(t*1.5)*.08;
-
-    renderer.render(scene, camera);
+    requestAnimationFrame(animate);t+=.012;
+    if(!isDragging){rotY+=.004;velX*=.92;velY*=.92;}else{rotY+=velX*.1;rotX+=velY*.1;}
+    group.rotation.y=rotY;group.rotation.x=rotX*.5;
+    screenMat.emissiveIntensity=.5+Math.sin(t*1.8)*.05;
+    screenLight.intensity=1.3+Math.sin(t*2.2)*.2;
+    badges.forEach(b=>{b.mesh.position.y=b.oy+Math.sin(t*b.speed+b.phase)*.12;b.mesh.rotation.y=t*.4;});
+    particles.rotation.y=t*.015;particles.rotation.x=t*.006;
+    edgeMat.emissiveIntensity=.12+Math.sin(t*1.5)*.08;
+    renderer.render(scene,camera);
   }
   animate();
-
-  // ── DRAW SHOPIFY UI ON CANVAS TEXTURE ──
   function drawShopifyUI(ctx){
-    const W=512, H=320;
-    // Background
-    ctx.fillStyle='#0B0F19';
-    ctx.fillRect(0,0,W,H);
-
-    // Top bar
-    ctx.fillStyle='#141927';
-    ctx.fillRect(0,0,W,36);
-    ctx.fillStyle='#6366F1';
-    ctx.fillRect(0,33,W,3);
-
-    // Nav dots
-    ['#ff5f57','#ffbd2e','#28c941'].forEach((c,i)=>{
-      ctx.beginPath(); ctx.arc(16+i*20,18,5,0,Math.PI*2);
-      ctx.fillStyle=c; ctx.fill();
-    });
-
-    // URL bar
-    ctx.fillStyle='#1c2338';
-    ctx.beginPath(); roundRect(ctx,80,8,200,20,4);
-    ctx.fill();
-    ctx.fillStyle='#22C55E';
-    ctx.font='bold 9px monospace';
-    ctx.fillText('diviniti.com',90,22);
-
-    // Hero section bg
+    const W=512,H=320;
+    ctx.fillStyle='#0B0F19';ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#141927';ctx.fillRect(0,0,W,36);
+    ctx.fillStyle='#6366F1';ctx.fillRect(0,33,W,3);
+    ['#ff5f57','#ffbd2e','#28c941'].forEach((c,i)=>{ctx.beginPath();ctx.arc(16+i*20,18,5,0,Math.PI*2);ctx.fillStyle=c;ctx.fill();});
+    ctx.fillStyle='#1c2338';ctx.beginPath();roundRect(ctx,80,8,200,20,4);ctx.fill();
+    ctx.fillStyle='#22C55E';ctx.font='bold 9px monospace';ctx.fillText('diviniti.com',90,22);
     const grad=ctx.createLinearGradient(0,36,W,200);
-    grad.addColorStop(0,'#0f1420');
-    grad.addColorStop(1,'#141927');
-    ctx.fillStyle=grad;
-    ctx.fillRect(0,36,W,140);
-
-    // Hero accent glow
+    grad.addColorStop(0,'#0f1420');grad.addColorStop(1,'#141927');
+    ctx.fillStyle=grad;ctx.fillRect(0,36,W,140);
     const grd2=ctx.createRadialGradient(400,80,10,400,80,120);
-    grd2.addColorStop(0,'rgba(99,102,241,0.18)');
-    grd2.addColorStop(1,'transparent');
-    ctx.fillStyle=grd2;
-    ctx.fillRect(0,36,W,140);
-
-    // Big headline text
-    ctx.fillStyle='#E5E7EB';
-    ctx.font='bold 18px sans-serif';
-    ctx.fillText('Premium Jewellery',24,72);
-    ctx.fillStyle='#6366F1';
-    ctx.fillText('Crafted for You',24,95);
-
-    // Sub text
-    ctx.fillStyle='#8b93a8';
-    ctx.font='9px sans-serif';
-    ctx.fillText('Discover our curated collection of luxury pieces',24,115);
-
-    // CTA button
-    ctx.fillStyle='#22C55E';
-    ctx.beginPath(); roundRect(ctx,24,128,110,26,6); ctx.fill();
-    ctx.fillStyle='#fff';
-    ctx.font='bold 10px sans-serif';
-    ctx.fillText('Shop Now →',44,145);
-
-    // Product cards row
-    const cards=[
-      {x:0,  color:'#1c2338', label:'Gold Ring',   price:'₹12,999'},
-      {x:128,color:'#161c2d', label:'Necklace',    price:'₹24,500'},
-      {x:256,color:'#1a1f35', label:'Bracelet',    price:'₹8,999'},
-      {x:384,color:'#1c2338', label:'Earrings',    price:'₹5,499'},
-    ];
-    cards.forEach(c=>{
-      ctx.fillStyle=c.color;
-      ctx.beginPath(); roundRect(ctx,c.x+4,186,120,100,8); ctx.fill();
-      // product image placeholder
-      ctx.fillStyle='#242a42';
-      ctx.beginPath(); roundRect(ctx,c.x+10,192,108,54,4); ctx.fill();
-      // little icon
-      ctx.fillStyle='#6366F1';
-      ctx.font='22px sans-serif';
-      ctx.fillText('💍', c.x+44, 230);
-      // label
-      ctx.fillStyle='#E5E7EB';
-      ctx.font='bold 9px sans-serif';
-      ctx.fillText(c.label, c.x+10, 260);
-      // price
-      ctx.fillStyle='#22C55E';
-      ctx.font='9px monospace';
-      ctx.fillText(c.price, c.x+10, 274);
-      // add to cart
-      ctx.fillStyle='#6366F1';
-      ctx.beginPath(); roundRect(ctx,c.x+10,278,108,12,3); ctx.fill();
-      ctx.fillStyle='#fff';
-      ctx.font='7px sans-serif';
-      ctx.fillText('Add to Cart', c.x+36, 287);
+    grd2.addColorStop(0,'rgba(99,102,241,0.18)');grd2.addColorStop(1,'transparent');
+    ctx.fillStyle=grd2;ctx.fillRect(0,36,W,140);
+    ctx.fillStyle='#E5E7EB';ctx.font='bold 18px sans-serif';ctx.fillText('Premium Jewellery',24,72);
+    ctx.fillStyle='#6366F1';ctx.fillText('Crafted for You',24,95);
+    ctx.fillStyle='#8b93a8';ctx.font='9px sans-serif';ctx.fillText('Discover our curated collection of luxury pieces',24,115);
+    ctx.fillStyle='#22C55E';ctx.beginPath();roundRect(ctx,24,128,110,26,6);ctx.fill();
+    ctx.fillStyle='#fff';ctx.font='bold 10px sans-serif';ctx.fillText('Shop Now →',44,145);
+    [{x:0,color:'#1c2338',label:'Gold Ring',price:'₹12,999'},{x:128,color:'#161c2d',label:'Necklace',price:'₹24,500'},{x:256,color:'#1a1f35',label:'Bracelet',price:'₹8,999'},{x:384,color:'#1c2338',label:'Earrings',price:'₹5,499'}].forEach(c=>{
+      ctx.fillStyle=c.color;ctx.beginPath();roundRect(ctx,c.x+4,186,120,100,8);ctx.fill();
+      ctx.fillStyle='#242a42';ctx.beginPath();roundRect(ctx,c.x+10,192,108,54,4);ctx.fill();
+      ctx.fillStyle='#6366F1';ctx.font='22px sans-serif';ctx.fillText('💍',c.x+44,230);
+      ctx.fillStyle='#E5E7EB';ctx.font='bold 9px sans-serif';ctx.fillText(c.label,c.x+10,260);
+      ctx.fillStyle='#22C55E';ctx.font='9px monospace';ctx.fillText(c.price,c.x+10,274);
+      ctx.fillStyle='#6366F1';ctx.beginPath();roundRect(ctx,c.x+10,278,108,12,3);ctx.fill();
+      ctx.fillStyle='#fff';ctx.font='7px sans-serif';ctx.fillText('Add to Cart',c.x+36,287);
     });
-
-    // Footer bar
-    ctx.fillStyle='#0d1020';
-    ctx.fillRect(0,290,W,30);
-    ctx.fillStyle='#6366F1';
-    ctx.font='8px monospace';
-    ctx.fillText('Powered by Shadab Ali · Shopify 2.0', 130, 308);
+    ctx.fillStyle='#0d1020';ctx.fillRect(0,290,W,30);
+    ctx.fillStyle='#6366F1';ctx.font='8px monospace';ctx.fillText('Powered by Shadab Ali · Shopify 2.0',130,308);
   }
-
   function roundRect(ctx,x,y,w,h,r){
-    ctx.moveTo(x+r,y);
-    ctx.lineTo(x+w-r,y); ctx.quadraticCurveTo(x+w,y,x+w,y+r);
-    ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
-    ctx.lineTo(x+r,y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r);
-    ctx.lineTo(x,y+r); ctx.quadraticCurveTo(x,y,x+r,y);
-    ctx.closePath();
+    ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+    ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+    ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+    ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
   }
-
 })();
 </script>
 </body>
