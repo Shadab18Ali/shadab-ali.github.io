@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shadab Ali — Shopify & WordPress Developer | CRO Specialist</title>
-<meta name="description" content="Shopify & WordPress Developer and CRO Specialist building high-converting stores. Based in Delhi, India. Available globally.">
+<title>Shadab Ali — Shopify & WordPress Developer | CRO & AI Automation Specialist</title>
+<meta name="description" content="Shopify & WordPress Developer, CRO & AI Automation Specialist building high-converting stores. Based in Delhi, India. Available globally.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Shadab Ali","jobTitle":"Shopify & WordPress Developer","email":"shadab18ali@gmail.com","telephone":"+919931394885","address":{"@type":"PostalAddress","addressLocality":"Delhi","addressCountry":"IN"},"sameAs":["https://linkedin.com/in/shadab-ali-7b0261238","https://github.com/Shadab18Ali"]}
@@ -57,7 +57,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-top{position:absolute;top:80px;left:clamp(1.5rem,4vw,4rem);right:clamp(1.5rem,4vw,4rem);display:flex;justify-content:space-between;align-items:flex-start}
 .hero-meta{display:flex;flex-direction:column;gap:.3rem}
 .hero-meta-item{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
-.hero-scroll-hint{font-family:var(--mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center;gap:.5rem;animation:scrollBounce 2s ease-in-out infinite}
+
+/* CHANGE 1: scroll hint now uses --ink for visibility */
+.hero-scroll-hint{font-family:var(--mono);font-size:.65rem;color:var(--ink);font-weight:500;text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center;gap:.5rem;animation:scrollBounce 2s ease-in-out infinite}
 .hero-scroll-hint::after{content:'↓';font-size:.9rem}
 @keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 .hero-title-wrap{padding:0 clamp(1.5rem,4vw,4rem);position:relative;z-index:2}
@@ -80,7 +82,7 @@ h1.display .outline{-webkit-text-stroke:2px var(--ink);color:transparent}
 
 /* MARQUEE */
 .marquee-wrap{overflow:hidden;background:var(--accent);padding:.9rem 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
-.marquee-track{display:flex;white-space:nowrap;animation:marqueeScroll 30s linear infinite}
+.marquee-track{display:flex;white-space:nowrap;animation:marqueeScroll 36s linear infinite}
 @keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .marquee-item{display:inline-flex;align-items:center;gap:1.25rem;padding:0 1.5rem;font-family:var(--display);font-size:1.1rem;letter-spacing:.05em;color:var(--ink);flex-shrink:0}
 .marquee-sep{color:var(--red);font-size:1.2rem}
@@ -209,7 +211,9 @@ h2.section-title em{font-family:var(--serif);font-style:italic;font-size:.85em}
 #pricing .section-label::before{background:rgba(244,241,235,.25)}
 #pricing h2.section-title{color:var(--paper)}
 .pricing-note{font-family:var(--mono);font-size:.72rem;color:rgba(244,241,235,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3rem;margin-top:-.5rem}
-.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,.08)}
+
+/* CHANGE 7: 5 columns for pricing grid */
+.pricing-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid rgba(255,255,255,.08)}
 .price-card{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,.08);position:relative;transition:background .3s var(--ease)}
 .price-card:last-child{border-right:none}
 .price-card:hover{background:rgba(255,255,255,.04)}
@@ -350,10 +354,11 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* RESPONSIVE */
-@media(max-width:1100px){
-  .pricing-grid{grid-template-columns:repeat(2,1fr)}
-  .price-card:nth-child(2){border-right:none}
-  .price-card:nth-child(3){border-top:1px solid rgba(255,255,255,.08)}
+@media(max-width:1200px){
+  /* CHANGE 7 responsive: 3 cols on medium screens */
+  .pricing-grid{grid-template-columns:repeat(3,1fr)}
+  .price-card:nth-child(3){border-right:none}
+  .price-card:nth-child(4),.price-card:nth-child(5){border-top:1px solid rgba(255,255,255,.08)}
 }
 @media(max-width:1024px){
   .exp-grid{grid-template-columns:repeat(2,1fr)}
@@ -450,10 +455,12 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
       <div class="hero-meta-item">Based in Delhi, India</div>
       <div class="hero-meta-item">Available Globally · Remote</div>
     </div>
+    <!-- CHANGE 1: color fixed to --ink so it's readable -->
     <div class="hero-scroll-hint">Scroll to explore</div>
   </div>
   <div class="hero-title-wrap">
-    <div class="hero-eyebrow">Shopify & WordPress Developer · CRO Specialist</div>
+    <!-- CHANGE 2: updated eyebrow text with AI mention -->
+    <div class="hero-eyebrow">Shopify · WordPress · AI Automation Specialist</div>
     <h1 class="display">
       Stores That<br>
       <em>Actually</em><br>
@@ -461,7 +468,7 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
     </h1>
   </div>
   <div class="hero-accent-bar">
-    <p>I build fast, high-converting Shopify & WordPress stores with clean code — custom sections, automation, and performance architecture that drives real revenue.</p>
+    <p>I build fast, high-converting Shopify & WordPress stores with clean code — custom sections, AI automation, WhatsApp flows, and performance architecture that drives real revenue.</p>
     <div class="hero-cta-group">
       <a href="#work" class="btn btn-lime">View Work ↓</a>
       <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" class="btn btn-wa">
@@ -474,6 +481,7 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
 </section>
 
 <!-- MARQUEE -->
+<!-- CHANGE 3: added AI/automation terms to marquee -->
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span class="marquee-item">Shopify 2.0 <span class="marquee-sep">✦</span></span>
@@ -483,17 +491,32 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
     <span class="marquee-item">WhatsApp Automation <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">LCP Optimization <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">WATI Integration <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">AI Automation <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">n8n · Make.com <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">ChatGPT Workflows <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Cursor AI <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Performance Architecture <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Metafields <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Elementor <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Google Tag Manager <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">SEO Architecture <span class="marquee-sep">✦</span></span>
+    <!-- duplicate for seamless loop -->
     <span class="marquee-item">Shopify 2.0 <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Liquid Templating <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">CRO Specialist <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">WordPress · WooCommerce <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">WhatsApp Automation <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">LCP Optimization <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">WATI Integration <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">AI Automation <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">n8n · Make.com <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">ChatGPT Workflows <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Cursor AI <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Performance Architecture <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Metafields <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Elementor <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Google Tag Manager <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">SEO Architecture <span class="marquee-sep">✦</span></span>
   </div>
 </div>
 
@@ -637,7 +660,7 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
           <input type="file" id="photo-input" class="photo-upload-input" accept="image/*" onchange="uploadPhoto(event)">
         </div>
         <div class="about-name">Shadab Ali</div>
-        <div class="about-role">Shopify & WordPress Developer<br>CRO Specialist<br>B.Tech CSE · Jamia Hamdard, 2024</div>
+        <div class="about-role">Shopify & WordPress Developer<br>CRO & AI Automation Specialist<br>B.Tech CSE · Jamia Hamdard, 2024</div>
         <div class="about-links">
           <a href="mailto:shadab18ali@gmail.com" class="about-link">shadab18ali@gmail.com ↗</a>
           <a href="https://wa.me/919931394885" target="_blank" class="about-link">WhatsApp +91 99313 94885 ↗</a>
@@ -648,13 +671,16 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
       <div class="about-body reveal" style="transition-delay:.1s">
         <p>I'm a Shopify and WordPress developer from Delhi with 2+ years of experience building fast, high-converting eCommerce stores and websites. I've worked across the full stack — Liquid, JavaScript, PHP, WooCommerce, Elementor, and performance optimisation — delivering live production sites for clients in luxury goods, security, fashion, and professional services.</p>
         <p>At Diviniti I built and scaled two Shopify stores from scratch. Beyond that, I've delivered complete WordPress and WooCommerce builds for The Majestic India and Uncostly — handling everything from architecture and design to SEO and analytics setup.</p>
-        <p>I go beyond theme edits — WATI for abandoned cart recovery, COD verification to cut fake orders, GTM and Clarity for behavioural tracking, and app-free custom features that eliminate recurring subscription costs.</p>
+        <p>I go beyond theme edits — WATI for abandoned cart recovery, COD verification to cut fake orders, GTM and Clarity for behavioural tracking, n8n and Make.com automation flows, and ChatGPT API integrations that eliminate manual work and reduce recurring costs.</p>
+        <!-- CHANGE 4: added AI skill tags -->
         <div class="skills-grid">
           <span class="skill-tag">Shopify 2.0</span><span class="skill-tag">Liquid</span><span class="skill-tag">JS ES6+</span>
           <span class="skill-tag">CSS3/SCSS</span><span class="skill-tag">WordPress</span><span class="skill-tag">WooCommerce</span>
           <span class="skill-tag">Elementor</span><span class="skill-tag">Metafields</span><span class="skill-tag">WATI</span>
           <span class="skill-tag">GTM</span><span class="skill-tag">Firebase</span><span class="skill-tag">Git</span>
           <span class="skill-tag">Python</span><span class="skill-tag">SEO</span><span class="skill-tag">MS Clarity</span>
+          <span class="skill-tag">n8n</span><span class="skill-tag">Make.com</span><span class="skill-tag">ChatGPT API</span>
+          <span class="skill-tag">Cursor AI</span><span class="skill-tag">AI Workflows</span>
         </div>
       </div>
     </div>
@@ -684,6 +710,7 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
             <li>Integrated WATI for WhatsApp automation — abandoned cart recovery, order confirmations, COD verification</li>
             <li>Reduced LCP by 40% through mobile/desktop image architecture and code optimisation</li>
             <li>Configured GTM, Microsoft Clarity, Facebook Pixel, and Google Analytics pipelines</li>
+            <li>Built n8n automation flows for product description generation and order processing</li>
           </ul>
         </div>
       </div>
@@ -768,6 +795,7 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
     <div class="section-label">Transparent Pricing</div>
     <h2 class="section-title reveal">Investment &<br><em>Timelines</em></h2>
     <p class="pricing-note reveal" style="transition-delay:.05s">All prices in INR · Approx. USD shown at current rates · Final quote after project scoping</p>
+    <!-- CHANGE 7: 5 pricing cards including new AI Automation add-on -->
     <div class="pricing-grid reveal" style="transition-delay:.1s">
 
       <!-- WP Informational -->
@@ -822,7 +850,7 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
         <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20Shopify%20Standard%20package." target="_blank" class="price-cta">Get a Quote ↗</a>
       </div>
 
-      <!-- Shopify eCommerce -->
+      <!-- Shopify Full eCommerce -->
       <div class="price-card">
         <div class="price-category">Shopify · Full eCommerce</div>
         <div class="price-amount">₹35,000</div>
@@ -837,6 +865,23 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
           <li>GTM, Analytics & Pixel setup</li>
         </ul>
         <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20Shopify%20Full%20eCommerce%20package." target="_blank" class="price-cta">Get a Quote ↗</a>
+      </div>
+
+      <!-- CHANGE 7: NEW AI Automation Add-on card -->
+      <div class="price-card">
+        <div class="price-category">AI & Automation Add-on</div>
+        <div class="price-amount">₹8,000</div>
+        <div class="price-usd">~ $95 USD</div>
+        <div class="price-timeline">⏱ 5–7 Days · Add-on to any package</div>
+        <ul class="price-features">
+          <li>n8n / Make.com workflow setup</li>
+          <li>ChatGPT API integration</li>
+          <li>AI product description generation</li>
+          <li>Automated email / WhatsApp flows</li>
+          <li>Business process automation</li>
+          <li>Handover docs included</li>
+        </ul>
+        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20AI%20Automation%20add-on." target="_blank" class="price-cta">Get a Quote ↗</a>
       </div>
 
     </div>
@@ -885,6 +930,7 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
           <li>Theme restructuring for app-safe codebases</li>
         </ul>
       </div>
+      <!-- CHANGE 5: added AI bullets to Integrations card -->
       <div class="exp-card reveal" style="transition-delay:.21s">
         <span class="exp-icon">🔗</span>
         <h3>Integrations &amp; Automation</h3>
@@ -894,6 +940,8 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
           <li>COD verification to reduce fake orders &amp; RTO</li>
           <li>Microsoft Clarity, GTM &amp; Google Analytics</li>
           <li>Facebook Pixel &amp; third-party API integrations</li>
+          <li>AI-assisted product description generation via ChatGPT API</li>
+          <li>n8n / Make.com workflow automation</li>
         </ul>
       </div>
       <div class="exp-card reveal" style="transition-delay:.28s">
@@ -956,6 +1004,11 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
         <div class="service-row reveal" style="transition-delay:.30s">
           <div class="service-icon">🌐</div>
           <div class="service-body"><h3>WordPress / WooCommerce</h3><p>Full site builds with Elementor, WooCommerce product catalogues, custom page layouts, and performance optimisation.</p></div>
+        </div>
+        <!-- CHANGE 6: new AI & Automation service row -->
+        <div class="service-row reveal" style="transition-delay:.36s">
+          <div class="service-icon">🤖</div>
+          <div class="service-body"><h3>AI &amp; Automation Workflows</h3><p>n8n, Make.com &amp; ChatGPT API integrations — AI product descriptions, support bots, order workflows &amp; business process automation.</p></div>
         </div>
       </div>
     </div>
@@ -1040,6 +1093,7 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
               <option>Shopify Full eCommerce (₹35,000)</option>
               <option>WordPress Informational Site (₹10,000)</option>
               <option>WordPress / WooCommerce eCommerce (₹20,000)</option>
+              <option>AI & Automation Workflows (₹8,000 add-on)</option>
               <option>Speed / LCP Optimization</option>
               <option>WhatsApp Automation (WATI)</option>
               <option>CRO Audit &amp; Improvements</option>
@@ -1087,7 +1141,7 @@ footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
     </nav>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Shadab Ali · Shopify & WordPress Developer · Delhi, India</div>
+    <div class="footer-copy">© 2026 Shadab Ali · Shopify, WordPress & AI Automation Developer · Delhi, India</div>
     <div class="footer-copy">Available Globally · Remote-first</div>
   </div>
 </footer>
