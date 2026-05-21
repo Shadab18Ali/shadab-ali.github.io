@@ -3,79 +3,424 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- SEO -->
-<title>Shadab Ali — Shopify & WordPress Developer | CRO Specialist | Delhi</title>
-<meta name="description" content="Shadab Ali — Shopify 2.0 & WordPress Developer and CRO Specialist building fast, high-converting eCommerce stores. 4 live stores shipped. Based in Delhi, India. Available globally for freelance and full-time roles.">
-<meta name="keywords" content="Shopify Developer Delhi, WordPress Developer India, CRO Specialist, Liquid Templating, WooCommerce, WATI WhatsApp Automation, LCP Optimization, eCommerce Developer">
-<meta name="author" content="Shadab Ali">
-<link rel="canonical" href="https://shadabali.dev/">
-
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://shadabali.dev/">
-<meta property="og:title" content="Shadab Ali — Shopify & WordPress Developer | CRO Specialist">
-<meta property="og:description" content="4 live stores shipped. Shopify 2.0, WordPress, WooCommerce, WATI automation. Based in Delhi, available globally.">
-<meta property="og:image" content="https://shadabali.dev/og-image.jpg">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Shadab Ali — Shopify & WordPress Developer">
-<meta name="twitter:description" content="Fast, high-converting Shopify & WordPress stores. 4 live sites. Delhi, India.">
-<meta name="twitter:image" content="https://shadabali.dev/og-image.jpg">
-
-<!-- Favicon -->
+<title>Shadab Ali — Shopify & WordPress Developer | CRO & AI Automation Specialist</title>
+<meta name="description" content="Shopify & WordPress Developer, CRO & AI Automation Specialist building high-converting stores. Based in Delhi, India. Available globally.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-
-<!-- Structured Data -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Shadab Ali",
-  "jobTitle": "Shopify & WordPress Developer",
-  "description": "CRO Specialist building high-converting eCommerce stores",
-  "email": "shadab18ali@gmail.com",
-  "telephone": "+919931394885",
-  "address": { "@type": "PostalAddress", "addressLocality": "Delhi", "addressCountry": "IN" },
-  "url": "https://shadabali.dev",
-  "sameAs": [
-    "https://linkedin.com/in/shadab-ali-7b0261238",
-    "https://github.com/Shadab18Ali"
-  ]
-}
+{"@context":"https://schema.org","@type":"Person","name":"Shadab Ali","jobTitle":"Shopify & WordPress Developer","email":"shadab18ali@gmail.com","telephone":"+919931394885","address":{"@type":"PostalAddress","addressLocality":"Delhi","addressCountry":"IN"},"sameAs":["https://linkedin.com/in/shadab-ali-7b0261238","https://github.com/Shadab18Ali"]}
 </script>
-
-<!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#0a0a0a; --paper:#f4f1eb; --paper2:#ede9e0; --cream:#faf8f4;
+  --accent:#c8f04a; --accent2:#b8e03a; --red:#e84040; --green:#25d366;
+  --muted:#7a7065; --muted2:#b5afa6; --border:rgba(10,10,10,0.1); --border2:rgba(10,10,10,0.18);
+  --display:'Bebas Neue',sans-serif; --serif:'Instrument Serif',serif;
+  --body:'Outfit',sans-serif; --mono:'DM Mono',monospace;
+  --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none}
 
-<!-- Stylesheet -->
-<link rel="stylesheet" href="style.css">
+/* CURSOR */
+.cursor{position:fixed;width:10px;height:10px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .15s var(--ease),width .3s var(--ease),height .3s var(--ease),background .3s;transform:translate(-50%,-50%);mix-blend-mode:difference}
+.cursor.hovering{width:48px;height:48px;background:var(--accent);mix-blend-mode:normal}
+.cursor.clicking{transform:translate(-50%,-50%) scale(.7)}
+
+/* FLOATING WHATSAPP */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;display:flex;align-items:center;gap:.75rem;background:var(--green);color:#fff;padding:.75rem 1.25rem .75rem 1rem;border-radius:100px;text-decoration:none;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 8px 32px rgba(37,211,102,.35);transition:all .3s var(--ease);cursor:none}
+.wa-float:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(37,211,102,.45);background:#1ebe5d}
+.wa-float svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
+.wa-float-label{white-space:nowrap}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,4vw,4rem);height:64px;background:rgba(244,241,235,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--display);font-size:1.4rem;letter-spacing:.05em;color:var(--ink);text-decoration:none}
+.logo span{color:var(--red)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.pill-status{display:flex;align-items:center;gap:.4rem;background:var(--ink);color:var(--accent);font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .85rem;border-radius:100px;white-space:nowrap}
+.pill-status::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hbg{display:none;background:none;border:none;cursor:none;flex-direction:column;gap:5px;padding:4px}
+.hbg span{width:22px;height:1.5px;background:var(--ink);display:block;transition:all .3s}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:64px;position:relative;overflow:hidden;background:var(--cream)}
+.hero-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;opacity:.5}
+.hero-top{position:absolute;top:80px;left:clamp(1.5rem,4vw,4rem);right:clamp(1.5rem,4vw,4rem);display:flex;justify-content:space-between;align-items:flex-start}
+.hero-meta{display:flex;flex-direction:column;gap:.3rem}
+.hero-meta-item{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+
+/* CHANGE 1: scroll hint now uses --ink for visibility */
+.hero-scroll-hint{font-family:var(--mono);font-size:.65rem;color:var(--ink);font-weight:500;text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center;gap:.5rem;animation:scrollBounce 2s ease-in-out infinite}
+.hero-scroll-hint::after{content:'↓';font-size:.9rem}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+.hero-title-wrap{padding:0 clamp(1.5rem,4vw,4rem);position:relative;z-index:2}
+.hero-eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--muted)}
+h1.display{font-family:var(--display);font-size:clamp(4.5rem,13vw,14rem);line-height:.88;letter-spacing:.01em;color:var(--ink);text-transform:uppercase}
+h1.display em{font-family:var(--serif);font-style:italic;font-size:.75em;letter-spacing:0;color:var(--red)}
+h1.display .outline{-webkit-text-stroke:2px var(--ink);color:transparent}
+.hero-accent-bar{width:100%;background:var(--ink);padding:1.4rem clamp(1.5rem,4vw,4rem);display:flex;align-items:center;justify-content:space-between;margin-top:2rem;gap:2rem;flex-wrap:wrap}
+.hero-accent-bar p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.8vw,1.3rem);color:var(--paper);max-width:520px;line-height:1.5}
+.hero-cta-group{display:flex;gap:.75rem;align-items:center;flex-shrink:0;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.75rem 1.5rem;border-radius:0;font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:none;transition:all .25s var(--ease);border:none;font-weight:500}
+.btn-lime{background:var(--accent);color:var(--ink)}
+.btn-lime:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--paper);border:1px solid rgba(255,255,255,.3)}
+.btn-outline:hover{background:rgba(255,255,255,.08)}
+.btn-wa{background:var(--green);color:#fff;gap:.5rem}
+.btn-wa:hover{background:#1ebe5d;transform:translateY(-2px)}
+.btn-wa svg{width:16px;height:16px;fill:#fff}
+
+/* MARQUEE */
+.marquee-wrap{overflow:hidden;background:var(--accent);padding:.9rem 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.marquee-track{display:flex;white-space:nowrap;animation:marqueeScroll 36s linear infinite}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{display:inline-flex;align-items:center;gap:1.25rem;padding:0 1.5rem;font-family:var(--display);font-size:1.1rem;letter-spacing:.05em;color:var(--ink);flex-shrink:0}
+.marquee-sep{color:var(--red);font-size:1.2rem}
+
+/* SHARED */
+.container{max-width:1200px;margin:0 auto;padding:0 clamp(1.5rem,4vw,4rem)}
+section{padding:7rem 0}
+.section-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.section-label::before{content:'';display:block;width:24px;height:1px;background:var(--muted)}
+h2.section-title{font-family:var(--display);font-size:clamp(2.5rem,6vw,5.5rem);line-height:.92;text-transform:uppercase;letter-spacing:.02em;margin-bottom:1.5rem}
+h2.section-title em{font-family:var(--serif);font-style:italic;font-size:.85em}
+
+/* WORK */
+#work{background:var(--paper)}
+.work-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;gap:2rem;flex-wrap:wrap}
+.work-header p{max-width:340px;font-size:.95rem;color:var(--muted);line-height:1.65}
+.project-list{display:flex;flex-direction:column}
+.project-item{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:2.5rem;padding:2.5rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--ink);transition:all .3s var(--ease);position:relative;overflow:hidden}
+.project-item::before{content:'';position:absolute;inset:0;background:var(--ink);transform:translateX(-100%);transition:transform .45s var(--ease);z-index:0}
+.project-item:hover::before{transform:translateX(0)}
+.project-item:hover{color:var(--paper)}
+.project-item:hover .pi-num{color:rgba(244,241,235,.3)}
+.project-item:hover .pi-sub{color:rgba(244,241,235,.5)}
+.project-item:hover .pi-tag{background:rgba(255,255,255,.1);color:rgba(244,241,235,.6);border-color:rgba(255,255,255,.1)}
+.project-item:hover .pi-arrow{color:var(--accent)}
+.project-item>*{position:relative;z-index:1}
+.pi-num{font-family:var(--display);font-size:1.5rem;color:rgba(10,10,10,.2);letter-spacing:.05em;transition:color .3s}
+.pi-body{flex:1}
+.pi-title{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.5rem);letter-spacing:.03em;text-transform:uppercase;line-height:1;margin-bottom:.5rem}
+.pi-sub{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;transition:color .3s}
+.pi-right{display:flex;flex-direction:column;align-items:flex-end;gap:.75rem}
+.pi-tags{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end}
+.pi-tag{font-family:var(--mono);font-size:.62rem;padding:.2rem .6rem;border:1px solid var(--border2);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;transition:all .3s}
+.pi-arrow{font-family:var(--display);font-size:1.4rem;transition:color .3s}
+.metrics-panel{background:var(--ink);padding:3rem;margin-top:3rem;display:grid;grid-template-columns:repeat(3,1fr)}
+.metric-cell{padding:2rem;border-right:1px solid rgba(255,255,255,.07);text-align:center;position:relative}
+.metric-cell:last-child{border-right:none}
+.metric-cell::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .4s var(--ease)}
+.metric-cell:hover::before{transform:scaleX(1)}
+.metric-val{font-family:var(--display);font-size:3rem;color:var(--accent);letter-spacing:.03em;line-height:1;margin-bottom:.4rem}
+.metric-label{font-family:var(--mono);font-size:.65rem;color:rgba(244,241,235,.4);text-transform:uppercase;letter-spacing:.12em}
+
+/* CASE STUDIES */
+#casestudies{background:var(--paper2)}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:4rem}
+.case-card{background:var(--paper);border:1px solid var(--border2);padding:2.5rem;transition:all .3s var(--ease)}
+.case-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(10,10,10,.1)}
+.case-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--accent);padding:.2rem .6rem;display:inline-block;margin-bottom:1.25rem}
+.case-card h3{font-family:var(--display);font-size:1.8rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.5rem}
+.case-sub{font-family:var(--mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.5rem}
+.case-problem-label{font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--red);margin-bottom:.35rem}
+.case-card p{font-size:.9rem;color:var(--muted);line-height:1.7}
+.case-results{display:flex;gap:1.5rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.case-result-item{text-align:left}
+.case-result-num{font-family:var(--display);font-size:2rem;color:var(--ink);letter-spacing:.03em;line-height:1}
+.case-result-lbl{font-family:var(--mono);font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.case-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.25rem;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:.15rem;transition:border-color .2s}
+.case-link:hover{border-color:var(--ink)}
+
+/* ABOUT */
+#about{background:var(--ink);color:var(--paper)}
+#about .section-label{color:rgba(244,241,235,.45)}
+#about .section-label::before{background:rgba(244,241,235,.3)}
+#about h2.section-title{color:var(--paper)}
+#about p{color:rgba(244,241,235,.72)}
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:6rem;align-items:start;margin-top:4rem}
+.about-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:2.5rem;position:sticky;top:80px}
+.about-avatar-wrap{position:relative;width:80px;height:80px;margin-bottom:1.5rem}
+.about-avatar{width:80px;height:80px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.5rem;color:var(--ink);overflow:hidden}
+.about-avatar img{width:100%;height:100%;object-fit:cover;display:none}
+.photo-upload-btn{position:absolute;bottom:0;right:0;width:26px;height:26px;background:var(--accent);border-radius:50%;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.75rem;transition:transform .2s}
+.photo-upload-btn:hover{transform:scale(1.1)}
+.photo-upload-input{display:none}
+.about-name{font-family:var(--display);font-size:1.3rem;letter-spacing:.05em;text-transform:uppercase;color:var(--paper);margin-bottom:.25rem}
+.about-role{font-family:var(--mono);font-size:.72rem;color:rgba(244,241,235,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.5rem;line-height:1.6}
+.about-links{display:flex;flex-direction:column;gap:.5rem;margin-top:1.5rem}
+.about-link{font-family:var(--mono);font-size:.72rem;color:rgba(244,241,235,.5);text-decoration:none;text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
+.about-link:hover{color:var(--accent)}
+.about-link:last-child{border-bottom:none}
+.about-body{padding-top:.5rem}
+.about-body p{margin-bottom:1.25rem;font-size:1.05rem;line-height:1.75}
+.skills-grid{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:2rem}
+.skill-tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(244,241,235,.6);font-family:var(--mono);font-size:.68rem;padding:.28rem .75rem;letter-spacing:.08em;text-transform:uppercase;transition:all .2s}
+.skill-tag:hover{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.08);margin-top:3rem}
+.stat-item{padding:2rem 1.5rem;border-right:1px solid rgba(255,255,255,.08)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:var(--display);font-size:3.5rem;color:var(--accent);letter-spacing:.02em;line-height:1;margin-bottom:.3rem}
+.stat-lbl{font-family:var(--mono);font-size:.65rem;color:rgba(244,241,235,.4);text-transform:uppercase;letter-spacing:.12em}
+
+/* EXPERIENCE */
+#experience{background:var(--cream)}
+.exp-timeline{margin-top:4rem;display:flex;flex-direction:column}
+.exp-row{display:grid;grid-template-columns:200px 1fr;gap:3rem;padding:2.5rem 0;border-bottom:1px solid var(--border);transition:padding .3s}
+.exp-row:first-child{border-top:1px solid var(--border)}
+.exp-row:hover{padding-left:.75rem}
+.exp-date{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;line-height:1.6;padding-top:.2rem}
+.exp-current{display:inline-block;background:var(--accent);color:var(--ink);font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .5rem;margin-top:.35rem}
+.exp-body h3{font-family:var(--display);font-size:1.4rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.2rem}
+.exp-company{font-family:var(--mono);font-size:.72rem;color:var(--red);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.exp-body ul{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.exp-body ul li{font-size:.875rem;color:var(--muted);display:flex;gap:.6rem;line-height:1.55}
+.exp-body ul li::before{content:'▸';color:var(--red);font-size:.6rem;flex-shrink:0;margin-top:.25rem}
+
+/* EDUCATION */
+#education{background:var(--paper)}
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:4rem;border:1px solid var(--border2)}
+.edu-card{padding:2.5rem;border-right:1px solid var(--border2);transition:background .3s var(--ease);position:relative;overflow:hidden}
+.edu-card:last-child{border-right:none}
+.edu-card:hover{background:var(--ink)}
+.edu-card:hover .edu-degree{color:var(--paper)}
+.edu-card:hover .edu-school{color:rgba(244,241,235,.6)}
+.edu-card:hover .edu-year{color:rgba(200,240,74,.7)}
+.edu-card:hover .edu-score{color:rgba(244,241,235,.4)}
+.edu-badge{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--ink);padding:.2rem .6rem;display:inline-block;margin-bottom:1.25rem;transition:background .3s}
+.edu-card:hover .edu-badge{background:rgba(200,240,74,.15);color:var(--accent)}
+.edu-degree{font-family:var(--display);font-size:1.15rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.4rem;transition:color .3s}
+.edu-school{font-size:.875rem;color:var(--muted);line-height:1.5;margin-bottom:.75rem;transition:color .3s}
+.edu-meta{display:flex;flex-direction:column;gap:.2rem;margin-top:auto}
+.edu-year{font-family:var(--mono);font-size:.7rem;color:var(--ink);text-transform:uppercase;letter-spacing:.1em;transition:color .3s}
+.edu-score{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;transition:color .3s}
+
+/* PRICING */
+#pricing{background:var(--ink)}
+#pricing .section-label{color:rgba(244,241,235,.4)}
+#pricing .section-label::before{background:rgba(244,241,235,.25)}
+#pricing h2.section-title{color:var(--paper)}
+.pricing-note{font-family:var(--mono);font-size:.72rem;color:rgba(244,241,235,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3rem;margin-top:-.5rem}
+
+/* CHANGE 7: 5 columns for pricing grid */
+.pricing-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid rgba(255,255,255,.08)}
+.price-card{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,.08);position:relative;transition:background .3s var(--ease)}
+.price-card:last-child{border-right:none}
+.price-card:hover{background:rgba(255,255,255,.04)}
+.price-card.featured{background:var(--accent)}
+.price-card.featured:hover{background:var(--accent2)}
+.price-card.featured .price-category{color:rgba(10,10,10,.6)}
+.price-card.featured .price-amount{color:var(--ink)}
+.price-card.featured .price-usd{color:rgba(10,10,10,.5)}
+.price-card.featured .price-timeline{color:rgba(10,10,10,.55)}
+.price-card.featured .price-features li{color:rgba(10,10,10,.7);border-color:rgba(10,10,10,.1)}
+.price-card.featured .price-features li::before{color:var(--ink)}
+.price-card.featured .price-cta{background:var(--ink);color:var(--accent)}
+.price-card.featured .price-cta:hover{background:#1a1a1a}
+.price-popular{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .75rem;white-space:nowrap}
+.price-category{font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(244,241,235,.4);margin-bottom:1.25rem}
+.price-amount{font-family:var(--display);font-size:3rem;color:var(--accent);letter-spacing:.02em;line-height:1;margin-bottom:.2rem}
+.price-usd{font-family:var(--mono);font-size:.68rem;color:rgba(244,241,235,.35);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
+.price-timeline{font-family:var(--mono);font-size:.65rem;color:rgba(244,241,235,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1.75rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.price-card.featured .price-timeline{border-color:rgba(10,10,10,.12)}
+.price-features{list-style:none;margin-bottom:2rem;display:flex;flex-direction:column;gap:.5rem}
+.price-features li{font-size:.82rem;color:rgba(244,241,235,.6);display:flex;gap:.5rem;line-height:1.5}
+.price-features li::before{content:'✓';color:var(--accent);font-size:.7rem;flex-shrink:0;margin-top:.15rem}
+.price-cta{display:block;text-align:center;padding:.75rem;background:rgba(255,255,255,.08);color:var(--paper);font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .25s;cursor:none;border:none;width:100%}
+.price-cta:hover{background:rgba(255,255,255,.15)}
+.pricing-footer{margin-top:2rem;padding:1.5rem 2rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-family:var(--mono);font-size:.68rem;color:rgba(244,241,235,.4);text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.pricing-footer span{color:var(--accent)}
+
+/* EXPERTISE */
+#expertise{background:var(--paper2)}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:4rem;border:1px solid var(--border2)}
+.exp-card{padding:2.5rem;border-right:1px solid var(--border2);border-bottom:1px solid var(--border2);transition:background .3s var(--ease)}
+.exp-card:nth-child(3n){border-right:none}
+.exp-card:nth-child(4),.exp-card:nth-child(5),.exp-card:nth-child(6){border-bottom:none}
+.exp-card:hover{background:var(--ink)}
+.exp-card:hover .exp-icon{color:var(--accent)}
+.exp-card:hover h3{color:var(--paper)}
+.exp-card:hover ul li{color:rgba(244,241,235,.6);border-color:rgba(255,255,255,.06)}
+.exp-card:hover ul li::before{color:var(--accent)}
+.exp-icon{font-size:1.5rem;margin-bottom:1.25rem;display:block;transition:color .3s}
+.exp-card h3{font-family:var(--display);font-size:1.2rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:1.25rem;transition:color .3s}
+.exp-card ul{list-style:none}
+.exp-card ul li{font-size:.82rem;color:var(--muted);padding:.4rem 0;border-bottom:1px solid var(--border);display:flex;gap:.5rem;line-height:1.5;transition:all .3s}
+.exp-card ul li:last-child{border-bottom:none}
+.exp-card ul li::before{content:'▸';color:var(--red);font-size:.6rem;flex-shrink:0;margin-top:.25rem;transition:color .3s}
+
+/* SERVICES */
+#services{background:var(--paper)}
+.services-layout{display:grid;grid-template-columns:1fr 2fr;gap:6rem;margin-top:4rem;align-items:start}
+.services-intro{position:sticky;top:80px}
+.services-intro p{font-size:1rem;color:var(--muted);line-height:1.7;margin-top:1.5rem}
+.services-list{display:flex;flex-direction:column}
+.service-row{display:flex;align-items:flex-start;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--border);transition:all .3s}
+.service-row:first-child{border-top:1px solid var(--border)}
+.service-row:hover{padding-left:1rem}
+.service-icon{width:44px;height:44px;background:var(--paper2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;transition:all .3s}
+.service-row:hover .service-icon{background:var(--ink)}
+.service-body h3{font-family:var(--display);font-size:1.15rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.4rem}
+.service-body p{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+/* PROCESS */
+#process{background:var(--cream)}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:4rem;border:1px solid var(--border2)}
+.process-step{padding:2.5rem 1.75rem;border-right:1px solid var(--border2);transition:background .3s;cursor:none}
+.process-step:last-child{border-right:none}
+.process-step:hover{background:rgba(10,10,10,.04)}
+.ps-num{font-family:var(--display);font-size:2.5rem;color:rgba(10,10,10,.12);letter-spacing:.03em;line-height:1;margin-bottom:1.25rem}
+.ps-title{font-family:var(--display);font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:.5rem}
+.ps-desc{font-family:var(--body);font-size:.8rem;color:var(--muted);line-height:1.6}
+.audit-cta{background:var(--accent);padding:3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;margin-top:3rem;flex-wrap:wrap}
+.audit-badge{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--accent);padding:.25rem .7rem;display:inline-block;margin-bottom:.75rem}
+.audit-cta h3{font-family:var(--display);font-size:clamp(1.5rem,3vw,2.5rem);letter-spacing:.03em;text-transform:uppercase;color:var(--ink);margin-bottom:.5rem}
+.audit-cta p{color:rgba(10,10,10,.65);font-size:.9rem;max-width:380px}
+.btn-dark{background:var(--ink);color:var(--accent);border:none;flex-shrink:0;cursor:none}
+.btn-dark:hover{background:#1a1a1a;transform:translateY(-2px)}
+
+/* CONTACT */
+#contact{background:var(--paper)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:6rem;align-items:start;margin-top:4rem}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem 0;border-bottom:1px solid var(--border)}
+.contact-item:first-child{border-top:1px solid var(--border)}
+.ci-icon{width:36px;height:36px;background:var(--paper2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.ci-label{font-family:var(--mono);font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.18rem}
+.ci-val{font-size:.9rem;color:var(--ink);font-weight:500}
+.ci-val a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border2);transition:border-color .2s}
+.ci-val a:hover{border-color:var(--red)}
+.availability-box{margin-top:2rem;padding:1.5rem;background:var(--ink);display:flex;align-items:center;gap:1rem}
+.avail-dot{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0;animation:blink 2s infinite}
+.avail-text strong{display:block;font-family:var(--display);font-size:1rem;letter-spacing:.05em;text-transform:uppercase;color:var(--paper);margin-bottom:.15rem}
+.avail-text span{font-family:var(--mono);font-size:.65rem;color:rgba(244,241,235,.4);text-transform:uppercase;letter-spacing:.1em}
+.wa-contact-btn{display:flex;align-items:center;gap:.75rem;background:var(--green);color:#fff;padding:1rem 1.5rem;text-decoration:none;margin-top:1rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transition:background .2s;cursor:none}
+.wa-contact-btn:hover{background:#1ebe5d}
+.wa-contact-btn svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
+
+/* FORM */
+.contact-form{background:var(--paper2);border:1px solid var(--border2);padding:2.5rem}
+.contact-form h3{font-family:var(--display);font-size:1.4rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:2rem}
+.form-row{margin-bottom:1.25rem}
+.form-row label{display:block;font-family:var(--mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.45rem}
+.form-row input,.form-row textarea,.form-row select{width:100%;background:var(--paper);border:1px solid var(--border2);color:var(--ink);font-family:var(--body);font-size:.9rem;padding:.75rem 1rem;outline:none;transition:border-color .2s;border-radius:0;appearance:none}
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus{border-color:var(--ink)}
+.form-row textarea{resize:vertical;min-height:120px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{width:100%;padding:1rem;background:var(--ink);color:var(--accent);border:none;font-family:var(--display);font-size:1.15rem;letter-spacing:.08em;text-transform:uppercase;cursor:none;transition:all .3s var(--ease)}
+.btn-submit:hover:not(:disabled){background:var(--red);color:var(--paper)}
+.btn-submit:disabled{opacity:.7}
+.form-note{font-family:var(--mono);font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:.75rem;text-align:center}
+.form-success{display:none;text-align:center;padding:2rem}
+.form-success.show{display:block}
+.form-success-icon{font-size:2.5rem;margin-bottom:.75rem}
+.form-success h4{font-family:var(--display);font-size:1.5rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.5rem}
+.form-success p{font-size:.85rem;color:var(--muted)}
+
+/* CV STRIP */
+.cv-strip{background:var(--accent);padding:1rem clamp(1.5rem,4vw,4rem);display:flex;align-items:center;justify-content:space-between;gap:1rem;border-top:1px solid var(--ink)}
+.cv-strip p{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink)}
+.btn-cv{background:var(--ink);color:var(--accent);padding:.55rem 1.25rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s;display:inline-flex;align-items:center;gap:.4rem;cursor:none}
+.btn-cv:hover{background:#222}
+
+/* FOOTER */
+footer{background:var(--ink);padding:4rem clamp(1.5rem,4vw,4rem) 2rem}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap;gap:2rem}
+.footer-logo{font-family:var(--display);font-size:4rem;letter-spacing:.02em;text-transform:uppercase;color:var(--paper);line-height:1}
+.footer-logo span{color:var(--accent)}
+.footer-nav{display:flex;flex-direction:column;gap:.75rem;align-items:flex-end}
+.footer-nav a{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(244,241,235,.4);text-decoration:none;transition:color .2s}
+.footer-nav a:hover{color:var(--accent)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-family:var(--mono);font-size:.65rem;color:rgba(244,241,235,.3);text-transform:uppercase;letter-spacing:.1em}
+
+/* MOB MENU */
+.mob-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--ink);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--display);font-size:2.5rem;letter-spacing:.05em;text-transform:uppercase;color:var(--paper);text-decoration:none;transition:color .2s}
+.mob-menu a:hover{color:var(--accent)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1200px){
+  /* CHANGE 7 responsive: 3 cols on medium screens */
+  .pricing-grid{grid-template-columns:repeat(3,1fr)}
+  .price-card:nth-child(3){border-right:none}
+  .price-card:nth-child(4),.price-card:nth-child(5){border-top:1px solid rgba(255,255,255,.08)}
+}
+@media(max-width:1024px){
+  .exp-grid{grid-template-columns:repeat(2,1fr)}
+  .exp-card:nth-child(3n){border-right:1px solid var(--border2)}
+  .exp-card:nth-child(2n){border-right:none}
+  .exp-card:nth-child(5),.exp-card:nth-child(6){border-bottom:none}
+  .process-steps{grid-template-columns:repeat(3,1fr)}
+  .process-step:nth-child(3){border-right:none}
+  .services-layout{grid-template-columns:1fr;gap:3rem}
+  .services-intro{position:static}
+  .case-grid{grid-template-columns:1fr}
+  .edu-grid{grid-template-columns:1fr}
+  .edu-card{border-right:none;border-bottom:1px solid var(--border2)}
+  .edu-card:last-child{border-bottom:none}
+}
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+  .about-card{position:static}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .stat-item:nth-child(2){border-right:none}
+  .stat-item:nth-child(3),.stat-item:nth-child(4){border-top:1px solid rgba(255,255,255,.08)}
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  .metrics-panel{grid-template-columns:1fr 1fr}
+  .metric-cell:nth-child(2){border-right:none}
+  nav .nav-links,nav .pill-status{display:none}
+  .hbg{display:flex}
+  .form-grid{grid-template-columns:1fr}
+  .exp-row{grid-template-columns:1fr;gap:.75rem}
+  .pricing-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  h1.display{font-size:clamp(3.5rem,16vw,6rem)}
+  .process-steps{grid-template-columns:1fr 1fr}
+  .process-step:nth-child(2n){border-right:none}
+  .exp-grid{grid-template-columns:1fr}
+  .exp-card{border-right:none;border-bottom:1px solid var(--border2)!important}
+  .project-item{grid-template-columns:1fr;gap:.75rem}
+  .pi-num{display:none}
+  .audit-cta{flex-direction:column}
+  section{padding:5rem 0}
+  body{cursor:auto}
+  .cursor{display:none}
+  .cv-strip{flex-direction:column;text-align:center}
+  .pricing-grid{grid-template-columns:1fr}
+  .price-card{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .wa-float-label{display:none}
+  .wa-float{padding:.85rem}
+}
+</style>
 </head>
 <body>
 
-<!-- Custom Cursor -->
 <div class="cursor" id="cursor"></div>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project."
-   target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   <span class="wa-float-label">Chat on WhatsApp</span>
 </a>
 
-<!-- Floating Hire Me -->
-<a href="#contact" class="hire-float" aria-label="Hire Me">⚡ Hire Me</a>
-
-<!-- ══════════════════════ NAV ══════════════════════════════ -->
-<nav role="navigation" aria-label="Main navigation">
+<!-- NAV -->
+<nav>
   <a href="#hero" class="logo">S<span>.</span>Ali</a>
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
@@ -87,80 +432,57 @@
   </ul>
   <div class="nav-cta">
     <div class="pill-status">Available Now</div>
-    <button class="hbg" onclick="toggleMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
+    <button class="hbg" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- Mobile Menu -->
-<div class="mob-menu" id="mob-menu" role="dialog" aria-label="Mobile navigation">
-  <a href="#work"       onclick="toggleMenu()">Work</a>
-  <a href="#about"      onclick="toggleMenu()">About</a>
+<div class="mob-menu" id="mob-menu">
+  <a href="#work" onclick="toggleMenu()">Work</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
   <a href="#experience" onclick="toggleMenu()">Experience</a>
-  <a href="#pricing"    onclick="toggleMenu()">Pricing</a>
-  <a href="#expertise"  onclick="toggleMenu()">Skills</a>
-  <a href="#contact"    onclick="toggleMenu()">Contact</a>
+  <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+  <a href="#expertise" onclick="toggleMenu()">Skills</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
 
-<!-- ══════════════════════ HERO ═════════════════════════════ -->
-<section id="hero" aria-label="Hero">
-  <div class="hero-noise" aria-hidden="true"></div>
-
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-noise"></div>
   <div class="hero-top">
     <div class="hero-meta">
       <div class="hero-meta-item">Based in Delhi, India</div>
       <div class="hero-meta-item">Available Globally · Remote</div>
     </div>
-    <div class="hero-scroll-hint" aria-hidden="true">Scroll to explore</div>
+    <!-- CHANGE 1: color fixed to --ink so it's readable -->
+    <div class="hero-scroll-hint">Scroll to explore</div>
   </div>
-
   <div class="hero-title-wrap">
-    <div class="hero-eyebrow">Shopify &amp; WordPress Developer · CRO Specialist</div>
+    <!-- CHANGE 2: updated eyebrow text with AI mention -->
+    <div class="hero-eyebrow">Shopify · WordPress · AI Automation Specialist</div>
     <h1 class="display">
       Stores That<br>
       <em>Actually</em><br>
       <span class="outline">Convert</span>
     </h1>
-
-    <!-- Hero Stats -->
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">4+</div>
-        <div class="hero-stat-lbl">Stores Built</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">500+</div>
-        <div class="hero-stat-lbl">Products Managed</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">40%</div>
-        <div class="hero-stat-lbl">LCP Improved</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">2+</div>
-        <div class="hero-stat-lbl">Years Experience</div>
-      </div>
-    </div>
   </div>
-
   <div class="hero-accent-bar">
-    <p>I build fast, high-converting Shopify &amp; WordPress stores — custom sections, automation, and performance architecture that drives real revenue.</p>
+    <p>I build fast, high-converting Shopify & WordPress stores with clean code — custom sections, AI automation, WhatsApp flows, and performance architecture that drives real revenue.</p>
     <div class="hero-cta-group">
       <a href="#work" class="btn btn-lime">View Work ↓</a>
-      <a href="https://drive.google.com/file/d/1aVT2Xns_39n1rnr4xn4aps-ab-A6pH6d/view?usp=drivesdk"
-         target="_blank" rel="noopener" class="btn btn-outline">Download Resume ↗</a>
-      <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27d%20like%20to%20discuss%20a%20project."
-         target="_blank" rel="noopener" class="btn btn-wa">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" class="btn btn-wa">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp Me
       </a>
+      <a href="#contact" class="btn btn-outline">Let's Talk ↗</a>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ MARQUEE ══════════════════════════ -->
-<div class="marquee-wrap" aria-hidden="true">
+<!-- MARQUEE -->
+<!-- CHANGE 3: added AI/automation terms to marquee -->
+<div class="marquee-wrap">
   <div class="marquee-track">
     <span class="marquee-item">Shopify 2.0 <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Liquid Templating <span class="marquee-sep">✦</span></span>
@@ -169,12 +491,16 @@
     <span class="marquee-item">WhatsApp Automation <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">LCP Optimization <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">WATI Integration <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">AI Automation <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">n8n · Make.com <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">ChatGPT Workflows <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Cursor AI <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Performance Architecture <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Metafields <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Elementor <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Google Tag Manager <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">SEO Architecture <span class="marquee-sep">✦</span></span>
-    <!-- duplicated for seamless loop -->
+    <!-- duplicate for seamless loop -->
     <span class="marquee-item">Shopify 2.0 <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Liquid Templating <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">CRO Specialist <span class="marquee-sep">✦</span></span>
@@ -182,6 +508,10 @@
     <span class="marquee-item">WhatsApp Automation <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">LCP Optimization <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">WATI Integration <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">AI Automation <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">n8n · Make.com <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">ChatGPT Workflows <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Cursor AI <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Performance Architecture <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Metafields <span class="marquee-sep">✦</span></span>
     <span class="marquee-item">Elementor <span class="marquee-sep">✦</span></span>
@@ -190,7 +520,7 @@
   </div>
 </div>
 
-<!-- ══════════════════════ LIVE WORK ════════════════════════ -->
+<!-- WORK -->
 <section id="work">
   <div class="container">
     <div class="work-header">
@@ -200,9 +530,8 @@
       </div>
       <p class="reveal" style="transition-delay:.1s">4 live stores and sites — built from scratch, running in production.</p>
     </div>
-
     <div class="project-list">
-      <a href="https://www.portraitongold.com" target="_blank" rel="noopener" class="project-item reveal">
+      <a href="https://www.portraitongold.com" target="_blank" class="project-item reveal">
         <div class="pi-num">01</div>
         <div class="pi-body">
           <div class="pi-title">Portrait on Gold</div>
@@ -213,8 +542,7 @@
           <div class="pi-arrow">→</div>
         </div>
       </a>
-
-      <a href="https://www.diviniti.com" target="_blank" rel="noopener" class="project-item reveal" style="transition-delay:.08s">
+      <a href="https://www.diviniti.com" target="_blank" class="project-item reveal" style="transition-delay:.08s">
         <div class="pi-num">02</div>
         <div class="pi-body">
           <div class="pi-title">Diviniti</div>
@@ -225,8 +553,7 @@
           <div class="pi-arrow">→</div>
         </div>
       </a>
-
-      <a href="https://themajesticindia.com" target="_blank" rel="noopener" class="project-item reveal" style="transition-delay:.16s">
+      <a href="https://themajesticindia.com" target="_blank" class="project-item reveal" style="transition-delay:.16s">
         <div class="pi-num">03</div>
         <div class="pi-body">
           <div class="pi-title">The Majestic India</div>
@@ -237,12 +564,11 @@
           <div class="pi-arrow">→</div>
         </div>
       </a>
-
-      <a href="https://uncostly.in" target="_blank" rel="noopener" class="project-item reveal" style="transition-delay:.24s">
+      <a href="https://uncostly.in" target="_blank" class="project-item reveal" style="transition-delay:.24s">
         <div class="pi-num">04</div>
         <div class="pi-body">
           <div class="pi-title">Uncostly</div>
-          <div class="pi-sub">Security &amp; Surveillance eCommerce · WooCommerce</div>
+          <div class="pi-sub">Security & Surveillance eCommerce · WooCommerce</div>
         </div>
         <div class="pi-right">
           <div class="pi-tags"><span class="pi-tag">WooCommerce</span><span class="pi-tag">WordPress</span><span class="pi-tag">Elementor</span></div>
@@ -250,7 +576,6 @@
         </div>
       </a>
     </div>
-
     <div class="metrics-panel reveal" style="transition-delay:.2s">
       <div class="metric-cell"><div class="metric-val">40%</div><div class="metric-label">LCP Score Improved</div></div>
       <div class="metric-cell"><div class="metric-val">4</div><div class="metric-label">Live Sites Built</div></div>
@@ -259,237 +584,121 @@
   </div>
 </section>
 
-<!-- ══════════════════════ TESTIMONIALS ═════════════════════ -->
-<section id="testimonials">
-  <div class="container">
-    <div class="section-label">Social Proof</div>
-    <h2 class="section-title reveal">What Clients<br><em>Say</em></h2>
-    <div class="testi-grid">
-
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Shadab rebuilt our Shopify store and significantly improved mobile performance. The LCP improvements made our ad campaigns noticeably more effective."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">DV</div>
-          <div>
-            <div class="testi-name">Diviniti</div>
-            <div class="testi-role">Luxury eCommerce Brand · Shopify</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testi-card reveal" style="transition-delay:.08s">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Strong understanding of Shopify customisation and very fast delivery. The WhatsApp checkout flow he built converted immediately after launch."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">PG</div>
-          <div>
-            <div class="testi-name">Portrait on Gold</div>
-            <div class="testi-role">eCommerce Store · Shopify 2.0</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testi-card reveal" style="transition-delay:.16s">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Handled the complete website professionally from design to launch. Clean code, zero bloat, and explained every decision clearly."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">MI</div>
-          <div>
-            <div class="testi-name">The Majestic India</div>
-            <div class="testi-role">WordPress Platform · Elementor</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════ CASE STUDIES ═════════════════════ -->
+<!-- CASE STUDIES -->
 <section id="casestudies">
   <div class="container">
     <div class="section-label">Deep Dives</div>
     <h2 class="section-title reveal">Case<br><em>Studies</em></h2>
     <div class="case-grid">
-
       <div class="case-card reveal">
         <span class="case-tag">Shopify · Live</span>
         <h3>Portrait on Gold</h3>
         <div class="case-sub">portraitongold.com · eCommerce</div>
-        <div>
-          <div class="case-problem-label">The Problem</div>
-          <p>Client needed an eCommerce store with complex product variants, no standard filtering solution, and a checkout flow optimised for WhatsApp — most customers preferred messaging over standard checkout.</p>
-        </div>
-        <div style="margin-top:1rem">
-          <div class="case-problem-label" style="color:var(--muted)">What I Built</div>
-          <p>App-free JS filtering using metafield data attributes — zero recurring app cost. Integrated wa.me WhatsApp flows on the product page. Added COD verification via WATI to reduce fake orders, and rebuilt collection architecture for faster navigation.</p>
-        </div>
+        <div><div class="case-problem-label">The Problem</div><p>Client needed an eCommerce store with complex product variants, no standard filtering solution, and a checkout flow optimised for WhatsApp — most customers preferred messaging over standard checkout.</p></div>
+        <div style="margin-top:1rem"><div class="case-problem-label" style="color:var(--muted)">What I Built</div><p>App-free JS filtering using metafield data attributes — zero recurring app cost. Integrated wa.me WhatsApp flows directly on the product page. Added COD verification via WATI to reduce fake orders, and rebuilt collection page architecture for faster navigation.</p></div>
         <div class="case-results">
           <div class="case-result-item"><div class="case-result-num">₹0</div><div class="case-result-lbl">App subscriptions</div></div>
           <div class="case-result-item"><div class="case-result-num">30%</div><div class="case-result-lbl">Fewer fake orders</div></div>
           <div class="case-result-item"><div class="case-result-num">100%</div><div class="case-result-lbl">Mobile optimised</div></div>
         </div>
-        <a href="https://www.portraitongold.com" target="_blank" rel="noopener" class="case-link">View Live Store ↗</a>
+        <a href="https://www.portraitongold.com" target="_blank" class="case-link">View Live Store ↗</a>
       </div>
-
       <div class="case-card reveal" style="transition-delay:.1s">
         <span class="case-tag">Shopify · Live</span>
         <h3>Diviniti</h3>
         <div class="case-sub">diviniti.com · Luxury eCommerce</div>
-        <div>
-          <div class="case-problem-label">The Problem</div>
-          <p>A luxury brand with 500+ products needed a store that felt premium and loaded fast. Poor LCP scores were hurting ad performance and bounce rates. The existing theme had layout bugs and slow image rendering on mobile.</p>
-        </div>
-        <div style="margin-top:1rem">
-          <div class="case-problem-label" style="color:var(--muted)">What I Built</div>
-          <p>Rebuilt image loading with mobile/desktop picture elements, cutting LCP by 40%. GTM and Microsoft Clarity for heatmap tracking. 20+ custom Liquid sections with full schema editor control. 500+ products structured with correct metafields and SEO tags.</p>
-        </div>
+        <div><div class="case-problem-label">The Problem</div><p>A luxury brand with 500+ products needed a store that felt premium and loaded fast. Poor LCP scores were hurting ad performance and bounce rates. The existing theme had layout bugs and slow image rendering on mobile.</p></div>
+        <div style="margin-top:1rem"><div class="case-problem-label" style="color:var(--muted)">What I Built</div><p>Rebuilt image loading with mobile/desktop picture elements, cutting LCP by 40%. Set up GTM and Microsoft Clarity for heatmap tracking. Built 20+ custom Liquid sections with full schema editor control. Structured 500+ products with correct metafields and SEO tags.</p></div>
         <div class="case-results">
           <div class="case-result-item"><div class="case-result-num">40%</div><div class="case-result-lbl">LCP improvement</div></div>
           <div class="case-result-item"><div class="case-result-num">500+</div><div class="case-result-lbl">Products structured</div></div>
           <div class="case-result-item"><div class="case-result-num">20+</div><div class="case-result-lbl">Custom sections</div></div>
         </div>
-        <a href="https://www.diviniti.com" target="_blank" rel="noopener" class="case-link">View Live Store ↗</a>
+        <a href="https://www.diviniti.com" target="_blank" class="case-link">View Live Store ↗</a>
       </div>
-
       <div class="case-card reveal" style="transition-delay:.2s">
         <span class="case-tag">WordPress · Live</span>
         <h3>The Majestic India</h3>
         <div class="case-sub">themajesticindia.com · Pageant Platform</div>
-        <div>
-          <div class="case-problem-label">The Problem</div>
-          <p>A pageant training and representation brand needed a premium site to drive registrations — with multiple program tiers, a founder story, and international testimonials.</p>
-        </div>
-        <div style="margin-top:1rem">
-          <div class="case-problem-label" style="color:var(--muted)">What I Built</div>
-          <p>Full WordPress + Elementor build with custom sections for licenses, program tiers, founder biography, and testimonials. Mobile-first layout with a clear Apply Now CTA flow throughout.</p>
-        </div>
+        <div><div class="case-problem-label">The Problem</div><p>A pageant training and representation brand needed a premium website to drive registrations — with multiple program tiers, a founder story section, and global testimonials for an international audience.</p></div>
+        <div style="margin-top:1rem"><div class="case-problem-label" style="color:var(--muted)">What I Built</div><p>Full WordPress + Elementor site with custom sections for licenses, founder biography, program tiers, testimonials from international judges, and a newsletter signup. Clear Apply Now CTA flow with mobile-first layout throughout.</p></div>
         <div class="case-results">
           <div class="case-result-item"><div class="case-result-num">4</div><div class="case-result-lbl">License pages</div></div>
           <div class="case-result-item"><div class="case-result-num">100%</div><div class="case-result-lbl">Mobile responsive</div></div>
         </div>
-        <a href="https://themajesticindia.com" target="_blank" rel="noopener" class="case-link">View Live Site ↗</a>
+        <a href="https://themajesticindia.com" target="_blank" class="case-link">View Live Site ↗</a>
       </div>
-
       <div class="case-card reveal" style="transition-delay:.3s">
         <span class="case-tag">WooCommerce · Live</span>
         <h3>Uncostly</h3>
         <div class="case-sub">uncostly.in · Security eCommerce</div>
-        <div>
-          <div class="case-problem-label">The Problem</div>
-          <p>A security hardware brand selling CCTV cameras and biometrics needed a structured WooCommerce store with clear category architecture, product comparison, and strong trust signals.</p>
-        </div>
-        <div style="margin-top:1rem">
-          <div class="case-problem-label" style="color:var(--muted)">What I Built</div>
-          <p>WordPress + WooCommerce + Elementor store with 12+ categories, comparison, wishlist, blog, a Rent section, and order tracking. Customer reviews, brand logos, and a clean checkout flow.</p>
-        </div>
+        <div><div class="case-problem-label">The Problem</div><p>A security hardware brand selling CCTV cameras, biometrics, and DVR kits needed a structured WooCommerce store with clear category architecture, product comparison, and strong trust signals.</p></div>
+        <div style="margin-top:1rem"><div class="case-problem-label" style="color:var(--muted)">What I Built</div><p>WordPress + WooCommerce + Elementor store with 12+ categories, product comparison, wishlist, blog, a dedicated Rent section, and an order tracking page. Added customer reviews, brand logos, and a clean checkout flow.</p></div>
         <div class="case-results">
           <div class="case-result-item"><div class="case-result-num">12+</div><div class="case-result-lbl">Categories built</div></div>
           <div class="case-result-item"><div class="case-result-num">100%</div><div class="case-result-lbl">Mobile first</div></div>
         </div>
-        <a href="https://uncostly.in" target="_blank" rel="noopener" class="case-link">View Live Store ↗</a>
+        <a href="https://uncostly.in" target="_blank" class="case-link">View Live Store ↗</a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ WHY HIRE ME ══════════════════════ -->
-<section id="whyhire">
-  <div class="container">
-    <div class="section-label">The Difference</div>
-    <h2 class="section-title reveal">Why Brands<br><em>Hire Me</em></h2>
-    <div class="whyhire-grid">
-
-      <div class="whyhire-card reveal">
-        <span class="wh-icon">⚡</span>
-        <div class="wh-title">Performance Focused</div>
-        <p class="wh-text">Every store I build is optimised for Core Web Vitals from day one. LCP, CLS, FID — not afterthoughts, but architectural decisions baked in from the start. Faster stores convert more and rank better.</p>
-      </div>
-
-      <div class="whyhire-card reveal" style="transition-delay:.08s">
-        <span class="wh-icon">🧩</span>
-        <div class="wh-title">App-Free Solutions</div>
-        <p class="wh-text">I build features natively in Liquid and JavaScript — custom filtering, popups, sliders, and checkout flows — eliminating ₹2,000–₹10,000/month in recurring app subscriptions without sacrificing any functionality.</p>
-      </div>
-
-      <div class="whyhire-card reveal" style="transition-delay:.16s">
-        <span class="wh-icon">📈</span>
-        <div class="wh-title">Conversion Driven</div>
-        <p class="wh-text">I think about revenue, not just code. Every layout decision, CTA placement, and checkout flow is evaluated against one question: does this make more people buy? That's the CRO mindset I bring to every project.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════ ABOUT ════════════════════════════ -->
+<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="section-label">About</div>
     <h2 class="section-title reveal">Developer<br><em>&amp; Problem Solver</em></h2>
     <div class="about-grid">
-
       <div class="about-card reveal">
         <div class="about-avatar-wrap">
           <div class="about-avatar" id="avatar">
-            <img id="avatar-img" alt="Shadab Ali photo">
+            <img id="avatar-img" alt="Shadab Ali">
             <span id="avatar-initials">SA</span>
           </div>
-          <label class="photo-upload-btn" for="photo-input" title="Upload your photo" aria-label="Upload photo">📷</label>
+          <label class="photo-upload-btn" for="photo-input" title="Upload your photo">📷</label>
           <input type="file" id="photo-input" class="photo-upload-input" accept="image/*" onchange="uploadPhoto(event)">
         </div>
         <div class="about-name">Shadab Ali</div>
-        <div class="about-role">Shopify &amp; WordPress Developer<br>CRO Specialist<br>B.Tech CSE · Jamia Hamdard, 2024</div>
+        <div class="about-role">Shopify & WordPress Developer<br>CRO & AI Automation Specialist<br>B.Tech CSE · Jamia Hamdard, 2024</div>
         <div class="about-links">
           <a href="mailto:shadab18ali@gmail.com" class="about-link">shadab18ali@gmail.com ↗</a>
-          <a href="https://wa.me/919931394885" target="_blank" rel="noopener" class="about-link">+91 99313 94885 ↗</a>
-          <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener" class="about-link">LinkedIn ↗</a>
-          <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener" class="about-link">GitHub · Shadab18Ali ↗</a>
+          <a href="https://wa.me/919931394885" target="_blank" class="about-link">WhatsApp +91 99313 94885 ↗</a>
+          <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" class="about-link">LinkedIn Profile ↗</a>
+          <a href="https://github.com/Shadab18Ali" target="_blank" class="about-link">GitHub · Shadab18Ali ↗</a>
         </div>
       </div>
-
       <div class="about-body reveal" style="transition-delay:.1s">
-        <p>I'm a Shopify and WordPress developer from Delhi with 2+ years of experience building fast, high-converting eCommerce stores. I've worked across the full stack — Liquid, JavaScript, PHP, WooCommerce, Elementor — delivering live production sites for clients in luxury goods, security, fashion, and professional services.</p>
-        <p>At Diviniti I built and scaled two Shopify stores from scratch. I've since delivered complete WordPress and WooCommerce builds for The Majestic India and Uncostly — handling everything from architecture to SEO and analytics.</p>
-        <p>I go beyond theme edits — WATI for abandoned cart recovery, COD verification to cut fake orders, GTM and Clarity for behavioural tracking, and app-free custom features that eliminate recurring subscription costs.</p>
+        <p>I'm a Shopify and WordPress developer from Delhi with 2+ years of experience building fast, high-converting eCommerce stores and websites. I've worked across the full stack — Liquid, JavaScript, PHP, WooCommerce, Elementor, and performance optimisation — delivering live production sites for clients in luxury goods, security, fashion, and professional services.</p>
+        <p>At Diviniti I built and scaled two Shopify stores from scratch. Beyond that, I've delivered complete WordPress and WooCommerce builds for The Majestic India and Uncostly — handling everything from architecture and design to SEO and analytics setup.</p>
+        <p>I go beyond theme edits — WATI for abandoned cart recovery, COD verification to cut fake orders, GTM and Clarity for behavioural tracking, n8n and Make.com automation flows, and ChatGPT API integrations that eliminate manual work and reduce recurring costs.</p>
+        <!-- CHANGE 4: added AI skill tags -->
         <div class="skills-grid">
-          <span class="skill-tag">Shopify 2.0</span>
-          <span class="skill-tag">Liquid</span>
-          <span class="skill-tag">JS ES6+</span>
-          <span class="skill-tag">CSS3/SCSS</span>
-          <span class="skill-tag">WordPress</span>
-          <span class="skill-tag">WooCommerce</span>
-          <span class="skill-tag">Elementor</span>
-          <span class="skill-tag">Metafields</span>
-          <span class="skill-tag">WATI</span>
-          <span class="skill-tag">GTM</span>
-          <span class="skill-tag">Firebase</span>
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">SEO</span>
-          <span class="skill-tag">MS Clarity</span>
+          <span class="skill-tag">Shopify 2.0</span><span class="skill-tag">Liquid</span><span class="skill-tag">JS ES6+</span>
+          <span class="skill-tag">CSS3/SCSS</span><span class="skill-tag">WordPress</span><span class="skill-tag">WooCommerce</span>
+          <span class="skill-tag">Elementor</span><span class="skill-tag">Metafields</span><span class="skill-tag">WATI</span>
+          <span class="skill-tag">GTM</span><span class="skill-tag">Firebase</span><span class="skill-tag">Git</span>
+          <span class="skill-tag">Python</span><span class="skill-tag">SEO</span><span class="skill-tag">MS Clarity</span>
+          <span class="skill-tag">n8n</span><span class="skill-tag">Make.com</span><span class="skill-tag">ChatGPT API</span>
+          <span class="skill-tag">Cursor AI</span><span class="skill-tag">AI Workflows</span>
         </div>
       </div>
-
     </div>
     <div class="stats-row reveal" style="transition-delay:.2s">
       <div class="stat-item"><div class="stat-num">40%</div><div class="stat-lbl">LCP Score Lifted</div></div>
       <div class="stat-item"><div class="stat-num">500+</div><div class="stat-lbl">Products Managed</div></div>
       <div class="stat-item"><div class="stat-num">4</div><div class="stat-lbl">Live Sites Built</div></div>
-      <div class="stat-item"><div class="stat-num">2+</div><div class="stat-lbl">Yrs Experience</div></div>
+      <div class="stat-item"><div class="stat-num">2+</div><div class="stat-lbl">Years Experience</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ WORK EXPERIENCE ══════════════════ -->
+<!-- WORK EXPERIENCE -->
 <section id="experience">
   <div class="container">
     <div class="section-label">Career</div>
     <h2 class="section-title reveal">Work<br><em>Experience</em></h2>
     <div class="exp-timeline">
-
       <div class="exp-row reveal">
         <div class="exp-date">Jan 2025 – Present<div class="exp-current">Current</div></div>
         <div class="exp-body">
@@ -501,10 +710,10 @@
             <li>Integrated WATI for WhatsApp automation — abandoned cart recovery, order confirmations, COD verification</li>
             <li>Reduced LCP by 40% through mobile/desktop image architecture and code optimisation</li>
             <li>Configured GTM, Microsoft Clarity, Facebook Pixel, and Google Analytics pipelines</li>
+            <li>Built n8n automation flows for product description generation and order processing</li>
           </ul>
         </div>
       </div>
-
       <div class="exp-row reveal" style="transition-delay:.07s">
         <div class="exp-date">Jan 2024 – Dec 2024</div>
         <div class="exp-body">
@@ -512,12 +721,11 @@
           <div class="exp-company">Dimechain Consultancy LLP</div>
           <ul>
             <li>Developed a Multiple Disease Prediction System using Logistic Regression, SVM, and Scikit-learn</li>
-            <li>Built an interactive Streamlit dashboard for real-time predictions and visualisation</li>
+            <li>Built an interactive Streamlit dashboard for real-time predictions and result visualisation</li>
             <li>Applied feature engineering and model evaluation (precision, recall, F1) to improve accuracy</li>
           </ul>
         </div>
       </div>
-
       <div class="exp-row reveal" style="transition-delay:.14s">
         <div class="exp-date">Oct 2023 – Nov 2023</div>
         <div class="exp-body">
@@ -529,40 +737,36 @@
           </ul>
         </div>
       </div>
-
       <div class="exp-row reveal" style="transition-delay:.21s">
         <div class="exp-date">Jul 2023 – Sep 2023</div>
         <div class="exp-body">
           <h3>Frontend Developer</h3>
           <div class="exp-company">Dryft Dynamics</div>
           <ul>
-            <li>Built and maintained frontend features for web applications with focus on clean, performant code</li>
+            <li>Built and maintained frontend features for web applications with a focus on clean, performant code</li>
             <li>Implemented responsive layouts with cross-browser compatibility across desktop and mobile</li>
           </ul>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ EDUCATION ════════════════════════ -->
+<!-- EDUCATION -->
 <section id="education">
   <div class="container">
     <div class="section-label">Academic Background</div>
-    <h2 class="section-title reveal">Education &amp;<br><em>Qualifications</em></h2>
+    <h2 class="section-title reveal">Education &<br><em>Qualifications</em></h2>
     <div class="edu-grid">
-
       <div class="edu-card reveal">
         <div class="edu-badge">B.Tech · 2024</div>
-        <div class="edu-degree">Computer Science &amp; Engineering</div>
+        <div class="edu-degree">Computer Science & Engineering</div>
         <div class="edu-school">Jamia Hamdard University, New Delhi</div>
         <div class="edu-meta">
           <div class="edu-year">Graduated 2024</div>
           <div class="edu-score">CGPA: 7.4 / 10</div>
         </div>
       </div>
-
       <div class="edu-card reveal" style="transition-delay:.08s">
         <div class="edu-badge">Class XII · CBSE</div>
         <div class="edu-degree">Senior Secondary</div>
@@ -572,7 +776,6 @@
           <div class="edu-score">Percentage: 69%</div>
         </div>
       </div>
-
       <div class="edu-card reveal" style="transition-delay:.16s">
         <div class="edu-badge">Class X · ICSE</div>
         <div class="edu-degree">Secondary School</div>
@@ -582,20 +785,20 @@
           <div class="edu-score">Percentage: 78%</div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ PRICING ══════════════════════════ -->
+<!-- PRICING -->
 <section id="pricing">
   <div class="container">
     <div class="section-label">Transparent Pricing</div>
-    <h2 class="section-title reveal">Investment &amp;<br><em>Timelines</em></h2>
-    <p class="pricing-note reveal" style="transition-delay:.05s">All prices in INR · Approx. USD at current rates · Final quote after scoping</p>
-
+    <h2 class="section-title reveal">Investment &<br><em>Timelines</em></h2>
+    <p class="pricing-note reveal" style="transition-delay:.05s">All prices in INR · Approx. USD shown at current rates · Final quote after project scoping</p>
+    <!-- CHANGE 7: 5 pricing cards including new AI Automation add-on -->
     <div class="pricing-grid reveal" style="transition-delay:.1s">
 
+      <!-- WP Informational -->
       <div class="price-card">
         <div class="price-category">WordPress · Informational</div>
         <div class="price-amount">₹10,000</div>
@@ -605,14 +808,14 @@
           <li>Business / portfolio / landing site</li>
           <li>Elementor page builder</li>
           <li>Up to 6 custom pages</li>
-          <li>Contact form &amp; enquiry setup</li>
+          <li>Contact form & enquiry setup</li>
           <li>Mobile responsive design</li>
           <li>Basic on-page SEO</li>
         </ul>
-        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20WordPress%20Informational%20package."
-           target="_blank" rel="noopener" class="price-cta">Get a Quote ↗</a>
+        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20WordPress%20Informational%20site%20package." target="_blank" class="price-cta">Get a Quote ↗</a>
       </div>
 
+      <!-- WP eCommerce — FEATURED -->
       <div class="price-card featured">
         <div class="price-popular">Most Popular</div>
         <div class="price-category">WordPress · eCommerce</div>
@@ -621,16 +824,16 @@
         <div class="price-timeline">⏱ Min. 2 Weeks · Depends on Scope</div>
         <ul class="price-features">
           <li>WooCommerce store setup</li>
-          <li>Product catalogue &amp; categories</li>
+          <li>Product catalogue & categories</li>
           <li>Payment gateway integration</li>
-          <li>Order tracking &amp; checkout flow</li>
+          <li>Order tracking & checkout flow</li>
           <li>Mobile-first responsive design</li>
-          <li>Basic SEO &amp; Analytics setup</li>
+          <li>Basic SEO & Analytics setup</li>
         </ul>
-        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20WordPress%20eCommerce%20package."
-           target="_blank" rel="noopener" class="price-cta">Get a Quote ↗</a>
+        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20WordPress%20eCommerce%20package." target="_blank" class="price-cta">Get a Quote ↗</a>
       </div>
 
+      <!-- Shopify Standard -->
       <div class="price-card">
         <div class="price-category">Shopify · Standard</div>
         <div class="price-amount">₹20,000</div>
@@ -638,61 +841,73 @@
         <div class="price-timeline">⏱ Min. 2 Weeks · Depends on Scope</div>
         <ul class="price-features">
           <li>Shopify 2.0 theme setup</li>
-          <li>Custom sections &amp; blocks</li>
-          <li>Products, collections &amp; variants</li>
-          <li>Payment &amp; shipping config</li>
-          <li>Mobile responsive &amp; SEO-ready</li>
+          <li>Custom sections & blocks</li>
+          <li>Products, collections & variants</li>
+          <li>Payment & shipping configuration</li>
+          <li>Mobile responsive & SEO-ready</li>
           <li>Basic automation setup</li>
         </ul>
-        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20Shopify%20Standard%20package."
-           target="_blank" rel="noopener" class="price-cta">Get a Quote ↗</a>
+        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20Shopify%20Standard%20package." target="_blank" class="price-cta">Get a Quote ↗</a>
       </div>
 
+      <!-- Shopify Full eCommerce -->
       <div class="price-card">
         <div class="price-category">Shopify · Full eCommerce</div>
         <div class="price-amount">₹35,000</div>
         <div class="price-usd">~ $420 USD</div>
-        <div class="price-timeline">⏱ 1 Month · Depends on Customisation</div>
+        <div class="price-timeline">⏱ 1 Month · Depends on Customization</div>
         <ul class="price-features">
           <li>Everything in Shopify Standard</li>
           <li>WATI WhatsApp automation</li>
           <li>COD verification flow</li>
           <li>App-free custom JS filtering</li>
-          <li>LCP &amp; Core Web Vitals tuning</li>
-          <li>GTM, Analytics &amp; Pixel setup</li>
+          <li>LCP & Core Web Vitals tuning</li>
+          <li>GTM, Analytics & Pixel setup</li>
         </ul>
-        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20Shopify%20Full%20eCommerce%20package."
-           target="_blank" rel="noopener" class="price-cta">Get a Quote ↗</a>
+        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20Shopify%20Full%20eCommerce%20package." target="_blank" class="price-cta">Get a Quote ↗</a>
+      </div>
+
+      <!-- CHANGE 7: NEW AI Automation Add-on card -->
+      <div class="price-card">
+        <div class="price-category">AI & Automation Add-on</div>
+        <div class="price-amount">₹8,000</div>
+        <div class="price-usd">~ $95 USD</div>
+        <div class="price-timeline">⏱ 5–7 Days · Add-on to any package</div>
+        <ul class="price-features">
+          <li>n8n / Make.com workflow setup</li>
+          <li>ChatGPT API integration</li>
+          <li>AI product description generation</li>
+          <li>Automated email / WhatsApp flows</li>
+          <li>Business process automation</li>
+          <li>Handover docs included</li>
+        </ul>
+        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27m%20interested%20in%20the%20AI%20Automation%20add-on." target="_blank" class="price-cta">Get a Quote ↗</a>
       </div>
 
     </div>
-
     <div class="pricing-footer reveal" style="transition-delay:.2s">
-      <span>📌</span>
-      Base rates only. Projects needing additional integrations or advanced customisation are scoped individually. All packages include post-launch support.
+      <span>📌 Note:</span> All prices are base rates. Projects requiring additional customisation, integrations, or advanced features are scoped and quoted individually. Timeline is a minimum estimate and scales with project complexity. All packages include post-launch support.
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ EXPERTISE ════════════════════════ -->
+<!-- EXPERTISE -->
 <section id="expertise">
   <div class="container">
     <div class="section-label">Full Expertise</div>
     <h2 class="section-title reveal">What I Actually Do<br><em>Inside a Project</em></h2>
     <div class="exp-grid">
-
       <div class="exp-card reveal">
         <span class="exp-icon">💼</span>
-        <h3>Theme &amp; Site Development</h3>
+        <h3>Theme & Site Development</h3>
         <ul>
           <li>Custom Liquid sections: sliders, galleries, showcases</li>
           <li>Figma-to-Shopify pixel-accurate conversion</li>
           <li>Full merchant editor control post-launch</li>
           <li>WordPress + Elementor custom page builds</li>
-          <li>Premium headers, footers, enquiry &amp; franchise pages</li>
+          <li>Premium headers, footers, enquiry & franchise pages</li>
         </ul>
       </div>
-
       <div class="exp-card reveal" style="transition-delay:.07s">
         <span class="exp-icon">🚀</span>
         <h3>Conversion Rate Optimization</h3>
@@ -704,19 +919,18 @@
           <li>Price on Request &amp; dynamic product messaging</li>
         </ul>
       </div>
-
       <div class="exp-card reveal" style="transition-delay:.14s">
         <span class="exp-icon">⚡</span>
         <h3>Performance &amp; Speed</h3>
         <ul>
-          <li>LCP optimisation with mobile/desktop image pickers</li>
+          <li>LCP optimization with mobile/desktop image pickers</li>
           <li>Core Web Vitals compliance</li>
           <li>Fixed broken links, layout bugs, navigation issues</li>
-          <li>Optimised sliders &amp; media for faster load times</li>
+          <li>Optimized sliders &amp; media for faster load times</li>
           <li>Theme restructuring for app-safe codebases</li>
         </ul>
       </div>
-
+      <!-- CHANGE 5: added AI bullets to Integrations card -->
       <div class="exp-card reveal" style="transition-delay:.21s">
         <span class="exp-icon">🔗</span>
         <h3>Integrations &amp; Automation</h3>
@@ -726,9 +940,10 @@
           <li>COD verification to reduce fake orders &amp; RTO</li>
           <li>Microsoft Clarity, GTM &amp; Google Analytics</li>
           <li>Facebook Pixel &amp; third-party API integrations</li>
+          <li>AI-assisted product description generation via ChatGPT API</li>
+          <li>n8n / Make.com workflow automation</li>
         </ul>
       </div>
-
       <div class="exp-card reveal" style="transition-delay:.28s">
         <span class="exp-icon">🛒</span>
         <h3>Advanced eCommerce</h3>
@@ -740,7 +955,6 @@
           <li>Timed popups with localStorage snooze logic</li>
         </ul>
       </div>
-
       <div class="exp-card reveal" style="transition-delay:.35s">
         <span class="exp-icon">📈</span>
         <h3>Marketing &amp; SEO</h3>
@@ -752,12 +966,11 @@
           <li>Regular audits, reporting &amp; improvements</li>
         </ul>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ SERVICES ═════════════════════════ -->
+<!-- SERVICES -->
 <section id="services">
   <div class="container">
     <div class="services-layout">
@@ -778,7 +991,7 @@
         </div>
         <div class="service-row reveal" style="transition-delay:.12s">
           <div class="service-icon">⚡</div>
-          <div class="service-body"><h3>Speed &amp; LCP Optimisation</h3><p>Core Web Vitals improvements, LCP tuning, image optimisation, code cleanup, and mobile-first performance architecture.</p></div>
+          <div class="service-body"><h3>Speed &amp; LCP Optimization</h3><p>Core Web Vitals improvements, LCP tuning, image optimisation, code cleanup, and mobile-first performance architecture.</p></div>
         </div>
         <div class="service-row reveal" style="transition-delay:.18s">
           <div class="service-icon">📲</div>
@@ -788,16 +1001,21 @@
           <div class="service-icon">🔍</div>
           <div class="service-body"><h3>SEO &amp; Analytics Setup</h3><p>On-page SEO, schema markup, GTM, Google Analytics, Microsoft Clarity, Facebook Pixel &amp; conversion tracking setup.</p></div>
         </div>
-        <div class="service-row reveal" style="transition-delay:.3s">
+        <div class="service-row reveal" style="transition-delay:.30s">
           <div class="service-icon">🌐</div>
           <div class="service-body"><h3>WordPress / WooCommerce</h3><p>Full site builds with Elementor, WooCommerce product catalogues, custom page layouts, and performance optimisation.</p></div>
+        </div>
+        <!-- CHANGE 6: new AI & Automation service row -->
+        <div class="service-row reveal" style="transition-delay:.36s">
+          <div class="service-icon">🤖</div>
+          <div class="service-body"><h3>AI &amp; Automation Workflows</h3><p>n8n, Make.com &amp; ChatGPT API integrations — AI product descriptions, support bots, order workflows &amp; business process automation.</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ PROCESS ══════════════════════════ -->
+<!-- PROCESS -->
 <section id="process">
   <div class="container">
     <div class="section-label">How I Work</div>
@@ -815,35 +1033,17 @@
         <h3>Free Shopify Speed Audit</h3>
         <p>Send me your store URL. I'll audit Core Web Vitals, LCP, conversion friction, and send a prioritised action list within 24 hours.</p>
       </div>
-      <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27d%20like%20a%20free%20speed%20audit%20for%20my%20store."
-         target="_blank" rel="noopener" class="btn btn-dark">Get Free Audit on WhatsApp →</a>
+      <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27d%20like%20a%20free%20speed%20audit%20for%20my%20store." target="_blank" class="btn btn-dark">Get Free Audit on WhatsApp →</a>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ FINAL CTA ════════════════════════ -->
-<section id="finalcta">
-  <div class="container">
-    <h2>Need a Shopify Store That<br><em>Actually Converts?</em></h2>
-    <p>Let's build a fast, premium, high-converting experience for your brand — without the agency overhead or unnecessary app subscriptions.</p>
-    <div class="finalcta-btns">
-      <a href="#contact" class="btn btn-lime">Start Project →</a>
-      <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27d%20like%20to%20start%20a%20project."
-         target="_blank" rel="noopener" class="btn btn-wa">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp Me
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════ CONTACT ══════════════════════════ -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="section-label">Let's Work Together</div>
     <h2 class="section-title reveal">Build Something<br><em>That Converts</em></h2>
     <div class="contact-grid">
-
       <div>
         <div class="contact-item reveal">
           <div class="ci-icon">📧</div>
@@ -851,7 +1051,7 @@
         </div>
         <div class="contact-item reveal" style="transition-delay:.06s">
           <div class="ci-icon">📱</div>
-          <div><div class="ci-label">WhatsApp / Phone</div><div class="ci-val"><a href="https://wa.me/919931394885" target="_blank" rel="noopener">+91 99313 94885</a></div></div>
+          <div><div class="ci-label">WhatsApp / Phone</div><div class="ci-val"><a href="https://wa.me/919931394885" target="_blank">+91 99313 94885</a></div></div>
         </div>
         <div class="contact-item reveal" style="transition-delay:.12s">
           <div class="ci-icon">📍</div>
@@ -859,15 +1059,14 @@
         </div>
         <div class="contact-item reveal" style="transition-delay:.18s">
           <div class="ci-icon">💼</div>
-          <div><div class="ci-label">LinkedIn</div><div class="ci-val"><a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener">linkedin.com/in/shadab-ali</a></div></div>
+          <div><div class="ci-label">LinkedIn</div><div class="ci-val"><a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank">linkedin.com/in/shadab-ali</a></div></div>
         </div>
         <div class="contact-item reveal" style="transition-delay:.22s">
           <div class="ci-icon">🐙</div>
-          <div><div class="ci-label">GitHub</div><div class="ci-val"><a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener">github.com/Shadab18Ali</a></div></div>
+          <div><div class="ci-label">GitHub</div><div class="ci-val"><a href="https://github.com/Shadab18Ali" target="_blank">github.com/Shadab18Ali</a></div></div>
         </div>
-        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27d%20like%20to%20discuss%20a%20project."
-           target="_blank" rel="noopener" class="wa-contact-btn reveal" style="transition-delay:.26s">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" class="wa-contact-btn reveal" style="transition-delay:.26s">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Chat on WhatsApp — Fastest Response
         </a>
         <div class="availability-box reveal" style="transition-delay:.3s">
@@ -883,18 +1082,19 @@
         <h3>Send a Message</h3>
         <div id="form-body">
           <div class="form-grid">
-            <div class="form-row"><label for="f-name">Your Name *</label><input type="text" id="f-name" placeholder="Your name" autocomplete="name"></div>
-            <div class="form-row"><label for="f-email">Email Address *</label><input type="email" id="f-email" placeholder="you@company.com" autocomplete="email"></div>
+            <div class="form-row"><label>Your Name *</label><input type="text" id="f-name" placeholder="Your name" /></div>
+            <div class="form-row"><label>Email Address *</label><input type="email" id="f-email" placeholder="you@company.com" /></div>
           </div>
           <div class="form-row">
-            <label for="f-service">What Do You Need?</label>
+            <label>What Do You Need?</label>
             <select id="f-service">
               <option value="">Select a service...</option>
               <option>New Shopify Store — Standard (₹20,000)</option>
               <option>Shopify Full eCommerce (₹35,000)</option>
               <option>WordPress Informational Site (₹10,000)</option>
               <option>WordPress / WooCommerce eCommerce (₹20,000)</option>
-              <option>Speed / LCP Optimisation</option>
+              <option>AI & Automation Workflows (₹8,000 add-on)</option>
+              <option>Speed / LCP Optimization</option>
               <option>WhatsApp Automation (WATI)</option>
               <option>CRO Audit &amp; Improvements</option>
               <option>SEO &amp; Analytics Setup</option>
@@ -903,176 +1103,132 @@
               <option>Custom / Other</option>
             </select>
           </div>
-          <div class="form-row"><label for="f-url">Store / Site URL (optional)</label><input type="url" id="f-url" placeholder="https://yourstore.myshopify.com"></div>
-          <div class="form-row"><label for="f-message">Message *</label><textarea id="f-message" placeholder="Tell me about your project, timeline, and what's not working right now..."></textarea></div>
+          <div class="form-row"><label>Store / Site URL (optional)</label><input type="url" id="f-url" placeholder="https://yourstore.myshopify.com" /></div>
+          <div class="form-row"><label>Message *</label><textarea id="f-message" placeholder="Tell me about your project, timeline, and what's not working right now..."></textarea></div>
           <button class="btn-submit" id="submit-btn" onclick="handleSubmit()">Send Message →</button>
-          <p class="form-note" id="form-note">Replies within 24 hours · No spam · Or WhatsApp me for a faster response</p>
+          <p class="form-note" id="form-note">Replies within 24 hours · No spam · Or just WhatsApp me for faster response</p>
         </div>
         <div class="form-success" id="form-success">
           <div class="form-success-icon">✅</div>
           <h4>Message Sent!</h4>
-          <p>Thanks — I'll reply to <strong id="reply-email"></strong> within 24 hours.</p>
+          <p>Thanks for reaching out. I'll reply to <strong id="reply-email"></strong> within 24 hours.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ CV STRIP ═════════════════════════ -->
+<!-- CV STRIP -->
 <div class="cv-strip">
   <p>📄 Looking to hire? View or download my full resume.</p>
-  <a href="https://drive.google.com/file/d/1aVT2Xns_39n1rnr4xn4aps-ab-A6pH6d/view?usp=drivesdk"
-     target="_blank" rel="noopener" class="btn-cv">Download Resume ↗</a>
+  <a href="https://drive.google.com/file/d/1aVT2Xns_39n1rnr4xn4aps-ab-A6pH6d/view?usp=drivesdk" target="_blank" class="btn-cv">Download Resume ↗</a>
 </div>
 
-<!-- ══════════════════════ FOOTER ═══════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-logo">S<span>.</span>Ali</div>
-    <nav class="footer-nav" aria-label="Footer navigation">
+    <nav class="footer-nav">
       <a href="#work">Work</a>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#pricing">Pricing</a>
       <a href="#expertise">Skills</a>
       <a href="mailto:shadab18ali@gmail.com">Email</a>
-      <a href="https://wa.me/919931394885" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://wa.me/919931394885" target="_blank">WhatsApp</a>
+      <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Shadab18Ali" target="_blank">GitHub</a>
     </nav>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Shadab Ali · Shopify &amp; WordPress Developer · Delhi, India</div>
+    <div class="footer-copy">© 2026 Shadab Ali · Shopify, WordPress & AI Automation Developer · Delhi, India</div>
     <div class="footer-copy">Available Globally · Remote-first</div>
   </div>
 </footer>
 
-<!-- ══════════════════════ JS ════════════════════════════════ -->
 <script>
-/* ── EmailJS config — replace with your real IDs ─────────── */
+/* EmailJS — replace 3 values after signup at emailjs.com */
 const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
 const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
 const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-(function () {
-  if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-  }
-})();
+(function(){ if(typeof emailjs!=='undefined'&&EMAILJS_PUBLIC_KEY!=='YOUR_PUBLIC_KEY') emailjs.init(EMAILJS_PUBLIC_KEY); })();
 
-async function handleSubmit () {
-  const name    = document.getElementById('f-name').value.trim();
-  const email   = document.getElementById('f-email').value.trim();
-  const service = document.getElementById('f-service').value;
-  const url     = document.getElementById('f-url').value.trim();
-  const message = document.getElementById('f-message').value.trim();
-  const btn     = document.getElementById('submit-btn');
-  const note    = document.getElementById('form-note');
-
-  if (!name)    { alert('Please enter your name.'); return; }
-  if (!email)   { alert('Please enter your email address.'); return; }
-  if (!message) { alert('Please add a message.'); return; }
-
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-  note.textContent = 'Please wait…';
-
-  if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
-    try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        from_name: name, from_email: email,
-        service: service || 'Not specified',
-        store_url: url || 'Not provided',
-        message
-      });
+async function handleSubmit(){
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const service=document.getElementById('f-service').value;
+  const url=document.getElementById('f-url').value.trim();
+  const message=document.getElementById('f-message').value.trim();
+  const btn=document.getElementById('submit-btn');
+  const note=document.getElementById('form-note');
+  if(!name){alert('Please enter your name.');return}
+  if(!email){alert('Please enter your email address.');return}
+  if(!message){alert('Please add a message.');return}
+  btn.textContent='Sending...';btn.disabled=true;note.textContent='Please wait...';
+  if(typeof emailjs!=='undefined'&&EMAILJS_PUBLIC_KEY!=='YOUR_PUBLIC_KEY'){
+    try{
+      await emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,{from_name:name,from_email:email,service:service||'Not specified',store_url:url||'Not provided',message});
       showSuccess(email);
-    } catch (err) {
-      btn.textContent = 'Send Message →';
-      btn.disabled = false;
-      note.textContent = 'Something went wrong — WhatsApp me directly for the fastest response.';
+    }catch(err){
+      btn.textContent='Send Message →';btn.disabled=false;
+      note.textContent='Something went wrong — WhatsApp me directly for fastest response.';
     }
   } else {
-    /* Fallback: mailto */
-    const body = `Name: ${name}%0AEmail: ${email}%0AService: ${service || 'Not specified'}%0ASite: ${url || 'N/A'}%0A%0A${encodeURIComponent(message)}`;
+    const body=`Name: ${name}%0AEmail: ${email}%0AService: ${service||'Not specified'}%0ASite: ${url||'N/A'}%0A%0A${encodeURIComponent(message)}`;
     window.open(`mailto:shadab18ali@gmail.com?subject=Portfolio Enquiry from ${encodeURIComponent(name)}&body=${body}`);
     showSuccess(email);
   }
 }
-
-function showSuccess (email) {
-  document.getElementById('form-body').style.display = 'none';
-  document.getElementById('reply-email').textContent = email;
+function showSuccess(email){
+  document.getElementById('form-body').style.display='none';
+  document.getElementById('reply-email').textContent=email;
   document.getElementById('form-success').classList.add('show');
 }
 
-/* ── Photo upload ─────────────────────────────────────────── */
-function uploadPhoto (event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    const img = document.getElementById('avatar-img');
-    img.src = e.target.result;
-    img.style.display = 'block';
-    document.getElementById('avatar-initials').style.display = 'none';
-    try { localStorage.setItem('sa_photo', e.target.result); } catch (_) {}
+/* Photo upload */
+function uploadPhoto(event){
+  const file=event.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const img=document.getElementById('avatar-img');
+    img.src=e.target.result;img.style.display='block';
+    document.getElementById('avatar-initials').style.display='none';
+    try{localStorage.setItem('sa_photo',e.target.result)}catch(e){}
   };
   reader.readAsDataURL(file);
 }
-(function () {
-  try {
-    const saved = localStorage.getItem('sa_photo');
-    if (saved) {
-      const img = document.getElementById('avatar-img');
-      img.src = saved;
-      img.style.display = 'block';
-      document.getElementById('avatar-initials').style.display = 'none';
-    }
-  } catch (_) {}
+(function(){
+  try{
+    const saved=localStorage.getItem('sa_photo');
+    if(saved){const img=document.getElementById('avatar-img');img.src=saved;img.style.display='block';document.getElementById('avatar-initials').style.display='none';}
+  }catch(e){}
 })();
 
-/* ── Custom cursor ────────────────────────────────────────── */
-const cursor = document.getElementById('cursor');
-let mouseX = 0, mouseY = 0;
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursor.style.left = mouseX + 'px';
-  cursor.style.top  = mouseY + 'px';
-});
-document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
-document.addEventListener('mouseup',   () => cursor.classList.remove('clicking'));
-document.querySelectorAll('a, button, .project-item, .exp-card, .service-row, .process-step, .price-card, .whyhire-card, .testi-card').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+/* Cursor */
+const cursor=document.getElementById('cursor');
+document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});
+document.addEventListener('mousedown',()=>cursor.classList.add('clicking'));
+document.addEventListener('mouseup',()=>cursor.classList.remove('clicking'));
+document.querySelectorAll('a,button,.project-item,.exp-card,.service-row,.process-step,.price-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cursor.classList.add('hovering'));
+  el.addEventListener('mouseleave',()=>cursor.classList.remove('hovering'));
 });
 
-/* ── Mobile menu ──────────────────────────────────────────── */
-function toggleMenu () {
-  const menu = document.getElementById('mob-menu');
-  const btn  = document.querySelector('.hbg');
-  menu.classList.toggle('open');
-  btn.setAttribute('aria-expanded', menu.classList.contains('open'));
-}
+/* Menu */
+function toggleMenu(){document.getElementById('mob-menu').classList.toggle('open')}
 
-/* ── Scroll reveal ────────────────────────────────────────── */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.07 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+/* Scroll reveal */
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-/* ── Active nav highlight ─────────────────────────────────── */
-const navSections = document.querySelectorAll('section[id]');
-const navLinks    = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  navSections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 100) current = s.id;
-  });
-  navLinks.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-}, { passive: true });
+/* Active nav */
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id});
+  navLinks.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--ink)':''});
+},{passive:true});
 </script>
 </body>
 </html>
