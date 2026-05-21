@@ -202,7 +202,7 @@ nav {
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
 
 .hbg {
-  display: none;
+  display: flex;
   background: none;
   border: none;
   flex-direction: column;
@@ -1263,7 +1263,8 @@ footer { background: var(--ink); padding: 3.5rem clamp(1.25rem,4vw,3.5rem) 2rem;
   .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .metrics-panel { grid-template-columns: 1fr 1fr; }
   .metric-cell:nth-child(2) { border-right: none; }
-  nav .pill-status { display: none; }
+   nav .pill-status { display: none; }
+   nav .nav-links { display: none; }
   .hbg { display: flex; }
   .form-grid { grid-template-columns: 1fr; }
   .exp-row { grid-template-columns: 1fr; gap: .65rem; }
